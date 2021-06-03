@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.example.playground.activityResult.ActivityResultActivity
 import com.example.playground.animate.AnimationActivity
 import com.example.playground.compose.ComposeActivity
 import com.example.playground.databinding.ActivityMainBinding
@@ -32,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvAnimate.setOnClickListener { view ->
             Toast.makeText(this, "Animate", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, AnimationActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvActivityResult.setOnClickListener { view ->
+            Toast.makeText(this, "ActivityResult", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ActivityResultActivity::class.java)
             startActivity(intent)
         }
     }

@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".compose.ComposeActivity"/>
         <activity android:name=".animate.AnimationActivity"/>
+        <activity android:name=".activityResult.ActivityResultActivity"/>
     </application>
 
 </manifest>
