@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.playground.activityResult.ActivityResultActivity
 import com.example.playground.animate.AnimationActivity
 import com.example.playground.compose.ComposeActivity
+import com.example.playground.coordinatorLayout.CoordinatorActivity
 import com.example.playground.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvActivityResult.setOnClickListener { view ->
             Toast.makeText(this, "ActivityResult", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ActivityResultActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvCoordinator.setOnClickListener { view ->
+            Toast.makeText(this, "Coordinator", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, CoordinatorActivity::class.java)
             startActivity(intent)
         }
     }
