@@ -1,4 +1,4 @@
-package com.example.playground.activityResult
+package com.example.playground.content.activityResult
 
 import android.content.Intent
 import android.os.Bundle

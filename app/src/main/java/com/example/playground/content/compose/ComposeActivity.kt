@@ -1,4 +1,4 @@
-package com.example.playground.compose
+package com.example.playground.content.compose
 
 import android.os.Bundle
 import android.os.PersistableBundle

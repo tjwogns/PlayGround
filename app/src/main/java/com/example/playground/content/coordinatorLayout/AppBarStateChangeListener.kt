@@ -1,4 +1,4 @@
-package com.example.playground.coordinatorLayout
+package com.example.playground.content.coordinatorLayout
 
 import com.google.android.material.appbar.AppBarLayout
 import kotlin.math.abs

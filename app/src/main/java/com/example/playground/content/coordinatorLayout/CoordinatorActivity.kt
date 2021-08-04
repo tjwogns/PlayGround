@@ -1,4 +1,4 @@
-package com.example.playground.coordinatorLayout
+package com.example.playground.content.coordinatorLayout
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar

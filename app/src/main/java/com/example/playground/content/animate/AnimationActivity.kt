@@ -1,4 +1,4 @@
-package com.example.playground.animate
+package com.example.playground.content.animate
 
 import android.os.Bundle
 import android.view.View
