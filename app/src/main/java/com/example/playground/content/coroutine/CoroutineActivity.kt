@@ -35,5 +35,9 @@ class CoroutineActivity : BaseActivity<ActivityCoroutineBinding, CoroutineViewMo
         binding.tvEx4.setOnClickListener {
             viewModel.ex4()
         }
+
+        binding.tvEx5.setOnClickListener {
+            viewModel.ex5()
+        }
     }
 }
