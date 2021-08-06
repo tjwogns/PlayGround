@@ -20,6 +20,10 @@ class CoroutineActivity : BaseActivity<ActivityCoroutineBinding, CoroutineViewMo
     }
 
     private fun setClickListener() {
+        binding.tvDispatchers.setOnClickListener {
+            viewModel.dispatchers()
+        }
+
         binding.tvEx1.setOnClickListener {
             viewModel.ex1()
         }
@@ -38,6 +42,10 @@ class CoroutineActivity : BaseActivity<ActivityCoroutineBinding, CoroutineViewMo
 
         binding.tvEx5.setOnClickListener {
             viewModel.ex5()
+        }
+
+        binding.tvEx6.setOnClickListener {
+            viewModel.ex6()
         }
     }
 }

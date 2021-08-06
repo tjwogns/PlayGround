@@ -17,26 +17,29 @@ class CoroutineViewModel: BaseViewModel() {
             launch(Dispatchers.Default) { // will get dispatched to DefaultDispatcher
                 println("Default               : I'm working in thread ${Thread.currentThread().name}")
             }
+            launch(Dispatchers.IO) { // will get dispatched to DefaultDispatcher
+                println("IO                    : I'm working in thread ${Thread.currentThread().name}")
+            }
             launch(newSingleThreadContext("MyOwnThread")) { // will get its own new thread
                 println("newSingleThreadContext: I'm working in thread ${Thread.currentThread().name}")
             }
+
         }
     }
 
     ///////////////////////////////////////////////
     // <ex1 Result>
-    //  !!! result 2 : false !!!
-    //  !!! result 1 : true !!!
+    //  Hello
+    //  World!
     ///////////////////////////////////////////////
     fun ex1() {
-        var result = false
-
-        CoroutineScope(Dispatchers.IO).launch {
-            result = true
-            println("!!! result 1 : $result !!!")
+        CoroutineScope(Dispatchers.Default).launch {
+            launch {
+                delay(100L)
+                println("World!")
+            }
         }
-
-        println("!!! result 2 : $result !!!")
+        println("Hello")
     }
 
     ///////////////////////////////////////////////
@@ -82,21 +85,16 @@ class CoroutineViewModel: BaseViewModel() {
 
     ///////////////////////////////////////////////
     // <ex4 Result>
-    //  !!! result 1 : true !!!
-    //  !!! result 2 : true !!!
+    //  Hello
     ///////////////////////////////////////////////
     fun ex4() {
-        var result = false
-
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                result = true
-                println("!!! result 1 : $result !!!")
+            val message = withContext(Dispatchers.IO){
+                return@withContext "Hello"
             }
 
-            println("!!! result 2 : $result !!!")
+            println(message)
         }
-
     }
 
 
@@ -106,13 +104,32 @@ class CoroutineViewModel: BaseViewModel() {
     //  World!
     ///////////////////////////////////////////////
     fun ex5() {
-        runBlocking {
+        viewModelScope.launch {
             launch {
                 delay(100L)
                 println("World!")
             }
-            yield()
             println("Hello")
+        }
+    }
+
+    ///////////////////////////////////////////////
+    // <ex6 Result>
+    //  one
+    //  two
+    ///////////////////////////////////////////////
+    fun ex6() {
+        viewModelScope.launch {
+            var message = "one"
+
+            val deferred = CoroutineScope(Dispatchers.IO).async {
+                // 결과값
+                message = "two"
+            }
+
+            println(message)
+            deferred.await()
+            println(message)
         }
     }
 }
