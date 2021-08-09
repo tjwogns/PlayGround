@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayGround">
         <activity
+            android:name=".content.compose.ComposeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_compose"
+            android:theme="@style/Theme.PlayGround.NoActionBar" />
+        <activity
             android:name=".content.coordinatorLayout.CoordinatorActivity"
             android:label="@string/title_activity_coordinator"
             android:theme="@style/Theme.PlayGround.NoActionBar" />
@@ -24,7 +29,6 @@
         <activity android:name=".content.coroutine.CoroutineActivity" />
         <activity android:name=".content.animate.AnimationActivity" />
         <activity android:name=".content.activityResult.ActivityResultActivity" />
-        <activity android:name=".content.compose.ComposeActivity" />
     </application>
 
 </manifest>
