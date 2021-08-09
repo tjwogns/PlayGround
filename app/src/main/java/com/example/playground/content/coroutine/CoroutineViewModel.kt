@@ -132,4 +132,19 @@ class CoroutineViewModel: BaseViewModel() {
             println(message)
         }
     }
+
+    ///////////////////////////////////////////////
+    // <ex7 Result>
+    ///////////////////////////////////////////////
+    fun ex7() {
+        viewModelScope.launch {
+            hello()
+        }
+    }
+
+    suspend fun hello() {
+        viewModelScope.launch {
+            println("Hello Coroutine")
+        }
+    }
 }
