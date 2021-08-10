@@ -39,7 +39,7 @@ class LocaleViewModel: BaseViewModel() {
         ///////////////////////////////////////////
 
         // Locale from a given IETF BCP 47 language tag
-        val localeByTag = Locale.forLanguageTag("fr-CA")
+        val localeByTag = Locale.forLanguageTag("ko-KR")
         val localeFrCA = Locale("fr", "CA")
 
         println("localeByTag : $localeByTag")
