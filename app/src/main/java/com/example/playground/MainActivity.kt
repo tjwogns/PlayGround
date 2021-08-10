@@ -10,6 +10,7 @@ import com.example.playground.content.animate.AnimationActivity
 import com.example.playground.content.compose.ComposeActivity
 import com.example.playground.content.coroutine.CoroutineActivity
 import com.example.playground.content.coordinatorLayout.CoordinatorActivity
+import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -53,6 +54,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvCoroutine.setOnClickListener { view ->
             Toast.makeText(this, "Coroutine", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, CoroutineActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvLocale.setOnClickListener { view ->
+            Toast.makeText(this, "Locale", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, LocaleActivity::class.java)
             startActivity(intent)
         }
     }
