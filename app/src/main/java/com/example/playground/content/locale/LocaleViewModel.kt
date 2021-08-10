@@ -34,7 +34,7 @@ class LocaleViewModel: BaseViewModel() {
 
         Locale.setDefault(Locale.KOREA)
         val defaultLocale2 = Locale.getDefault()
-        println("defaultLocale after : $defaultLocale2")
+        println("defaultLocale after2 : $defaultLocale2")
 
         ///////////////////////////////////////////
 
