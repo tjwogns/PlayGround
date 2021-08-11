@@ -9,10 +9,10 @@
         tools:context=".content.coroutine.CoroutineActivity">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/tv_create_builder"
+            android:id="@+id/tv_create_by_builder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Builder"
+            android:text="Create By Builder"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:theme="@style/Widget.MaterialComponents.Button"
@@ -20,17 +20,95 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             style="?attr/materialButtonOutlinedStyle" />
-
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/tv_ex1"
+            android:id="@+id/tv_create_by_constructor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ex01"
+            android:text="Create By Constructor"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:theme="@style/Widget.MaterialComponents.Button"
             app:strokeColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/tv_create_builder"
+            app:layout_constraintTop_toBottomOf="@id/tv_create_by_builder"
+            app:layout_constraintStart_toStartOf="parent"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_create_by_factory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create By Factory"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:strokeColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_create_by_constructor"
+            app:layout_constraintStart_toStartOf="parent"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_create_by_constants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create By Constants"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:strokeColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_create_by_factory"
+            app:layout_constraintStart_toStartOf="parent"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Language"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:strokeColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_create_by_constants"
+            app:layout_constraintStart_toStartOf="parent"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Country"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:strokeColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_language"
+            app:layout_constraintStart_toStartOf="parent"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Default"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:strokeColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_country"
+            app:layout_constraintStart_toStartOf="parent"
+            style="?attr/materialButtonOutlinedStyle" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_device_locale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Device Locale"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:strokeColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_default"
             app:layout_constraintStart_toStartOf="parent"
             style="?attr/materialButtonOutlinedStyle" />
 

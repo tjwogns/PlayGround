@@ -2,7 +2,6 @@ package com.example.playground.content.locale
 
 import android.os.Bundle
 import com.example.playground.R
-import com.example.playground.databinding.ActivityCoroutineBinding
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityLocaleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,12 +20,36 @@ class LocaleActivity : BaseActivity<ActivityLocaleBinding, LocaleViewModel>(
     }
 
     private fun setClickListener() {
-        binding.tvCreateBuilder.setOnClickListener {
-            viewModel.createBuilder()
+        binding.tvCreateByBuilder.setOnClickListener {
+            viewModel.createByBuilder()
         }
 
-        binding.tvEx1.setOnClickListener {
-            viewModel.ex1()
+        binding.tvCreateByConstructor.setOnClickListener {
+            viewModel.createByConstructor()
+        }
+
+        binding.tvCreateByFactory.setOnClickListener {
+            viewModel.createByFactoryMethod()
+        }
+
+        binding.tvCreateByConstants.setOnClickListener {
+            viewModel.createByConstants()
+        }
+
+        binding.tvLanguage.setOnClickListener {
+            viewModel.getLanguage()
+        }
+
+        binding.tvCountry.setOnClickListener {
+            viewModel.getCountry()
+        }
+
+        binding.tvDefault.setOnClickListener {
+            viewModel.getDefault()
+        }
+
+        binding.tvDeviceLocale.setOnClickListener {
+            viewModel.getDeviceLocale()
         }
     }
 }

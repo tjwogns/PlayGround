@@ -12,10 +12,10 @@ import java.util.*
 class LocaleViewModel: BaseViewModel() {
 
     ///////////////////////////////////////////////
-    // <createBuilder Result>
+    // <createByBuilder Result>
     // locale : ko_KR
     ///////////////////////////////////////////////
-    fun createBuilder() {
+    fun createByBuilder() {
         val locale = Locale.Builder()
             .setLanguage("ko")
             .setRegion("KR")
@@ -25,51 +25,118 @@ class LocaleViewModel: BaseViewModel() {
     }
 
     ///////////////////////////////////////////////
-    // <ex1 Result>
+    // <createByConstructor Result>
+    // locale : ko_KR
     ///////////////////////////////////////////////
-    fun ex1() {
+    fun createByConstructor() {
+        val locale = Locale("ko","KR")
+
+        println("locale : $locale")
+    }
+
+    ///////////////////////////////////////////////
+    // <createByFactoryMethod Result>
+    // locale : ko_KR
+    // locale.language : ko
+    // locale.country : KR
+    ///////////////////////////////////////////////
+    fun createByFactoryMethod() {
+        val locale = Locale.forLanguageTag("ko-KR")
+
+        println("locale : $locale")
+        println("locale.language : ${locale.language}")
+        println("locale.country : ${locale.country}")
+    }
+
+    ///////////////////////////////////////////////
+    // <createByConstants Result>
+    // locale : ko_KR
+    // locale.language : ko
+    // locale.country : KR
+    // locale2 : ko
+    // locale2.language : ko
+    // locale2.country :
+    ///////////////////////////////////////////////
+    fun createByConstants() {
+        val locale = Locale.KOREA
+
+        println("locale : $locale")
+        println("locale.language : ${locale.language}")
+        println("locale.country : ${locale.country}")
+
+        val locale2 = Locale.KOREAN
+        println("locale2 : $locale2")
+        println("locale2.language : ${locale2.language}")
+        println("locale2.country : ${locale2.country}")
+    }
+
+    ///////////////////////////////////////////////
+    // <getLanguage Result>
+    // locale.displayLanguage : Korean
+    // locale.getDisplayLanguage : 한국어
+    // locale.language : ko
+    // locale.isO3Language : kor
+    ///////////////////////////////////////////////
+    fun getLanguage() {
+        val locale = Locale.KOREA
+
+        println("locale.displayLanguage : ${locale.displayLanguage}")
+        println("locale.getDisplayLanguage : ${locale.getDisplayLanguage(Locale.KOREA)}")
+        println("locale.language : ${locale.language}")
+        println("locale.isO3Language : ${locale.isO3Language}")
+    }
+
+    ///////////////////////////////////////////////
+    // <getCountry Result>
+    // locale.displayCountry : South Korea
+    // locale.getDisplayCountry : 대한민국
+    // locale.country : KR
+    // locale.isO3Country : KOR
+    ///////////////////////////////////////////////
+    fun getCountry() {
+        val locale = Locale.KOREA
+
+        println("locale.displayCountry : ${locale.displayCountry}")
+        println("locale.getDisplayCountry : ${locale.getDisplayCountry(Locale.KOREA)}")
+        println("locale.country : ${locale.country}")
+        println("locale.isO3Country : ${locale.isO3Country}")
+    }
+
+    ///////////////////////////////////////////////
+    // <getDefault Result>
+    // defaultLocale before : en_US
+    // defaultLocale after : ko_KR
+    ///////////////////////////////////////////////
+    fun getDefault() {
         // Default Locale of your application
         val defaultLocale = Locale.getDefault()
         println("defaultLocale before : $defaultLocale")
 
         Locale.setDefault(Locale.KOREA)
         val defaultLocale2 = Locale.getDefault()
-        println("defaultLocale after2 : $defaultLocale2")
+        println("defaultLocale after : $defaultLocale2")
+    }
 
-        ///////////////////////////////////////////
-
-        // Locale from a given IETF BCP 47 language tag
-        val localeByTag = Locale.forLanguageTag("ko-KR")
-        val localeFrCA = Locale("fr", "CA")
-
-        println("localeByTag : $localeByTag")
-        println("localeFrCA : $localeFrCA")
-
-        // Used as the language/country neutral locale
-        // for the locale sensitive operations
-        val root = Locale.ROOT
-        println("root : $root")
-
-        // French language Locale without country restriction
-        val fr = Locale.FRENCH
-        println("fr : $fr")
-
-        // French Locale for France
-        val frFR = Locale.FRANCE
-        println("frFR : $frFR")
-
-        // First Locale of your device
+    ///////////////////////////////////////////////
+    // <getDeviceLocale Result>
+    ///////////////////////////////////////////////
+    fun getDeviceLocale() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             // Since API 24
-            val fLocale = Resources.getSystem().configuration.locales[0]
+            val currentDeviceLocale = Resources.getSystem().configuration.locales[0]
 
-            println("fLocale : $fLocale")
+            println("currentDeviceLocale : $currentDeviceLocale")
         }
-        val fLocale2 = ConfigurationCompat.getLocales(Resources.getSystem().configuration)[0] // Compat method
-        println("fLocale2 : $fLocale2")
+
+        val currentDeviceLocale2 = ConfigurationCompat.getLocales(Resources.getSystem().configuration)[0] // Compat method
+        println("currentDeviceLocale2 : $currentDeviceLocale2")
 
 
-        // The application Locale + all device Locales
+        val deviceLocaleList = ConfigurationCompat.getLocales(Resources.getSystem().configuration) // Compat method
+        for (i in 0 until deviceLocaleList.size()) {
+            println("currentDeviceLocale3 : ${deviceLocaleList[i]}")
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             // Since API 24
             val list = LocaleList.getDefault()
@@ -79,9 +146,5 @@ class LocaleViewModel: BaseViewModel() {
                 println("list[$i] : ${list[i]}")
             }
         }
-
-        // Create a Locale with Locale.Builder()
-        val bLocale = Locale.Builder().setLanguage("sr").setScript("Latn").setRegion("RS").build()
-        println("bLocale : $bLocale")
     }
 }
