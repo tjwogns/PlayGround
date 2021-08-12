@@ -4,9 +4,7 @@ import android.content.res.Resources
 import android.os.Build
 import android.os.LocaleList
 import androidx.core.os.ConfigurationCompat
-import androidx.lifecycle.viewModelScope
 import com.tjwogns.presentation.base.BaseViewModel
-import kotlinx.coroutines.*
 import java.util.*
 
 class LocaleViewModel: BaseViewModel() {
@@ -119,32 +117,35 @@ class LocaleViewModel: BaseViewModel() {
 
     ///////////////////////////////////////////////
     // <getDeviceLocale Result>
+    // deviceLocale : en_US
+    // deviceLocaleList[0] : en_US
+    // deviceLocaleList[1] : ko_KR
+    // deviceLocale2 : en_US
+    // deviceLocaleList2[0] : en_US
+    // deviceLocaleList2[1] : ko_KR
     ///////////////////////////////////////////////
     fun getDeviceLocale() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             // Since API 24
-            val currentDeviceLocale = Resources.getSystem().configuration.locales[0]
+            val deviceLocale = Resources.getSystem().configuration.locales[0]
 
-            println("currentDeviceLocale : $currentDeviceLocale")
-        }
+            println("deviceLocale : $deviceLocale")
 
-        val currentDeviceLocale2 = ConfigurationCompat.getLocales(Resources.getSystem().configuration)[0] // Compat method
-        println("currentDeviceLocale2 : $currentDeviceLocale2")
-
-
-        val deviceLocaleList = ConfigurationCompat.getLocales(Resources.getSystem().configuration) // Compat method
-        for (i in 0 until deviceLocaleList.size()) {
-            println("currentDeviceLocale3 : ${deviceLocaleList[i]}")
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            // Since API 24
-            val list = LocaleList.getDefault()
-            println("list size : ${list.size()}")
-
-            for (i in 0 until list.size()) {
-                println("list[$i] : ${list[i]}")
+            val deviceLocaleList = LocaleList.getDefault()
+            for (i in 0 until deviceLocaleList.size()) {
+                println("deviceLocaleList[$i] : ${deviceLocaleList[i]}")
             }
         }
+
+        val deviceLocale2 = ConfigurationCompat.getLocales(Resources.getSystem().configuration)[0] // Compat method
+        println("deviceLocale2 : $deviceLocale2")
+
+
+        val deviceLocaleList2 = ConfigurationCompat.getLocales(Resources.getSystem().configuration) // Compat method
+        for (i in 0 until deviceLocaleList2.size()) {
+            println("deviceLocaleList2[$i] : ${deviceLocaleList2[i]}")
+        }
+
+
     }
 }
