@@ -63,6 +63,7 @@ class LocaleViewModel: BaseViewModel() {
         println("locale.country : ${locale.country}")
 
         val locale2 = Locale.KOREAN
+
         println("locale2 : $locale2")
         println("locale2.language : ${locale2.language}")
         println("locale2.country : ${locale2.country}")
@@ -145,7 +146,5 @@ class LocaleViewModel: BaseViewModel() {
         for (i in 0 until deviceLocaleList2.size()) {
             println("deviceLocaleList2[$i] : ${deviceLocaleList2[i]}")
         }
-
-
     }
 }
