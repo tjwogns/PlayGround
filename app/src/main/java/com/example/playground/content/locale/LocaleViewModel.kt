@@ -147,4 +147,13 @@ class LocaleViewModel: BaseViewModel() {
             println("deviceLocaleList2[$i] : ${deviceLocaleList2[i]}")
         }
     }
+
+    ///////////////////////////////////////////////
+    // <getToLanguageTag Result>
+    ///////////////////////////////////////////////
+    fun getToLanguageTag() {
+
+        val deviceLocale = ConfigurationCompat.getLocales(Resources.getSystem().configuration)[0]
+        println("defaultLocale toLanguageTag() : ${deviceLocale.toLanguageTag()}")
+    }
 }

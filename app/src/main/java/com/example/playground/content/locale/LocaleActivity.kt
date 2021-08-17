@@ -51,5 +51,9 @@ class LocaleActivity : BaseActivity<ActivityLocaleBinding, LocaleViewModel>(
         binding.tvDeviceLocale.setOnClickListener {
             viewModel.getDeviceLocale()
         }
+
+        binding.tvLanguageTag.setOnClickListener {
+            viewModel.getToLanguageTag()
+        }
     }
 }
