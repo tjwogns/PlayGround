@@ -3,15 +3,16 @@ package com.example.playground.content.locale
 import android.os.Bundle
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
+import com.example.playground.content.paging3.PagingViewModel
 import com.example.playground.databinding.ActivityLocaleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LocaleActivity : BaseActivity<ActivityLocaleBinding, LocaleViewModel>(
+class LocaleActivity : BaseActivity<ActivityLocaleBinding, PagingViewModel>(
     R.layout.activity_locale
 ) {
 
-    override val viewModel: LocaleViewModel by viewModel()
+    override val viewModel: PagingViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

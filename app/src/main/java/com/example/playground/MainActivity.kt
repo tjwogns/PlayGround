@@ -10,7 +10,7 @@ import com.example.playground.content.animate.AnimationActivity
 import com.example.playground.content.compose.ComposeActivity
 import com.example.playground.content.coroutine.CoroutineActivity
 import com.example.playground.content.coordinatorLayout.CoordinatorActivity
-import com.example.playground.content.locale.LocaleActivity
+import com.example.playground.content.paging3.PagingActivity
 import com.example.playground.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvLocale.setOnClickListener { view ->
             Toast.makeText(this, "Locale", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LocaleActivity::class.java)
+            val intent = Intent(this, PagingActivity::class.java)
             startActivity(intent)
         }
     }
