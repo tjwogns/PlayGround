@@ -8,11 +8,11 @@ import com.example.playground.databinding.ActivityLocaleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LocaleActivity : BaseActivity<ActivityLocaleBinding, PagingViewModel>(
+class LocaleActivity : BaseActivity<ActivityLocaleBinding, LocaleViewModel>(
     R.layout.activity_locale
 ) {
 
-    override val viewModel: PagingViewModel by viewModel()
+    override val viewModel: LocaleViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
