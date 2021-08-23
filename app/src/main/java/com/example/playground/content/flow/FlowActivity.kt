@@ -4,6 +4,10 @@ import android.os.Bundle
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityFlowBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -20,8 +24,10 @@ class FlowActivity : BaseActivity<ActivityFlowBinding, FlowViewModel>(
     }
 
     private fun setClickListener() {
-//        binding.tvCreateByBuilder.setOnClickListener {
-//            viewModel.createByBuilder()
-//        }
+        binding.tvGetBaseFlow.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.getBaseFlow()
+            }
+        }
     }
 }

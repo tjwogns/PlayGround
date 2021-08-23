@@ -9,10 +9,10 @@
         tools:context=".content.coroutine.CoroutineActivity">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/tv_create_by_builder"
+            android:id="@+id/tv_get_base_flow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create By Builder"
+            android:text="Get Base Flow"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:theme="@style/Widget.MaterialComponents.Button"
