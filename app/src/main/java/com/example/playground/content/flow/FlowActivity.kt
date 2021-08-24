@@ -6,6 +6,7 @@ import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityFlowBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,6 +21,8 @@ class FlowActivity : BaseActivity<ActivityFlowBinding, FlowViewModel>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        subscribe()
+
         setClickListener()
     }
 
@@ -28,6 +31,12 @@ class FlowActivity : BaseActivity<ActivityFlowBinding, FlowViewModel>(
             CoroutineScope(Dispatchers.IO).launch {
                 viewModel.getBaseFlow()
             }
+        }
+    }
+
+    private fun subscribe() {
+        viewModel.baseData.observe(this) {
+
         }
     }
 }
