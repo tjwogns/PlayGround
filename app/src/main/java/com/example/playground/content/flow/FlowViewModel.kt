@@ -21,6 +21,7 @@ class FlowViewModel: BaseViewModel() {
             emit(i)
             println("println : $i")
         }
+
     }
 
 }
