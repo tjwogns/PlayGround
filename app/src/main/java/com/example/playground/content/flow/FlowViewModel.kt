@@ -84,4 +84,21 @@ class FlowViewModel: BaseViewModel() {
             emit(name)
         }
     }
+
+    fun simple(): Flow<Int> = flow {
+        println("Flow started")
+        for (i in 1..3) {
+            delay(1000)
+            emit(i)
+        }
+    }
+
+    fun flowsAreCold() = runBlocking {
+        println("Calling simple function...")
+        val flow = simple()
+        println("Calling collect...")
+        flow.collect { value -> println(value) }
+        println("Calling collect again...")
+        flow.collect { value -> println(value) }
+    }
 }
