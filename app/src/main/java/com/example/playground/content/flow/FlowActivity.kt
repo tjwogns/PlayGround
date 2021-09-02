@@ -45,6 +45,9 @@ class FlowActivity : BaseActivity<ActivityFlowBinding, FlowViewModel>(
         binding.tvEx5.setOnClickListener {
             viewModel.flowsAreCold()
         }
+        binding.tvEx6.setOnClickListener {
+            viewModel.ex6()
+        }
     }
 
     private fun subscribe() {
