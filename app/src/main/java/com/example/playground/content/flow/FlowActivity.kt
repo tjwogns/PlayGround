@@ -3,6 +3,7 @@ package com.example.playground.content.flow
 import android.os.Bundle
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
+import com.example.playground.content.deeplink.DeepLinkViewModel
 import com.example.playground.databinding.ActivityFlowBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

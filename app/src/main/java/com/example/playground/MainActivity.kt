@@ -10,9 +10,8 @@ import com.example.playground.content.animate.AnimationActivity
 import com.example.playground.content.compose.ComposeActivity
 import com.example.playground.content.coroutine.CoroutineActivity
 import com.example.playground.content.coordinatorLayout.CoordinatorActivity
-import com.example.playground.content.flow.FlowActivity
+import com.example.playground.content.deeplink.DeepLinkActivity
 import com.example.playground.content.locale.LocaleActivity
-import com.example.playground.content.paging3.PagingActivity
 import com.example.playground.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -67,7 +66,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvFlow.setOnClickListener { view ->
             Toast.makeText(this, "Flow", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, FlowActivity::class.java)
+            val intent = Intent(this, DeepLinkActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvDeepLink.setOnClickListener { view ->
+            Toast.makeText(this, "DeepLink", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, DeepLinkActivity::class.java)
             startActivity(intent)
         }
     }
