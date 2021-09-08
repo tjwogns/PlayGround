@@ -31,7 +31,17 @@
         <activity android:name=".content.activityResult.ActivityResultActivity" />
         <activity android:name=".content.locale.LocaleActivity" />
         <activity android:name=".content.paging3.PagingActivity" />
-        <activity android:name=".content.deeplink.DeepLinkActivity" />
+        <activity android:name=".content.deeplink.DeepLinkActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"
+                    android:host="tjwogns.tistory.com" />
+                <data android:scheme="app"
+                    android:host="tjwogns.tistory.com" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
