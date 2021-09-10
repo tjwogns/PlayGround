@@ -1,5 +1,6 @@
 package com.example.playground.content.deeplink
 
+import android.net.Uri
 import android.os.Bundle
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
@@ -17,22 +18,16 @@ class DeepLinkActivity : BaseActivity<ActivityDeepLinkBinding, DeepLinkViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val action: String? = intent?.action
 
-        setClickListener()
-    }
+        val data: Uri? = intent?.data
 
-    private fun setClickListener() {
-        binding.tvEx1.setOnClickListener {
+        action?.let {
+            binding.tvActionValue.text = it
         }
-        binding.tvEx2.setOnClickListener {
-        }
-        binding.tvEx3.setOnClickListener {
-        }
-        binding.tvEx4.setOnClickListener {
-        }
-        binding.tvEx5.setOnClickListener {
-        }
-        binding.tvEx6.setOnClickListener {
+
+        data?.let {
+            binding.tvDataValue.text = it.toString()
         }
     }
 }
