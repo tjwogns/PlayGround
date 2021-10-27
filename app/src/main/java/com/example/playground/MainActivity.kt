@@ -11,6 +11,7 @@ import com.example.playground.content.compose.ComposeActivity
 import com.example.playground.content.coroutine.CoroutineActivity
 import com.example.playground.content.coordinatorLayout.CoordinatorActivity
 import com.example.playground.content.deeplink.DeepLinkActivity
+import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.databinding.ActivityMainBinding
 
@@ -73,6 +74,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvDeepLink.setOnClickListener { view ->
             Toast.makeText(this, "DeepLink", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, DeepLinkActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvIssue.setOnClickListener { view ->
+            Toast.makeText(this, "Issue", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, IssueActivity::class.java)
             startActivity(intent)
         }
     }

@@ -41,6 +41,8 @@
                 <!-- https://tjwogns.tistory.com -->
             </intent-filter>
         </activity>
+        <activity android:name=".content.issue.IssueActivity"
+            android:theme="@style/Theme.PlayGround.NoMaterial" />
     </application>
 
 </manifest>
