@@ -2,6 +2,7 @@ package com.example.playground.content.issue
 
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.KeyEvent.ACTION_UP
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityIssueBinding
@@ -64,7 +65,7 @@ class IssueActivity : BaseActivity<ActivityIssueBinding, IssueViewModel>(
         }
 
         binding.tietText6.setOnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == ACTION_UP) {
                 binding.tietText7.requestFocus()
                 printDebugMessage(6, keyCode, event)
             }
@@ -72,7 +73,7 @@ class IssueActivity : BaseActivity<ActivityIssueBinding, IssueViewModel>(
         }
 
         binding.tietText7.setOnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == ACTION_UP) {
                 binding.tietText8.requestFocus()
                 printDebugMessage(7, keyCode, event)
             }
@@ -80,7 +81,7 @@ class IssueActivity : BaseActivity<ActivityIssueBinding, IssueViewModel>(
         }
 
         binding.tietText8.setOnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == ACTION_UP) {
                 binding.tietText9.requestFocus()
                 printDebugMessage(8, keyCode, event)
             }
