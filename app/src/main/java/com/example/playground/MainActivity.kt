@@ -13,6 +13,7 @@ import com.example.playground.content.coordinatorLayout.CoordinatorActivity
 import com.example.playground.content.deeplink.DeepLinkActivity
 import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
+import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -80,6 +81,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvIssue.setOnClickListener { view ->
             Toast.makeText(this, "Issue", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, IssueActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvNotification.setOnClickListener { view ->
+            Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, NotificationActivity::class.java)
             startActivity(intent)
         }
     }

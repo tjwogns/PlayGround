@@ -43,6 +43,7 @@
         </activity>
         <activity android:name=".content.issue.IssueActivity"
             android:theme="@style/Theme.PlayGround.NoMaterial" />
+        <activity android:name=".content.notification.NotificationActivity" />
     </application>
 
 </manifest>

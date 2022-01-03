@@ -94,7 +94,6 @@ class IssueActivity : BaseActivity<ActivityIssueBinding, IssueViewModel>(
         }
     }
 
-
     private fun printDebugMessage(num: Int, keyCode: Int, event: KeyEvent) {
         println("!!! DEBUG Text$num keyCode: $keyCode !!!")
         println("!!! DEBUG Text$num event: $event !!!")
