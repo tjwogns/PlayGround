@@ -62,6 +62,7 @@ class NotificationActivity : BaseActivity<ActivityNotificationBinding, Notificat
             .setGroup(GROUP_KEY_WORK_EMAIL)
             //set this notification as the summary for the group
             .setGroupSummary(true)
+            .setOnlyAlertOnce(true)
             .build()
 
         NotificationManagerCompat.from(this).apply {
