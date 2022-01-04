@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".content.notification.NotificationActivity">
+        tools:context=".content.switch.SwitchActivity">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/tv_send"
