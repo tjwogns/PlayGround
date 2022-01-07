@@ -14,6 +14,7 @@ import com.example.playground.content.deeplink.DeepLinkActivity
 import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.notification.NotificationActivity
+import com.example.playground.content.print.PrintActivity
 import com.example.playground.content.switch.SwitchActivity
 import com.example.playground.databinding.ActivityMainBinding
 
@@ -94,6 +95,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvSwitch.setOnClickListener { view ->
             Toast.makeText(this, "View Switch", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, SwitchActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvPrint.setOnClickListener { view ->
+            Toast.makeText(this, "Print Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, PrintActivity::class.java)
             startActivity(intent)
         }
     }

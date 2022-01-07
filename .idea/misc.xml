@@ -20,9 +20,10 @@
         <entry key="app/src/main/res/layout/activity_flow.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_issue.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_locale.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.5186107129688106" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.314572864321608" />
         <entry key="app/src/main/res/layout/activity_notification.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_paging.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/activity_print.xml" value="0.16302083333333334" />
         <entry key="app/src/main/res/layout/activity_switch.xml" value="0.16770833333333332" />
       </map>
     </option>

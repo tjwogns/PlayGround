@@ -6,6 +6,7 @@ import com.example.playground.content.issue.IssueViewModel
 import com.example.playground.content.locale.LocaleViewModel
 import com.example.playground.content.notification.NotificationViewModel
 import com.example.playground.content.paging3.PagingViewModel
+import com.example.playground.content.print.PrintViewModel
 import com.example.playground.content.switch.SwitchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -19,4 +20,5 @@ val viewModelModule = module {
     viewModel { IssueViewModel() }
     viewModel { NotificationViewModel() }
     viewModel { SwitchViewModel() }
+    viewModel { PrintViewModel() }
 }
