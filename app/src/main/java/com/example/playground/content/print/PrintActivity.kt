@@ -30,12 +30,19 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
     }
 
     private fun printTest01() {
-        val str = "abcdefg"
-        val strSubstring = str.substring(6, 10)
+        val str = "abcdefgfff"
+        val strSubstring = str.substring(0, 5)
         val strTake = str.take(5)
 
         println("!!! strSubstring : $strSubstring !!!")
         println("!!! strTake : $strTake !!!")
+
+        val t = str.substring(1..(str.length-2))
+        println("!!! DEBUG t : $t")
+
+        val s = if (str.length >= 3) str.substring(1, str.length-2) else ""
+
+        println("!!! DEBUG s : $s")
     }
 
     companion object {
