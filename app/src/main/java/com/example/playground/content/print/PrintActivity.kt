@@ -39,7 +39,11 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         }
 
         binding.tvXmlParse.setOnClickListener {
-            viewModel.parse()
+            println("!!! START PARSE !!!")
+            val atoken = viewModel.parse()
+            println("!!! atoken : $atoken !!!")
+            println("!!! END PARSE !!!")
+
         }
     }
 
