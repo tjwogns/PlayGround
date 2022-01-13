@@ -10,14 +10,14 @@ class PrintViewModel: BaseViewModel() {
 
     fun parse(): String? {
 
-        val atokenRequestUrl = ""
+        val accessTokenRequestUrl = ""
 
-        var atoken: String? = null
+        var accessToken: String? = null
 
         val ex = Executors.newSingleThreadExecutor().submit {
 
-            atoken = try {
-                val url = URL(atokenRequestUrl)
+            accessToken = try {
+                val url = URL(accessTokenRequestUrl)
                 val doc = Jsoup.parse(url, 10000)
 
                 val body = doc.body().text()
@@ -25,7 +25,7 @@ class PrintViewModel: BaseViewModel() {
                 if (!body.isNullOrEmpty()) {
                     body
                 } else {
-                    throw Exception("atoken is null")
+                    throw Exception("access token is null")
                 }
             } catch (e: Exception) {
                 null
@@ -33,6 +33,6 @@ class PrintViewModel: BaseViewModel() {
         }
         ex.get(10, TimeUnit.SECONDS)
 
-        return atoken
+        return accessToken
     }
 }
