@@ -17,6 +17,7 @@ class AnimationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_animate)
 
+        // todo animation group  잔상 처리 테스트
         setListener()
     }
 
