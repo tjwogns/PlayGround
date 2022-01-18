@@ -11,7 +11,9 @@
         <ScrollView
             android:id="@+id/sv_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_container"
@@ -22,17 +24,72 @@
                     android:id="@+id/btn_add_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="누르면 접혔다 펴졌다."
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_container1"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:animateLayoutChanges="true"
-                    app:layout_constraintTop_toBottomOf="@id/btn_add_view"/>
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/btn_add_view">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_c1_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_text1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="25dp"
+                            android:text="고정 된 뷰 입니다."
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_text_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/tv_text1"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/tv_text2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="25dp"
+                                android:text="안녕하세요"
+                                android:background="@color/purple_200"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_text3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="25dp"
+                                android:text="저예요"
+                                android:background="@color/teal_700"
+                                app:layout_constraintTop_toBottomOf="@id/tv_text2"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_container2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/cl_container1"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
