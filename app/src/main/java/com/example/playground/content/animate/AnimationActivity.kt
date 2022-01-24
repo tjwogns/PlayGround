@@ -26,10 +26,12 @@ class AnimationActivity : AppCompatActivity() {
     }
 
     private fun setListener() {
-        binding.btnAddView.setOnClickListener {
-//            addItem()
+        binding.btnFoldView.setOnClickListener {
             expand = expand.not()
             binding.clTextBox.visibility = if (expand) VISIBLE else GONE
+        }
+        binding.btnAddView.setOnClickListener {
+            addItem()
         }
     }
 
@@ -38,11 +40,11 @@ class AnimationActivity : AppCompatActivity() {
 
         val layoutParams = ConstraintLayout.LayoutParams(90, 90)
         val set = ConstraintSet()
-        set.clone(binding.clContainer)
+        set.clone(binding.clTextBox)
 
         targetView.layoutParams = layoutParams
         targetView.setBackgroundColor(getColor(R.color.black))
 
-        binding.clContainer1.addView(targetView)
+        binding.clTextBox.addView(targetView)
     }
 }

@@ -21,12 +21,23 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/btn_add_view"
-                    android:layout_width="match_parent"
+                    android:id="@+id/btn_fold_view"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="누르면 접혔다 펴졌다."
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_add_view"/>
+
+
+                <Button
+                    android:id="@+id/btn_add_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="누르면 뷰 추가"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_fold_view"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_container1"
