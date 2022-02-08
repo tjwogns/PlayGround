@@ -49,6 +49,7 @@
         <activity android:name=".content.switch.SwitchActivity" />
         <activity android:name=".content.print.PrintActivity" />
         <activity android:name=".content.mediaStore.MediaStoreActivity" />
+        <activity android:name=".content.activityFlag.ActivityFlagActivity" />
     </application>
 
 </manifest>

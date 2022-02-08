@@ -1,5 +1,6 @@
 package com.example.playground.di
 
+import com.example.playground.content.activityFlag.ActivityFlagViewModel
 import com.example.playground.content.coroutine.CoroutineViewModel
 import com.example.playground.content.deeplink.DeepLinkViewModel
 import com.example.playground.content.issue.IssueViewModel
@@ -23,4 +24,5 @@ val viewModelModule = module {
     viewModel { SwitchViewModel() }
     viewModel { PrintViewModel() }
     viewModel { MediaStoreViewModel() }
+    viewModel { ActivityFlagViewModel() }
 }
