@@ -33,7 +33,8 @@
         <activity android:name=".content.activityResult.ActivityResultActivity" />
         <activity android:name=".content.locale.LocaleActivity" />
         <activity android:name=".content.paging3.PagingActivity" />
-        <activity android:name=".content.deeplink.DeepLinkActivity">
+        <activity android:name=".content.deeplink.DeepLinkActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT"/>
