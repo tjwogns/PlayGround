@@ -14,6 +14,7 @@ import com.example.playground.content.deeplink.DeepLinkActivity
 import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.activityFlag.ActivityFlagActivity
+import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
@@ -115,6 +116,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvStartActivityFlag.setOnClickListener { view ->
             Toast.makeText(this, "Start Activity Flag Test", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ActivityFlagActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvDataStore.setOnClickListener { view ->
+            Toast.makeText(this, "DataStore Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, DataStoreActivity::class.java)
             startActivity(intent)
         }
     }

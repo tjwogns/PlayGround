@@ -51,6 +51,7 @@
         <activity android:name=".content.print.PrintActivity" />
         <activity android:name=".content.mediaStore.MediaStoreActivity" />
         <activity android:name=".content.activityFlag.ActivityFlagActivity" />
+        <activity android:name=".content.dataStore.DataStoreActivity" />
     </application>
 
 </manifest>
