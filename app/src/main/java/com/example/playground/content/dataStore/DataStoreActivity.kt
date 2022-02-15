@@ -1,8 +1,8 @@
 package com.example.playground.content.dataStore
 
-import android.content.Context
 import android.os.Bundle
-import com.example.playground.AppBase
+import android.widget.TextView
+import androidx.core.text.toSpanned
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityDataStoreBinding
@@ -23,6 +23,7 @@ class DataStoreActivity : BaseActivity<ActivityDataStoreBinding, DataStoreViewMo
     }
 
     private fun setListener() {
+        // Preferences DataStore
         binding.tvPrintBoolean.setOnClickListener {
             println("!!! DEBUG Preferences[IS_BOOLEAN_KEY] value is [${viewModel.booleanData.value}] !!!")
         }
@@ -34,11 +35,28 @@ class DataStoreActivity : BaseActivity<ActivityDataStoreBinding, DataStoreViewMo
         binding.tvSetTrue.setOnClickListener {
             viewModel.setIsBoolean(true)
         }
+
+
+        // Proto DataStore
+        binding.tvPrintProtoData.setOnClickListener {
+            println("!!! DEBUG Proto ExampleInfo value is name : [${viewModel.protoInfoData.value?.name}], number : [${viewModel.protoInfoData.value?.number}] !!!")
+        }
+        binding.tvSetProtoData.setOnClickListener {
+            viewModel.setExampleInfo(
+                name = binding.etName.text.toString(),
+                number = binding.etNumber.text.toString().toInt()
+            )
+        }
     }
 
     private fun subscribeLiveData() {
         viewModel.booleanData.observe(this) { value ->
 
+        }
+
+        viewModel.protoInfoData.observe(this) {
+            binding.etName.setText(it.name, TextView.BufferType.NORMAL)
+            binding.etNumber.setText(it.number.toString(), TextView.BufferType.NORMAL)
         }
     }
 }

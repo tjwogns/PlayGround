@@ -3,8 +3,10 @@ package com.example.playground
 import android.app.Application
 import android.content.Context
 import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.playground.content.dataStore.ProtoSerializer
 import com.example.playground.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -29,4 +31,10 @@ class AppBase: Application() {
     }
 }
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "preferencesTest")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "tjwogns")
+
+
+val Context.protoDataStore: DataStore<ExampleInfo> by dataStore(
+    fileName = "exampleInfoProto.pb",
+    serializer = ProtoSerializer
+)

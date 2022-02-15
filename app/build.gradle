@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id "com.google.protobuf" version "0.8.12"
 }
 
 android {
@@ -69,11 +70,18 @@ dependencies {
 
 
     /* koin */
-    implementation "org.koin:koin-core:2.1.6"
-    implementation "org.koin:koin-core-ext:2.1.6"
-    implementation "org.koin:koin-androidx-scope:2.1.6"
-    implementation "org.koin:koin-androidx-viewmodel:2.1.6"
-    implementation "org.koin:koin-androidx-fragment:2.1.6"
+//    implementation "org.koin:koin-core:2.1.6"
+//    implementation "org.koin:koin-core-ext:2.1.6"
+//    implementation "org.koin:koin-androidx-scope:2.1.6"
+//    implementation "org.koin:koin-androidx-viewmodel:2.1.6"
+//    implementation "org.koin:koin-androidx-fragment:2.1.6"
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
+
+    // Jetpack Compose
+        implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
@@ -87,6 +95,9 @@ dependencies {
     implementation("androidx.datastore:datastore-core:1.0.0")
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+    // proto buf
+    implementation  "com.google.protobuf:protobuf-javalite:3.10.0"
+
 
     implementation 'org.jsoup:jsoup:1.12.2'
 
@@ -95,4 +106,28 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+}
+
+protobuf {
+    //https://github.com/grpc/grpc-java/issues/7690
+    protoc {
+        if (osdetector.os == "osx") {
+            artifact = 'com.google.protobuf:protoc:3.14.0:osx-x86_64'
+        } else {
+            artifact = 'com.google.protobuf:protoc:3.14.0'
+        }
+    }
+
+    // Generates the java Protobuf-lite code for the Protobufs in this project. See
+    // https://github.com/google/protobuf-gradle-plugin#customizing-protobuf-compilation
+    // for more information.
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+            }
+        }
+    }
 }
