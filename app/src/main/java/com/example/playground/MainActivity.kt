@@ -14,6 +14,7 @@ import com.example.playground.content.deeplink.DeepLinkActivity
 import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.activityFlag.ActivityFlagActivity
+import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvCompose.setOnClickListener { view ->
             Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ComposeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvCompose1.setOnClickListener { view ->
+            Toast.makeText(this, "Compose1", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, Compose1Activity::class.java)
             startActivity(intent)
         }
 
