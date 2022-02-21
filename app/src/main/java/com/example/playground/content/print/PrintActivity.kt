@@ -2,21 +2,10 @@ package com.example.playground.content.print
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityPrintBinding
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.xmlpull.v1.XmlPullParser
-import org.xmlpull.v1.XmlPullParserFactory
-import java.io.InputStreamReader
-import java.net.URL
-import java.util.concurrent.ExecutionException
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeoutException
 
 
 class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(

@@ -53,6 +53,7 @@
         <activity android:name=".content.mediaStore.MediaStoreActivity" />
         <activity android:name=".content.activityFlag.ActivityFlagActivity" />
         <activity android:name=".content.dataStore.DataStoreActivity" />
+        <activity android:name=".content.sso.SsoActivity" />
     </application>
 
 </manifest>
