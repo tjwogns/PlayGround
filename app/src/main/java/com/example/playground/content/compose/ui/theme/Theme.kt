@@ -37,6 +37,25 @@ fun PlayGroundTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compos
 
     MaterialTheme(
         colors = colors,
+        typography = Typography2,
+        shapes = Shapes2,
+        content = content
+    )
+}
+
+@Composable
+fun MyTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colors = if (darkTheme) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
+    MaterialTheme(
+        colors = colors,
         typography = Typography,
         shapes = Shapes,
         content = content

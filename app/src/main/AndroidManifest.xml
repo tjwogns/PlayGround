@@ -12,15 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayGround">
-        <activity
-            android:name=".content.compose.ComposeActivity"
-            android:exported="true"
-            android:label="@string/title_activity_compose"
-            android:theme="@style/Theme.PlayGround.NoActionBar" />
-        <activity
-            android:name=".content.coordinatorLayout.CoordinatorActivity"
-            android:label="@string/title_activity_coordinator"
-            android:theme="@style/Theme.PlayGround.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,12 +19,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".content.compose.ComposeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_compose"
+            android:theme="@style/Theme.PlayGround.NoActionBar" />
+        <activity android:name=".content.compose.Compose1Activity" />
+        <activity
+            android:name=".content.coordinatorLayout.CoordinatorActivity"
+            android:label="@string/title_activity_coordinator"
+            android:theme="@style/Theme.PlayGround.NoActionBar" />
         <activity android:name=".content.coroutine.CoroutineActivity" />
         <activity android:name=".content.animate.AnimationActivity" />
         <activity android:name=".content.activityResult.ActivityResultActivity" />
         <activity android:name=".content.locale.LocaleActivity" />
         <activity android:name=".content.paging3.PagingActivity" />
-        <activity android:name=".content.deeplink.DeepLinkActivity">
+        <activity android:name=".content.deeplink.DeepLinkActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -48,6 +50,9 @@
         <activity android:name=".content.notification.NotificationActivity" />
         <activity android:name=".content.switch.SwitchActivity" />
         <activity android:name=".content.print.PrintActivity" />
+        <activity android:name=".content.mediaStore.MediaStoreActivity" />
+        <activity android:name=".content.activityFlag.ActivityFlagActivity" />
+        <activity android:name=".content.dataStore.DataStoreActivity" />
     </application>
 
 </manifest>

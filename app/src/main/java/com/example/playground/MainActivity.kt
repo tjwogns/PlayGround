@@ -13,6 +13,10 @@ import com.example.playground.content.coordinatorLayout.CoordinatorActivity
 import com.example.playground.content.deeplink.DeepLinkActivity
 import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
+import com.example.playground.content.activityFlag.ActivityFlagActivity
+import com.example.playground.content.compose.Compose1Activity
+import com.example.playground.content.dataStore.DataStoreActivity
+import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
 import com.example.playground.content.switch.SwitchActivity
@@ -35,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         binding.tvCompose.setOnClickListener { view ->
             Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ComposeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvCompose1.setOnClickListener { view ->
+            Toast.makeText(this, "Compose1", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, Compose1Activity::class.java)
             startActivity(intent)
         }
 
@@ -101,6 +111,24 @@ class MainActivity : AppCompatActivity() {
         binding.tvPrint.setOnClickListener { view ->
             Toast.makeText(this, "Print Test", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, PrintActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvMediaStore.setOnClickListener { view ->
+            Toast.makeText(this, "Media Store Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MediaStoreActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvStartActivityFlag.setOnClickListener { view ->
+            Toast.makeText(this, "Start Activity Flag Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ActivityFlagActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvDataStore.setOnClickListener { view ->
+            Toast.makeText(this, "DataStore Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, DataStoreActivity::class.java)
             startActivity(intent)
         }
     }

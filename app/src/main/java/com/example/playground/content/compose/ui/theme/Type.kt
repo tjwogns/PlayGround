@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 // Set of Material typography styles to start with
-val Typography = Typography(
+val Typography2 = Typography(
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
@@ -25,4 +25,29 @@ val Typography = Typography(
         fontSize = 12.sp
     )
     */
+)
+
+
+val H6 = TextStyle(
+    fontWeight = FontWeight.Medium,
+    fontSize = 20.sp,
+    letterSpacing = 0.15.sp
+)
+val Body2 = TextStyle(
+    fontWeight = FontWeight.Normal,
+    fontSize = 14.sp,
+    letterSpacing = 0.25.sp
+)
+val Button = TextStyle(
+    fontWeight = FontWeight.Medium,
+    fontSize = 14.sp,
+    letterSpacing = 1.25.sp
+)
+
+val Typography = Typography(
+    h6 = H6,
+    body2 = Body2,
+    button = Button,
+//    defaultFontFamily = FontFamily(Font(R.font.roboto_mono))
+    // Using default values for subtitle1, caption, etc.
 )

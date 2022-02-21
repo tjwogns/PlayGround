@@ -2,6 +2,8 @@ package com.example.playground.content.animate
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -13,6 +15,8 @@ class AnimationActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityAnimateBinding
 
+    var expand = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_animate)
@@ -22,6 +26,10 @@ class AnimationActivity : AppCompatActivity() {
     }
 
     private fun setListener() {
+        binding.btnFoldView.setOnClickListener {
+            expand = expand.not()
+            binding.clTextBox.visibility = if (expand) VISIBLE else GONE
+        }
         binding.btnAddView.setOnClickListener {
             addItem()
         }
@@ -32,11 +40,11 @@ class AnimationActivity : AppCompatActivity() {
 
         val layoutParams = ConstraintLayout.LayoutParams(90, 90)
         val set = ConstraintSet()
-        set.clone(binding.clContainer)
+        set.clone(binding.clTextBox)
 
         targetView.layoutParams = layoutParams
         targetView.setBackgroundColor(getColor(R.color.black))
 
-        binding.clContainer1.addView(targetView)
+        binding.clTextBox.addView(targetView)
     }
 }
