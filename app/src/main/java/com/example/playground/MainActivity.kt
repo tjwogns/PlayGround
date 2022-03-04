@@ -16,6 +16,7 @@ import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.activityFlag.ActivityFlagActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
+import com.example.playground.content.intent.AppSettingsIntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
@@ -129,6 +130,15 @@ class MainActivity : AppCompatActivity() {
         binding.tvDataStore.setOnClickListener { view ->
             Toast.makeText(this, "DataStore Test", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, DataStoreActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvSsoTest.setOnClickListener { view ->
+        }
+
+        binding.tvAppSettingsIntentTest.setOnClickListener { view ->
+            Toast.makeText(this, "AppSettingsIntent Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AppSettingsIntentActivity::class.java)
             startActivity(intent)
         }
     }
