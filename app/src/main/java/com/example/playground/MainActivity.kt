@@ -16,7 +16,7 @@ import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.activityFlag.ActivityFlagActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
-import com.example.playground.content.intent.AppSettingsIntentActivity
+import com.example.playground.content.intent.IntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
@@ -136,9 +136,9 @@ class MainActivity : AppCompatActivity() {
         binding.tvSsoTest.setOnClickListener { view ->
         }
 
-        binding.tvAppSettingsIntentTest.setOnClickListener { view ->
-            Toast.makeText(this, "AppSettingsIntent Test", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, AppSettingsIntentActivity::class.java)
+        binding.tvIntentTest.setOnClickListener { view ->
+            Toast.makeText(this, "Intent Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, IntentActivity::class.java)
             startActivity(intent)
         }
     }

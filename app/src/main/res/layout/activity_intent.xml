@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".content.intent.AppSettingsIntentActivity">
+        tools:context=".content.intent.IntentActivity">
 
         <TextView
             android:id="@+id/tv_app_settings"
@@ -15,10 +15,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="MOVE"
+            android:text="Open App Settings"
             android:theme="@style/Widget.MaterialComponents.Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_open_download_folder"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Open Download Folder"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_app_settings"
             app:strokeColor="@color/black" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
