@@ -26,7 +26,9 @@
         <entry key="app/src/main/res/layout/activity_coroutine.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/activity_data_store.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/activity_deep_link.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_file_directory.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/layout/activity_flow.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/activity_intent.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/layout/activity_issue.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_locale.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.314572864321608" />

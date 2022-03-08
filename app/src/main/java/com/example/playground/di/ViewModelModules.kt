@@ -4,6 +4,7 @@ import com.example.playground.content.activityFlag.ActivityFlagViewModel
 import com.example.playground.content.coroutine.CoroutineViewModel
 import com.example.playground.content.dataStore.DataStoreViewModel
 import com.example.playground.content.deeplink.DeepLinkViewModel
+import com.example.playground.content.fileDirectory.FileDirectoryViewModel
 import com.example.playground.content.intent.IntentViewModel
 import com.example.playground.content.issue.IssueViewModel
 import com.example.playground.content.locale.LocaleViewModel
@@ -29,4 +30,5 @@ val viewModelModule = module {
     viewModel { ActivityFlagViewModel() }
     viewModel { DataStoreViewModel() }
     viewModel { IntentViewModel() }
+    viewModel { FileDirectoryViewModel() }
 }
