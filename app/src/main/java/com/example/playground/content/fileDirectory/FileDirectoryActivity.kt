@@ -31,7 +31,6 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
         subscribeLiveData()
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     private fun setListener() {
         // Preferences DataStore
         binding.tvDownloadDirectory.setOnClickListener {
@@ -45,7 +44,7 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
 
             files.forEachIndexed { index, s ->
                 println("!!! DEBUG file number $index [$s] !!!")
-            }
+            }go
         }
 
         binding.tvDownloadInnerFolderDirectory.setOnClickListener {
@@ -63,24 +62,26 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
         }
 
         binding.tvFileListQ.setOnClickListener {
-            val resolver = applicationContext.contentResolver
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val resolver = applicationContext.contentResolver
 
-            val PROJECTION = arrayOf(MediaStore.Downloads.TITLE)
-            val SORT_ORDER = MediaStore.Downloads.TITLE
+                val PROJECTION = arrayOf(MediaStore.Downloads.TITLE)
+                val SORT_ORDER = MediaStore.Downloads.TITLE
 
-            val files = resolver.query(
-                MediaStore.Downloads.EXTERNAL_CONTENT_URI,
-                PROJECTION,
-                null,
-                null,
-                SORT_ORDER
-            )?.use { cursor ->
-                cursor.mapToList { it.getString(0) }
-            }
+                val files = resolver.query(
+                    MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                    PROJECTION,
+                    null,
+                    null,
+                    SORT_ORDER
+                )?.use { cursor ->
+                    cursor.mapToList { it.getString(0) }
+                }
 
-            println("!!! DEBUG file size [${files?.size}] !!!")
-            files?.forEachIndexed { index, s ->
-                println("!!! DEBUG file number $index [$s] !!!")
+                println("!!! DEBUG file size [${files?.size}] !!!")
+                files?.forEachIndexed { index, s ->
+                    println("!!! DEBUG file number $index [$s] !!!")
+                }
             }
         }
 
