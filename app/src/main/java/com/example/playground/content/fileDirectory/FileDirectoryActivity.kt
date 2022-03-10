@@ -44,7 +44,7 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
 
             files.forEachIndexed { index, s ->
                 println("!!! DEBUG file number $index [$s] !!!")
-            }go
+            }
         }
 
         binding.tvDownloadInnerFolderDirectory.setOnClickListener {
