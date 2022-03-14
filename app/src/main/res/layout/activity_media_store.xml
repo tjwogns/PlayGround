@@ -22,13 +22,13 @@
             app:strokeColor="@color/black" />
 
         <TextView
-            android:id="@+id/tv_xml_parse"
+            android:id="@+id/tv_get_file_list"
             android:background="@color/purple_200"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="XML Parse Test"
+            android:text="Get File List"
             android:theme="@style/Widget.MaterialComponents.Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_path"

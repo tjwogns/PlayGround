@@ -1,5 +1,6 @@
 package com.example.playground.content.mediaStore
 
+import android.database.Cursor
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
@@ -30,8 +31,30 @@ class MediaStoreActivity : BaseActivity<ActivityMediaStoreBinding, MediaStoreVie
                 println("!!! MediaStore.Images.Media.EXTERNAL_CONTENT_URI : [${MediaStore.Images.Media.EXTERNAL_CONTENT_URI}] !!!")
                 println("!!! MediaStore.Video.Media.EXTERNAL_CONTENT_URI : [${MediaStore.Video.Media.EXTERNAL_CONTENT_URI}] !!!")
             }
+
+            binding.tvGetFileList.setOnClickListener {
+                val resolver = applicationContext.contentResolver
+
+                val files = resolver.query(
+                    MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                    arrayOf(MediaStore.Downloads.DISPLAY_NAME),
+                    null,
+                    null,
+                    null
+                )?.use { cursor ->
+                    cursor.mapToList { it.getString(0) }
+                }
+
+                files?.forEachIndexed { index, s ->
+                    println("!!! DEBUG files NUMBER $index, [$s] !!!")
+                }
+            }
         }
     }
+
+    private fun <T : Any> Cursor.mapToList(predicate: (Cursor) -> T): List<T> =
+        generateSequence { if (moveToNext()) predicate(this) else null }
+            .toList()
 
     companion object {
     }

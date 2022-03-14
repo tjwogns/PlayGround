@@ -69,7 +69,7 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
                 val SORT_ORDER = MediaStore.Downloads.TITLE
 
                 val files = resolver.query(
-                    MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                    MediaStore.Downloads.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY),
                     PROJECTION,
                     null,
                     null,
@@ -78,7 +78,7 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
                     cursor.mapToList { it.getString(0) }
                 }
 
-                println("!!! DEBUG file size [${files?.size}] !!!")
+                println("!!! DEBUG file size ${files?.size} !!!")
                 files?.forEachIndexed { index, s ->
                     println("!!! DEBUG file number $index [$s] !!!")
                 }
