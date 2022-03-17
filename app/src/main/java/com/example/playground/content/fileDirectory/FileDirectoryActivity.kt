@@ -91,6 +91,11 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
                 ?.map { it.name }
                 ?.sorted() ?: listOf()
         }
+
+        binding.tvCreateFolder.setOnClickListener {
+            val dir = File("${Environment.DIRECTORY_DOWNLOADS}${File.separator}Mailplug")
+            dir.mkdirs()
+        }
     }
 
     private fun subscribeLiveData() {

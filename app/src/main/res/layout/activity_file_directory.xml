@@ -46,6 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_download_inner_folder_directory"
             app:strokeColor="@color/black" />
+
         <TextView
             android:id="@+id/tv_file_list_Legacy"
             android:background="@color/purple_200"
@@ -57,6 +58,19 @@
             android:theme="@style/Widget.MaterialComponents.Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_file_list_Q"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_create_folder"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Create Folder"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_file_list_Legacy"
             app:strokeColor="@color/black" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
