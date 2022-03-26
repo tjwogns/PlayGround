@@ -10,5 +10,4 @@ class SsoViewModel: ViewModel() {
         .requestEmail()
         .build()
 
-
 }

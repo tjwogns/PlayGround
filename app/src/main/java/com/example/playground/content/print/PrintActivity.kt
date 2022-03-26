@@ -24,7 +24,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
     @SuppressLint("ClickableViewAccessibility")
     private fun setListener() {
         binding.tvPrint1.setOnClickListener {
-            printTest01()
+            printTest02()
         }
 
         binding.tvXmlParse.setOnClickListener {
@@ -51,6 +51,37 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
 
         println("!!! DEBUG s : $s")
     }
+
+    private fun printTest02() {
+        var answer = 1
+        val clothes: Array<Array<String>> = arrayOf(arrayOf("yellowhat", "headgear"), arrayOf("bluesunglasses", "eyewear"), arrayOf("green_turban", "headgear"))
+        val clothesHash = HashMap<String, MutableList<String>>()
+
+        clothes.forEach {
+            if (clothesHash.containsKey(it[1])) {
+                clothesHash[it[1]]?.add(it[0])
+            } else {
+                clothesHash[it[1]] = mutableListOf(it[0])
+            }
+        }
+
+        clothesHash.keys.forEach { key ->
+            println("!!! DEBUG key.size : ${(clothesHash[key]?.size)}")
+
+            println("!!! DEBUG key.size + 1 : ${((clothesHash[key]?.size ?: 0) + 1)}")
+            answer *= (clothesHash[key]?.size ?: 0 + 1)
+        }
+
+    }
+
+    private fun printTest03() {
+        var answer = 1
+        val clothes: Array<Array<String>> = arrayOf(arrayOf("yellowhat", "headgear"), arrayOf("bluesunglasses", "eyewear"), arrayOf("green_turban", "headgear"))
+
+        answer = clothes.groupBy { it[1] }.values.fold(1) { total, v -> total * (v.size + 1) } - 1
+
+    }
+
 
     companion object {
     }
