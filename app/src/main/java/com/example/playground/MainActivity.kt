@@ -16,6 +16,8 @@ import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.activityFlag.ActivityFlagActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
+import com.example.playground.content.fileDirectory.FileDirectoryActivity
+import com.example.playground.content.intent.IntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
@@ -129,6 +131,21 @@ class MainActivity : AppCompatActivity() {
         binding.tvDataStore.setOnClickListener { view ->
             Toast.makeText(this, "DataStore Test", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, DataStoreActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvSsoTest.setOnClickListener { view ->
+        }
+
+        binding.tvIntentTest.setOnClickListener { view ->
+            Toast.makeText(this, "Intent Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, IntentActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvFileDirectoryTest.setOnClickListener { view ->
+            Toast.makeText(this, "File Directory Test", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, FileDirectoryActivity::class.java)
             startActivity(intent)
         }
     }
