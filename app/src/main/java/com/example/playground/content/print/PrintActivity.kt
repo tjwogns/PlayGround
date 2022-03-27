@@ -37,7 +37,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
 //            val k = 3
 
 //            algorithm01(idList, report, k)
-            algorithm01_01(idList, report, k)
+            algorithm01_02(idList, report, k)
         }
 
         binding.tvXmlParse.setOnClickListener {
@@ -150,6 +150,21 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         }.toIntArray()
 
         println("!!! answer : ${answer.asList()} !!!")
+
+        return answer
+    }
+
+    private fun algorithm01_02(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
+        var answer = report.map { it.split(" ") }
+            .groupBy { it[1] }
+            .asSequence()
+            .map { it.value.distinct() }
+            .filter { it.size >= k }
+            .flatten()
+            .map { it[0] }
+            .groupingBy { it }
+            .eachCount()
+            .run { id_list.map { getOrDefault(it, 0) }.toIntArray() }
 
         return answer
     }
