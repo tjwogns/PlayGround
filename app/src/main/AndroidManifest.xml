@@ -56,9 +56,11 @@
         <activity android:name=".content.mediaStore.MediaStoreActivity" />
         <activity android:name=".content.activityFlag.ActivityFlagActivity" />
         <activity android:name=".content.dataStore.DataStoreActivity" />
+        <activity android:name=".content.sso.SsoActivity" />
 <!--        <activity android:name=".content..DataStoreActivity" />-->
         <activity android:name=".content.intent.IntentActivity" />
         <activity android:name=".content.fileDirectory.FileDirectoryActivity" />
+
     </application>
 
 </manifest>
