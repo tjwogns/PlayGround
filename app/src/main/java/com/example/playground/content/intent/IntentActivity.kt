@@ -33,9 +33,13 @@ class IntentActivity : BaseActivity<ActivityIntentBinding, IntentViewModel>(
     private fun setListener() {
         // Preferences DataStore
         binding.tvAppSettings.setOnClickListener {
-            val intent = Intent().also { intent ->
-                intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                intent.data = Uri.parse("package:$packageName")
+//            val intent = Intent().also { intent ->
+//                intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+//                intent.data = Uri.parse("package:$packageName")
+//            }
+
+            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.fromParts("package", packageName, null)
             }
 
             startActivity(intent)
@@ -57,7 +61,7 @@ class IntentActivity : BaseActivity<ActivityIntentBinding, IntentViewModel>(
     }
 
     private fun openSpecificFolder() {
-        val uri = Uri.parse("${Environment.getExternalStorageDirectory()}${File.separator}Download${File.separator}test")
+        val uri = Uri.parse("${Environment.getExternalStorageDirectory()}${File.separator}Download${File.separator}Mailplug")
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             data = uri
