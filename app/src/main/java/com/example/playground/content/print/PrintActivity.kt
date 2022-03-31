@@ -28,16 +28,6 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         }
 
         binding.tvPrint2.setOnClickListener {
-            val idList = arrayOf("muzi", "frodo", "apeach", "neo")
-            val report = arrayOf("muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi")
-            val k = 2
-
-//            val idList = arrayOf("con", "ryan")
-//            val report = arrayOf("ryan con", "ryan con", "ryan con", "ryan con")
-//            val k = 3
-
-//            algorithm01(idList, report, k)
-            algorithm01_02(idList, report, k)
         }
 
         binding.tvXmlParse.setOnClickListener {
@@ -93,80 +83,6 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
 
         answer = clothes.groupBy { it[1] }.values.fold(1) { total, v -> total * (v.size + 1) } - 1
 
-    }
-
-    /**
-     * https://programmers.co.kr/learn/courses/30/lessons/92334
-     * 시작 시간 : 22.03.27 15:20
-     * 소요 시간 : 2시간 정도 소요
-     */
-    private fun algorithm01(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
-        var answer: IntArray = intArrayOf()
-
-        // report 2차 함수로으로 변환
-        val reportLists = report.distinct().map { it.split(" ") }
-        println("!!! reportLists : ${reportLists.toString()} !!!")
-
-        // 1. 유저 마다 신고 당한 횟수
-        val reportCounts = mutableMapOf<String, Int>()
-        reportLists.forEach {
-            reportCounts[it[1]] = reportCounts[it[1]]?.plus(1) ?: 1
-        }
-        println("!!! reportCounts : ${reportCounts.toString()} !!!")
-
-
-        // 신고당한 횟수중에 k이상이여서 정지된 유저 리스트
-        val suspensedUsers = reportCounts.filter { it.value >= 2 }.map { it.key }
-
-        println("!!! suspensedUser : ${suspensedUsers.toString()} !!!")
-
-        answer = id_list.map { id -> reportLists.filter { suspensedUsers.contains(it[1]) }.groupBy { it[0] }[id]?.size ?: 0 }.toIntArray()
-
-        println("!!! answer : ${answer.asList()} !!!")
-
-        return answer
-    }
-
-
-    private fun algorithm01_01(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
-        var answer: IntArray = intArrayOf()
-
-        // report 2차 함수로으로 변환
-        val reportLists = report.distinct().map { it.split(" ") }
-        println("!!! reportLists : ${reportLists.toString()} !!!")
-
-        report.toSet().groupBy { it.split(" ")[1] }
-
-        // 정지 대상이 아닌 유저들
-        val safeUsers = reportLists.groupBy { it[1] }.filter { it.value.size < k }.keys
-        println("!!! safeUsers : $safeUsers !!!")
-
-        val suspensedReportMap = reportLists.filter { !safeUsers.contains(it[1]) }
-            .groupBy { it[0] }
-
-        // 정지 대상 유저를 뺀 신고자의 신고 횟수
-        answer = id_list.map { id ->
-            suspensedReportMap[id]?.size ?: 0
-        }.toIntArray()
-
-        println("!!! answer : ${answer.asList()} !!!")
-
-        return answer
-    }
-
-    private fun algorithm01_02(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
-        var answer = report.map { it.split(" ") }
-            .groupBy { it[1] }
-            .asSequence()
-            .map { it.value.distinct() }
-            .filter { it.size >= k }
-            .flatten()
-            .map { it[0] }
-            .groupingBy { it }
-            .eachCount()
-            .run { id_list.map { getOrDefault(it, 0) }.toIntArray() }
-
-        return answer
     }
 
 
