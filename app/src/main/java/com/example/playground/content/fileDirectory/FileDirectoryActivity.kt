@@ -99,10 +99,19 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
         }
 
         binding.tvFileListLegacy.setOnClickListener {
-            val files = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                .listFiles()
-                ?.map { it.name }
-                ?.sorted() ?: listOf()
+            val path = Environment.getExternalStorageDirectory().absolutePath + File.separator + "Download" + File.separator + "Mailplug"
+
+            val files = File(path).list()?.toList()
+//            val files = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+//                .listFiles()
+//                ?.map { it.name }
+//                ?.sorted() ?: listOf()
+
+
+            println("!!! DEBUG file size ${files?.size} !!!")
+            files?.forEachIndexed { index, s ->
+                println("!!! DEBUG file number $index [$s] !!!")
+            }
         }
 
         binding.tvCreateFolder.setOnClickListener {
