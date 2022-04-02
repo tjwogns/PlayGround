@@ -14,6 +14,7 @@ import com.example.playground.content.deeplink.DeepLinkActivity
 import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.activityFlag.ActivityFlagActivity
+import com.example.playground.content.algorithm.AlgorithmActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.fileDirectory.FileDirectoryActivity
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListener() {
+        binding.tvAlgorithm.setOnClickListener { view ->
+            Toast.makeText(this, "Algorithm", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AlgorithmActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.tvCompose.setOnClickListener { view ->
             Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ComposeActivity::class.java)

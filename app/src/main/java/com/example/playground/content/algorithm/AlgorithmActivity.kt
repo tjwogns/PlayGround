@@ -1,6 +1,8 @@
 package com.example.playground.content.algorithm
 
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityAlgorithmBinding
@@ -18,6 +20,7 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
         setListener()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun setListener() {
         binding.tvAlgorithm01.setOnClickListener {
             val idList = arrayOf("muzi", "frodo", "apeach", "neo")
@@ -30,9 +33,24 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
 
             algorithm01_02(idList, report, k)
         }
+
+        binding.tvAlgorithm02.setOnClickListener {
+            val lottos1 = intArrayOf(44, 1, 0, 0, 31, 25)
+            val win_nums1 = intArrayOf(31, 10, 45, 1, 6, 19)
+
+            val lotto2 = intArrayOf(0, 0, 0, 0, 0, 0)
+            val win_nums2 = intArrayOf(38, 19, 20, 40, 15, 25)
+
+            val lottos3 = intArrayOf(45, 4, 35, 20, 3, 9)
+            val win_nums3 = intArrayOf(20, 9, 3, 45, 4, 35)
+
+            algorithm02(lottos = lottos1, win_nums = win_nums1)
+
+        }
     }
 
 
+    // ============================================================================================
 
     /**
      * https://programmers.co.kr/learn/courses/30/lessons/92334
@@ -65,6 +83,7 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
         return answer
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun algorithm01_02(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
         return report.map { it.split(" ") }
             .groupBy { it[1] }
@@ -77,4 +96,70 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
             .eachCount()
             .run { id_list.map { getOrDefault(it, 0) }.toIntArray() }
     }
+    // ============================================================================================
+
+    /**
+     * https://programmers.co.kr/learn/courses/30/lessons/77484
+     * 시작 시간 : 22.04.02 18:00
+     * 소요 시간 : 1시간
+     */
+    private fun algorithm02(lottos: IntArray, win_nums: IntArray): IntArray {
+        var answer: IntArray = intArrayOf()
+
+        val matchedCount = win_nums.filter { lottos.contains(it) }.count()
+        println("!!! matchedCount : $matchedCount !!!")
+
+        val minRank = if  (7 - matchedCount >= 6) 6 else 7 - matchedCount
+        println("!!! minRank : $minRank !!!")
+
+        val unKnownNumberCount = lottos.count { it == 0 }
+        println("!!! unKnownNumberCount : $unKnownNumberCount !!!")
+
+        val maxRank = if (minRank - unKnownNumberCount <= 1) 1 else minRank - unKnownNumberCount
+        println("!!! maxRank : $maxRank !!!")
+
+        answer = intArrayOf(
+            maxRank,
+            minRank
+        )
+
+        println("!!! answer : ${answer.asList()} !!!")
+
+        return answer
+    }
+    // ============================================================================================
+
+    // ============================================================================================
+
+
+    // ============================================================================================
+
+    // ============================================================================================
+
+    // ============================================================================================
+
+    // ============================================================================================
+
+    // ============================================================================================
+
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+    // ============================================================================================
+
 }

@@ -17,6 +17,19 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tv_algorithm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Algorithm"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:theme="@style/Widget.MaterialComponents.Button"
+                    app:strokeColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="?attr/materialButtonOutlinedStyle" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/tv_compose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -25,7 +38,7 @@
                     android:layout_marginStart="16dp"
                     android:theme="@style/Widget.MaterialComponents.Button"
                     app:strokeColor="@color/black"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_algorithm"
                     app:layout_constraintStart_toStartOf="parent"
                     style="?attr/materialButtonOutlinedStyle" />
 
