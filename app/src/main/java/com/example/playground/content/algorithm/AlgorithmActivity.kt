@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityAlgorithmBinding
+import kotlinx.coroutines.selects.select
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewModel>(
@@ -61,6 +62,17 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
             algorithm03(numIdCase4)
             algorithm03(numIdCase5)
 
+        }
+
+        binding.tvAlgorithm04.setOnClickListener {
+            val case1 = "aabbaccc"
+            val case2 = "ababcdcdababcdcd"
+            val case3 = "abcabcdede"
+            val case4 = "abcabcabcabcdededededede"
+            val case5 = "xababcdcdababcdcd"
+            val case6 = "a"
+
+            algorithm04(case6)
         }
     }
 
@@ -172,7 +184,57 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
     }
 
     // ============================================================================================
+    /**
+     * https://programmers.co.kr/learn/courses/30/lessons/72410
+     * 시작 시간 :
+     * 소요 시간 : 1시간 40분
+     */
+    private fun algorithm04(s: String): Int {
 
+        // 크기가 1이면 반복문 조차 돌지 않아서 예외처리
+        if (s.length == 1) return 1
+
+        val repeatCount = s.length / 2
+
+        var shortString = ""
+
+        // 반복문 처리의 시작
+        mainLoop@ for (i in 1 until repeatCount + 1) {
+            val buffer = StringBuffer()
+
+            var startIndex = 0
+            var endIndex = i
+
+            // 자른 단어 같은게있는지 루프
+            loop@ while (endIndex <= s.length) {
+                val target = s.substring(startIndex, endIndex)
+
+                var count = 0
+
+                while (target == s.substring(startIndex, endIndex)) {
+                    count ++
+                    startIndex = endIndex
+                    endIndex = startIndex + i
+                    if (endIndex > s.length) {
+                        break
+                    }
+                }
+
+                buffer.apply {
+                    if (count > 1) append(count)
+                    append(target)
+                }
+
+                if (shortString.isNotEmpty() && shortString.length < buffer.toString().length) continue@mainLoop
+            }
+
+            if (startIndex < s.length) buffer.append(s.substring(startIndex, s.lastIndex + 1))
+
+            if (shortString.isEmpty() || buffer.toString().length < shortString.length) shortString = buffer.toString()
+        }
+
+        return shortString.length
+    }
 
     // ============================================================================================
 
