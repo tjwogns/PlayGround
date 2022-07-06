@@ -22,6 +22,7 @@ import com.example.playground.content.intent.IntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
+import com.example.playground.content.rx.RxActivity
 import com.example.playground.content.switch.SwitchActivity
 import com.example.playground.databinding.ActivityMainBinding
 
@@ -116,6 +117,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvFileDirectoryTest.setOnClickListener { view ->
             startIntentActivity("File Directory Test", FileDirectoryActivity::class.java)
+        }
+
+        binding.tvRx.setOnClickListener { view ->
+            startIntentActivity("RxJava Test", RxActivity::class.java)
         }
     }
 

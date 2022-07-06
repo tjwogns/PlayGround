@@ -61,6 +61,7 @@
         <activity android:name=".content.intent.IntentActivity" />
         <activity android:name=".content.fileDirectory.FileDirectoryActivity" />
         <activity android:name=".content.algorithm.AlgorithmActivity" />
+        <activity android:name=".content.rx.RxActivity" />
 
     </application>
 
