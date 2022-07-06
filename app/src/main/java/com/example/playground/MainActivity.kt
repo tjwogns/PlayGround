@@ -40,120 +40,88 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListener() {
         binding.tvAlgorithm.setOnClickListener { view ->
-            Toast.makeText(this, "Algorithm", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, AlgorithmActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Algorithm", AlgorithmActivity::class.java)
         }
 
         binding.tvCompose.setOnClickListener { view ->
-            Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, ComposeActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Compose", ComposeActivity::class.java)
         }
 
         binding.tvCompose1.setOnClickListener { view ->
-            Toast.makeText(this, "Compose1", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, Compose1Activity::class.java)
-            startActivity(intent)
+            startIntentActivity("Compose1", Compose1Activity::class.java)
         }
 
         binding.tvAnimate.setOnClickListener { view ->
-            Toast.makeText(this, "Animate", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, AnimationActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Animate", AnimationActivity::class.java)
         }
 
         binding.tvActivityResult.setOnClickListener { view ->
-            Toast.makeText(this, "ActivityResult", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, ActivityResultActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("ActivityResult", ActivityResultActivity::class.java)
         }
 
         binding.tvCoordinator.setOnClickListener { view ->
-            Toast.makeText(this, "Coordinator", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, CoordinatorActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Coordinator", CoordinatorActivity::class.java)
         }
 
         binding.tvCoroutine.setOnClickListener { view ->
-            Toast.makeText(this, "Coroutine", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, CoroutineActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Coroutine", CoroutineActivity::class.java)
         }
 
         binding.tvLocale.setOnClickListener { view ->
-            Toast.makeText(this, "Locale", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LocaleActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Locale", LocaleActivity::class.java)
         }
 
         binding.tvFlow.setOnClickListener { view ->
-            Toast.makeText(this, "Flow", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, DeepLinkActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Flow", DeepLinkActivity::class.java)
         }
 
         binding.tvDeepLink.setOnClickListener { view ->
-            Toast.makeText(this, "DeepLink", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, DeepLinkActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("DeepLink", DeepLinkActivity::class.java)
         }
 
         binding.tvIssue.setOnClickListener { view ->
-            Toast.makeText(this, "Issue", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, IssueActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Issue", IssueActivity::class.java)
         }
 
         binding.tvNotification.setOnClickListener { view ->
-            Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, NotificationActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Notification", NotificationActivity::class.java)
         }
 
         binding.tvSwitch.setOnClickListener { view ->
-            Toast.makeText(this, "View Switch", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, SwitchActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("View Switch", SwitchActivity::class.java)
         }
 
         binding.tvPrint.setOnClickListener { view ->
-            Toast.makeText(this, "Print Test", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, PrintActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Print Test", PrintActivity::class.java)
         }
 
         binding.tvMediaStore.setOnClickListener { view ->
-            Toast.makeText(this, "Media Store Test", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MediaStoreActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Media Store Test", MediaStoreActivity::class.java)
         }
 
         binding.tvStartActivityFlag.setOnClickListener { view ->
-            Toast.makeText(this, "Start Activity Flag Test", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, ActivityFlagActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Start Activity Flag Test", ActivityFlagActivity::class.java)
         }
 
         binding.tvDataStore.setOnClickListener { view ->
-            Toast.makeText(this, "DataStore Test", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, DataStoreActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("DataStore Test", DataStoreActivity::class.java)
         }
 
         binding.tvSsoTest.setOnClickListener { view ->
         }
 
         binding.tvIntentTest.setOnClickListener { view ->
-            Toast.makeText(this, "Intent Test", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, IntentActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("Intent Test", IntentActivity::class.java)
         }
 
         binding.tvFileDirectoryTest.setOnClickListener { view ->
-            Toast.makeText(this, "File Directory Test", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, FileDirectoryActivity::class.java)
-            startActivity(intent)
+            startIntentActivity("File Directory Test", FileDirectoryActivity::class.java)
         }
+    }
+
+    private fun startIntentActivity(tag: String, activity: Class<*>) {
+        Toast.makeText(this, tag, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, activity)
+        startActivity(intent)
     }
 }
