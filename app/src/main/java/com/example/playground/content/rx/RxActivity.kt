@@ -6,7 +6,9 @@ import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityRxBinding
 import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
@@ -59,6 +61,44 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
             }, {
 
             })
+        }
+
+        binding.tvKaraokeIndexKumyoung.setOnClickListener {
+            viewModel.getKaraokeIndex("kumyoung")
+                .doOnSuccess {
+                    println("!!! Call Success !!!")
+                }
+                .doOnError {
+                    println("!!! Call Failed  !!!")
+                }
+                .subscribeOn(Schedulers.io())
+                .subscribe({ it ->
+                    println("!!! Size ${it.size} !!!")
+                    it.forEach { item ->
+                        println("$item")
+                    }
+                },{
+                    println("!!! ${it.printStackTrace()} !!!")
+                })
+        }
+
+        binding.tvKaraokeIndexTj.setOnClickListener {
+            viewModel.getKaraokeIndex("tj")
+                .doOnSuccess {
+                    println("!!! Call Success !!!")
+                }
+                .doOnError {
+                    println("!!! Call Failed  !!!")
+                }
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    println("!!! Size ${it.size} !!!")
+                    it.forEach { item ->
+                        println("$item")
+                    }
+                },{
+                    println("!!! ${it.printStackTrace()} !!!")
+                })
         }
     }
 

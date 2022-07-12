@@ -9,6 +9,6 @@ interface KaraokeApi {
     @GET("/karaoke.json")
     fun getIndex(
         @Query("brand") brand: String
-    ): Single<KaraokeDto>
+    ): Single<List<KaraokeDto>>
 
 }

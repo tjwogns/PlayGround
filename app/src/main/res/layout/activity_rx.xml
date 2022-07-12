@@ -84,5 +84,41 @@
             app:layout_constraintStart_toEndOf="@id/tv_observable_on_complete"
             app:layout_constraintTop_toBottomOf="@id/tv_observable"
             app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_retrofit_with_rx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="rxRetrofit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_create_on_subscribe"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_karaoke_index_kumyoung"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Karaoke Kumyoung"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_retrofit_with_rx"
+            app:strokeColor="@color/black" />
+        <TextView
+            android:id="@+id/tv_karaoke_index_tj"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Karaoke tj"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_karaoke_index_kumyoung"
+            app:layout_constraintTop_toBottomOf="@id/tv_retrofit_with_rx"
+            app:strokeColor="@color/black" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
