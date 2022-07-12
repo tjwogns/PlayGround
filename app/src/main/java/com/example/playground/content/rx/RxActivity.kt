@@ -21,7 +21,7 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
 
         setListener()
 
-        subscribeObservable()
+//        subscribeObservable()
     }
 
 
@@ -34,8 +34,31 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
                 .subscribe (::println)
         }
 
-        binding.tvObservableOnNext.setOnClickListener {
-            viewModel.observable.doOnNext{5}
+        binding.tvObservableCreateOnSubscribe.setOnClickListener {
+            viewModel.observableCreate
+                .doOnNext {
+                    println("!!! DEBUG Create doOnNext $it !!!")
+                }
+                .subscribe({
+                    println("!!! DEBUG Create arg1 $it !!!")
+                }, {
+                    println("!!! DEBUG Create arg2 $it !!!")
+                }, {
+                    println("!!! DEBUG Create arg3  !!!")
+                })
+//                {
+//                    println("!!! DEBUG Create subscribe $it !!!")
+//                }
+        }
+
+        binding.tvObservableJust.setOnClickListener {
+            viewModel.observableJust.subscribe({
+
+            },{
+
+            }, {
+
+            })
         }
     }
 
@@ -44,7 +67,7 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
      */
     @SuppressLint("CheckResult")
     private fun subscribeObservable() {
-        viewModel.observable.subscribe {
+        viewModel.observableCreate.subscribe {
             println("$it")
         }
     }

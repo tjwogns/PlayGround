@@ -33,15 +33,29 @@
             app:strokeColor="@color/black" />
 
         <TextView
-            android:id="@+id/tv_observable_on_next"
+            android:id="@+id/tv_observable_create_on_subscribe"
             android:background="@color/purple_200"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="onNext"
+            android:text="Create"
             android:theme="@style/Widget.MaterialComponents.Button"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable"
+            app:strokeColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_observable_just"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Just"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_create_on_subscribe"
             app:layout_constraintTop_toBottomOf="@id/tv_observable"
             app:strokeColor="@color/black" />
 
@@ -54,7 +68,7 @@
             android:layout_marginTop="16dp"
             android:text="onComplete"
             android:theme="@style/Widget.MaterialComponents.Button"
-            app:layout_constraintStart_toEndOf="@id/tv_observable_on_next"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_just"
             app:layout_constraintTop_toBottomOf="@id/tv_observable"
             app:strokeColor="@color/black" />
 
