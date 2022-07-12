@@ -17,6 +17,7 @@ import com.example.playground.content.activityFlag.ActivityFlagActivity
 import com.example.playground.content.algorithm.AlgorithmActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
+import com.example.playground.content.editText.EditTextActivity
 import com.example.playground.content.fileDirectory.FileDirectoryActivity
 import com.example.playground.content.intent.IntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
@@ -121,6 +122,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvRx.setOnClickListener { view ->
             startIntentActivity("RxJava Test", RxActivity::class.java)
+        }
+
+        binding.tvEditTextTest.setOnClickListener { view ->
+            startIntentActivity("EditText Test", EditTextActivity::class.java)
         }
     }
 
