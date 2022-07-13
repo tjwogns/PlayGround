@@ -45,7 +45,6 @@
             app:layout_constraintTop_toBottomOf="@id/tv_observable"
             app:strokeColor="@color/black" />
 
-
         <TextView
             android:id="@+id/tv_observable_just"
             android:background="@color/purple_200"
@@ -86,6 +85,112 @@
             app:strokeColor="@color/black" />
 
         <TextView
+            android:id="@+id/tv_observable_cold1"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="First Cold"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_create_on_subscribe"
+            app:strokeColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_observable_cold2"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Second Cold"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_cold1"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_create_on_subscribe"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_hot1"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="First Hot"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_cold1"
+            app:strokeColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_observable_hot2"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Second Hot"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_hot1"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_cold1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_async_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Async \nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_behavior_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Behavior\nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_async_subject"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_publisher_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Publisher\nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_behavior_subject"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_replay_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Replay\nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_publisher_subject"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+        <TextView
             android:id="@+id/tv_retrofit_with_rx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,7 +198,7 @@
             android:layout_marginTop="16dp"
             android:text="rxRetrofit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_observable_create_on_subscribe"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
             app:strokeColor="@color/black" />
 
         <TextView

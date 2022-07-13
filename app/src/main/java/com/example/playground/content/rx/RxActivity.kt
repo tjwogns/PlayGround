@@ -7,6 +7,7 @@ import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityRxBinding
 import io.reactivex.Observable
 import io.reactivex.Scheduler
+import io.reactivex.Single
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -34,6 +35,7 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
                 .just("Hello?", "RxJava!?")
                 .map { it.dropLast(1) }
                 .subscribe (::println)
+
         }
 
         binding.tvObservableCreateOnSubscribe.setOnClickListener {
@@ -99,6 +101,59 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
                 },{
                     println("!!! ${it.printStackTrace()} !!!")
                 })
+        }
+
+        binding.tvObservableCold1.setOnClickListener {
+            viewModel.coldObservable.subscribe { value -> println("First value : $value") }
+        }
+
+        binding.tvObservableCold2.setOnClickListener {
+            viewModel.coldObservable.subscribe { value -> println("Second value : $value") }
+        }
+
+        binding.tvObservableHot1.setOnClickListener {
+            viewModel.hotObservable.connect()
+            viewModel.hotObservable.subscribe { value -> println("First value : $value") }
+        }
+
+        binding.tvObservableHot2.setOnClickListener {
+            viewModel.hotObservable.subscribe { value -> println("Second value : $value") }
+        }
+
+        binding.tvObservableAsyncSubject.setOnClickListener {
+            viewModel.asyncSubject.subscribe { println("!!! First subscriber $it !!!") }
+            viewModel.asyncSubject.onNext("Tom")
+            viewModel.asyncSubject.onNext("Jerry")
+            viewModel.asyncSubject.onComplete()
+            viewModel.asyncSubject.subscribe { println("!!! Second subscriber $it !!!") }
+            viewModel.asyncSubject.onNext("Darong")
+        }
+
+        binding.tvObservableBehaviorSubject.setOnClickListener {
+            viewModel.behaviorSubject.subscribe { println("!!! First subscriber $it !!!") }
+            viewModel.behaviorSubject.onNext("Tom")
+            viewModel.behaviorSubject.onNext("Jerry")
+            viewModel.behaviorSubject.subscribe { println("!!! Second subscriber $it !!!") }
+            viewModel.behaviorSubject.onNext("Darong")
+            viewModel.behaviorSubject.onComplete()
+        }
+
+        binding.tvObservablePublisherSubject.setOnClickListener {
+            viewModel.publisherSubject.subscribe { println("!!! First subscriber $it !!!") }
+            viewModel.publisherSubject.onNext("Tom")
+            viewModel.publisherSubject.onNext("Jerry")
+            viewModel.publisherSubject.subscribe { println("!!! Second subscriber $it !!!") }
+            viewModel.publisherSubject.onNext("Darong")
+            viewModel.publisherSubject.onComplete()
+        }
+
+        binding.tvObservableReplaySubject.setOnClickListener {
+            viewModel.replaySubject.subscribe { println("!!! First subscriber $it !!!") }
+            viewModel.replaySubject.onNext("Tom")
+            viewModel.replaySubject.onNext("Jerry")
+            viewModel.replaySubject.subscribe { println("!!! Second subscriber $it !!!") }
+            viewModel.replaySubject.onNext("Darong")
+            viewModel.replaySubject.onComplete()
         }
     }
 
