@@ -8,6 +8,7 @@ import com.example.playground.databinding.ActivityRxBinding
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -67,14 +68,19 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
 
         binding.tvKaraokeIndexKumyoung.setOnClickListener {
             viewModel.getKaraokeIndex("kumyoung")
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
                 .doOnSuccess {
-                    println("!!! Call Success !!!")
+                    println("!!! First Success thread, ${Thread.currentThread().name}!!!")
                 }
                 .doOnError {
                     println("!!! Call Failed  !!!")
                 }
-                .subscribeOn(Schedulers.io())
-                .subscribe({ it ->
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess {
+                    println("!!! Second Success thread, ${Thread.currentThread().name}!!!")
+                }
+                .subscribe({
                     println("!!! Size ${it.size} !!!")
                     it.forEach { item ->
                         println("$item")
