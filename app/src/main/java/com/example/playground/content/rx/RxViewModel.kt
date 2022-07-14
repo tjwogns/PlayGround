@@ -41,6 +41,9 @@ class RxViewModel: BaseViewModel() {
     }
 
     fun getKaraokeIndex(brand: String): Single<List<KaraokeDto>> {
-        return karaokeApi.getIndex(brand)
+        return karaokeApi.getIndex(brand).map {
+            println("!!! Call API thread, ${Thread.currentThread().name}!!!")
+            it
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.example.playground.content.rx
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityRxBinding
@@ -160,6 +161,52 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
             viewModel.replaySubject.subscribe { println("!!! Second subscriber $it !!!") }
             viewModel.replaySubject.onNext("Darong")
             viewModel.replaySubject.onComplete()
+        }
+
+        binding.tvObservableDebugComplete.setOnClickListener {
+            Observable.just(10, 5, 0)
+                .doOnNext{ data ->
+                    Log.d("onNext()", data.toString())
+                }
+                .doOnComplete {
+                    Log.d("onComplete()", "Logging complete!!!")
+                }
+                .doOnError { error ->
+                    Log.e("onError", error.message ?: "")
+                }
+                .subscribe {
+                    Log.d("subscribe", "Logging subscribe $it !!!")
+                }
+        }
+
+        binding.tvObservableDebugError.setOnClickListener {
+            Observable.just(10, 5, 0)
+                .map { value -> 10 / value }
+                .doOnNext{ data ->
+                    Log.d("onNext()", data.toString())
+                }
+                .doOnComplete {
+                    Log.d("onComplete()", "Logging complete!!!")
+                }
+                .doOnError { error ->
+                    Log.e("onError", error.message ?: "")
+                }
+                .subscribe {
+                    Log.d("subscribe", "Logging subscribe $it !!!")
+                }
+        }
+
+        binding.tvObservableError.setOnClickListener {
+            val numbers = listOf("10", "20", "a", "30")
+            Observable.fromIterable(numbers)
+                .map { data -> Integer.parseInt(data) }
+                .onErrorReturn { e ->
+                    e.printStackTrace()
+                    -1
+                }
+                .subscribe {
+                    println("!!! result: $it !!!")
+                }
         }
     }
 

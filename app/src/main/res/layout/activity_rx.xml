@@ -190,6 +190,46 @@
             app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
             app:strokeColor="@color/black" />
 
+
+        <TextView
+            android:id="@+id/tv_observable_debug_complete"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Debugging\nComplete"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_debug_error"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Debugging\nError"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_debug_complete"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_error"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Error"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_debug_error"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
+            app:strokeColor="@color/black" />
+
         <TextView
             android:id="@+id/tv_retrofit_with_rx"
             android:layout_width="wrap_content"
@@ -198,7 +238,7 @@
             android:layout_marginTop="16dp"
             android:text="rxRetrofit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_debug_complete"
             app:strokeColor="@color/black" />
 
         <TextView
