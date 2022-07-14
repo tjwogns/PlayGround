@@ -31,10 +31,12 @@ class EditTextActivity : BaseActivity<ActivityEditTextBinding, EditTextViewModel
     private fun setListener() {
         binding.btnInput0.setOnClickListener {
             commitText("0")
+            binding.etEx.requestFocus()
         }
 
         binding.btnInput1.setOnClickListener {
             commitText("1")
+            binding.etEx.requestFocus()
         }
 
     }
