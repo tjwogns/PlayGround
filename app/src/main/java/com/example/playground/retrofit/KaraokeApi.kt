@@ -13,7 +13,7 @@ interface KaraokeApi {
     ): Single<List<KaraokeDto>>
 
     @GET("/karaoke.json")
-    fun getIndexWithFlow(
+    suspend fun getIndexWithFlow(
         @Query("brand") brand: String
     ): List<KaraokeDto>
 

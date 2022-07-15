@@ -1,6 +1,10 @@
 package com.example.playground.content.coroutine
 
 import androidx.lifecycle.viewModelScope
+import com.example.playground.MutableEventFlow
+import com.example.playground.asEventFlow
+import com.example.playground.dto.KaraokeDto
+import com.example.playground.retrofit.RetrofitClient
 import com.tjwogns.presentation.base.BaseViewModel
 import kotlinx.coroutines.*
 
@@ -146,5 +150,38 @@ class CoroutineViewModel: BaseViewModel() {
         viewModelScope.launch {
             println("Hello Coroutine")
         }
+    }
+
+    private val karaokeApi by lazy {
+        RetrofitClient.karaokeApi
+    }
+
+    fun getIndexKaraoke() {
+        viewModelScope.launch {
+            CoroutineScope(Dispatchers.IO).async {
+                getKaraokeIndexWithFlow("kumyoung")
+            }
+        }
+    }
+
+    private val _eventFlow = MutableEventFlow<Event>()
+    val eventFlow = _eventFlow.asEventFlow()
+
+
+    fun getKaraokeIndexWithFlow(brand: String) {
+        viewModelScope.launch {
+            CoroutineScope(Dispatchers.IO).launch {
+                event(Event.Index(karaokeApi.getIndexWithFlow(brand)))
+            }
+        }
+    }
+
+    private fun event(event: Event) {
+        viewModelScope.launch {
+            _eventFlow.emit(event)
+        }
+    }
+    sealed class Event {
+        data class Index(val index: List<KaraokeDto>) : Event()
     }
 }

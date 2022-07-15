@@ -48,10 +48,5 @@ class RxViewModel: BaseViewModel() {
         }
     }
 
-    suspend fun getKaraokeIndexWithFlow(brand: String): Flow<List<KaraokeDto>> {
-        return flow {
-            val t = karaokeApi.getIndexWithFlow(brand)
-            emit(t)
-        }
-    }
+
 }
