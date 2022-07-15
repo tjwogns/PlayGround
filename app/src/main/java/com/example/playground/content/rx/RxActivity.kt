@@ -7,10 +7,7 @@ import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityRxBinding
 import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -68,7 +65,7 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
         }
 
         binding.tvKaraokeIndexKumyoung.setOnClickListener {
-            viewModel.getKaraokeIndex("kumyoung")
+            viewModel.getKaraokeIndexWithRx("kumyoung")
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .doOnSuccess {
@@ -92,7 +89,7 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
         }
 
         binding.tvKaraokeIndexTj.setOnClickListener {
-            viewModel.getKaraokeIndex("tj")
+            viewModel.getKaraokeIndexWithRx("tj")
                 .doOnSuccess {
                     println("!!! Call Success !!!")
                 }

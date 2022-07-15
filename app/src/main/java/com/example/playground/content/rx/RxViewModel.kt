@@ -1,7 +1,6 @@
 package com.example.playground.content.rx
 
 import com.example.playground.dto.KaraokeDto
-import com.example.playground.retrofit.KaraokeApi
 import com.example.playground.retrofit.RetrofitClient
 import com.tjwogns.presentation.base.BaseViewModel
 import io.reactivex.Observable
@@ -11,6 +10,8 @@ import io.reactivex.subjects.AsyncSubject
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.ReplaySubject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.util.concurrent.TimeUnit
 
 class RxViewModel: BaseViewModel() {
@@ -40,10 +41,17 @@ class RxViewModel: BaseViewModel() {
         RetrofitClient.karaokeApi
     }
 
-    fun getKaraokeIndex(brand: String): Single<List<KaraokeDto>> {
-        return karaokeApi.getIndex(brand).map {
+    fun getKaraokeIndexWithRx(brand: String): Single<List<KaraokeDto>> {
+        return karaokeApi.getIndexWithRx(brand).map {
             println("!!! Call API thread, ${Thread.currentThread().name}!!!")
             it
+        }
+    }
+
+    suspend fun getKaraokeIndexWithFlow(brand: String): Flow<List<KaraokeDto>> {
+        return flow {
+            val t = karaokeApi.getIndexWithFlow(brand)
+            emit(t)
         }
     }
 }

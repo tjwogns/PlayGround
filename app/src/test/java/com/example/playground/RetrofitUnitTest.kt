@@ -10,7 +10,7 @@ class RetrofitUnitTest {
 
     @Test
     fun indexTest(){
-        karaokeApi.getIndex("tj")
+        karaokeApi.getIndexWithRx("tj")
             .test()
             .assertNoErrors()
             .assertSubscribed()
