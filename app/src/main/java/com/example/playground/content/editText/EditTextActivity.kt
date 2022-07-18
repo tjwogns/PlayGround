@@ -1,9 +1,12 @@
 package com.example.playground.content.editText
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
+import android.view.inputmethod.InputMethodManager
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityEditTextBinding
@@ -36,9 +39,11 @@ class EditTextActivity : BaseActivity<ActivityEditTextBinding, EditTextViewModel
 
         binding.btnInput1.setOnClickListener {
             commitText("1")
-            binding.etEx.requestFocus()
         }
 
+        binding.btnInput2.setOnClickListener {
+            commitText("2")
+        }
     }
 
     private fun commitText(input: String) {
