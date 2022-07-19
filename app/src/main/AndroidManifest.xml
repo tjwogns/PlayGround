@@ -38,6 +38,7 @@
         <activity android:name=".content.activityResult.ActivityResultActivity" />
         <activity android:name=".content.locale.LocaleActivity" />
         <activity android:name=".content.paging3.PagingActivity" />
+        <activity android:name=".content.flow.FlowActivity"/>
         <activity android:name=".content.deeplink.DeepLinkActivity"
             android:exported="true">
             <intent-filter>

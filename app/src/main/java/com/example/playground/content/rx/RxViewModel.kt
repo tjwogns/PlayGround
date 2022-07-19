@@ -3,8 +3,7 @@ package com.example.playground.content.rx
 import com.example.playground.dto.KaraokeDto
 import com.example.playground.retrofit.RetrofitClient
 import com.tjwogns.presentation.base.BaseViewModel
-import io.reactivex.Observable
-import io.reactivex.Single
+import io.reactivex.*
 import io.reactivex.observables.ConnectableObservable
 import io.reactivex.subjects.AsyncSubject
 import io.reactivex.subjects.BehaviorSubject
@@ -37,6 +36,8 @@ class RxViewModel: BaseViewModel() {
     val publisherSubject = PublishSubject.create<String>()
     val replaySubject = ReplaySubject.create<String>()
 
+    val flowable: Flowable<Int> = observableCreate.toFlowable(BackpressureStrategy.BUFFER)
+    val flowable2: Flowable<Int> = Flowable.just(1,2,3).onBackpressureLatest()
     private val karaokeApi by lazy {
         RetrofitClient.karaokeApi
     }

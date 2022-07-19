@@ -19,6 +19,7 @@ import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.editText.EditTextActivity
 import com.example.playground.content.fileDirectory.FileDirectoryActivity
+import com.example.playground.content.flow.FlowActivity
 import com.example.playground.content.intent.IntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.notification.NotificationActivity
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.tvFlow.setOnClickListener { view ->
-            startIntentActivity("Flow", DeepLinkActivity::class.java)
+            startIntentActivity("Flow", FlowActivity::class.java)
         }
 
         binding.tvDeepLink.setOnClickListener { view ->
