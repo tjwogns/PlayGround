@@ -1,6 +1,7 @@
 package com.example.playground.content.flow
 
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.content.deeplink.DeepLinkViewModel
@@ -77,11 +78,28 @@ class FlowActivity : BaseActivity<ActivityFlowBinding, FlowViewModel>(
         binding.tvEx6.setOnClickListener {
             viewModel.ex6()
         }
+
+        binding.tvKaraokeFlow.setOnClickListener {
+//            lifecycleScope.launch {
+//                viewModel.getKaraokeFlow("kumyoung").collect {
+//                    println("!!! $it !!!")
+//                }
+//            }
+            viewModel.getKaraokeFlow2("kumyoung")
+        }
     }
 
     private fun subscribe() {
-//        viewModel.baseData.observe(this) {
-//
-//        }
+        lifecycleScope.launch {
+            viewModel.karaokeStateFlow.collect { result ->
+                println("!!! Success !!!")
+                println("!!! Size ${result.size} !!!")
+                result.forEach {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        println("!!! $it !!!")
+                    }
+                }
+            }
+        }
     }
 }

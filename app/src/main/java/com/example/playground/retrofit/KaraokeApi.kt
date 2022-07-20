@@ -17,4 +17,9 @@ interface KaraokeApi {
         @Query("brand") brand: String
     ): List<KaraokeDto>
 
+    @GET("/karaoke.json")
+    suspend fun getIndexWithFlow2(
+        @Query("brand") brand: String
+    ): Flow<List<KaraokeDto>>
+
 }

@@ -78,7 +78,9 @@ class RxActivity : BaseActivity<ActivityRxBinding, RxViewModel>(
                 .doOnSuccess {
                     println("!!! Second Success thread, ${Thread.currentThread().name}!!!")
                 }
+                .observeOn(Schedulers.io())
                 .subscribe({
+                    println("!!! Third thread, ${Thread.currentThread().name}!!!")
                     println("!!! Size ${it.size} !!!")
                     it.forEach { item ->
                         println("$item")

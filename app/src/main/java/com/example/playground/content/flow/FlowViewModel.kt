@@ -1,10 +1,12 @@
 package com.example.playground.content.flow
 
 import androidx.lifecycle.viewModelScope
+import com.example.playground.content.coroutine.CoroutineViewModel
+import com.example.playground.dto.KaraokeDto
+import com.example.playground.retrofit.RetrofitClient.karaokeApi
 import com.tjwogns.presentation.base.BaseViewModel
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.runBlocking
 
 class FlowViewModel: BaseViewModel() {
 
@@ -119,5 +121,36 @@ class FlowViewModel: BaseViewModel() {
             .collect { value -> // collect and print
                 println("$value at ${System.currentTimeMillis() - startTime} ms from start")
             }
+    }
+
+
+
+
+
+
+    fun getKaraokeFlow(brand: String): Flow<List<KaraokeDto>> = flow {
+        println("!!!! ??? !!!!")
+        val result = karaokeApi.getIndexWithFlow(brand)
+
+        emit(result)
+    }
+
+    private val _karaokeStateFlow = MutableStateFlow<List<KaraokeDto>>(listOf())
+    val karaokeStateFlow = _karaokeStateFlow.asStateFlow()
+
+    fun getKaraokeFlow2(brand: String) {
+        viewModelScope.launch {
+            CoroutineScope(Dispatchers.IO).launch {
+                _karaokeStateFlow.emit(karaokeApi.getIndexWithFlow(brand))
+            }
+        }
+    }
+
+    fun getKaraokeIndexWithFlow(brand: String) {
+        viewModelScope.launch {
+            CoroutineScope(Dispatchers.IO).launch {
+                _karaokeStateFlow.value = karaokeApi.getIndexWithFlow(brand)
+            }
+        }
     }
 }
