@@ -43,6 +43,19 @@
                     style="?attr/materialButtonOutlinedStyle" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tv_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Camera"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:theme="@style/Widget.MaterialComponents.Button"
+                    app:strokeColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_rx"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="?attr/materialButtonOutlinedStyle" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/tv_compose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,7 +64,7 @@
                     android:layout_marginStart="16dp"
                     android:theme="@style/Widget.MaterialComponents.Button"
                     app:strokeColor="@color/black"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_rx"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_camera"
                     app:layout_constraintStart_toStartOf="parent"
                     style="?attr/materialButtonOutlinedStyle" />
 

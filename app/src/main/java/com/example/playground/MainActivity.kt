@@ -15,6 +15,7 @@ import com.example.playground.content.issue.IssueActivity
 import com.example.playground.content.locale.LocaleActivity
 import com.example.playground.content.activityFlag.ActivityFlagActivity
 import com.example.playground.content.algorithm.AlgorithmActivity
+import com.example.playground.content.camera.CameraActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.editText.EditTextActivity
@@ -127,6 +128,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvEditTextTest.setOnClickListener { view ->
             startIntentActivity("EditText Test", EditTextActivity::class.java)
+        }
+
+        binding.tvCamera.setOnClickListener { view ->
+            startIntentActivity("Camera Test", CameraActivity::class.java)
         }
     }
 

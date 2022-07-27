@@ -27,7 +27,6 @@ class CoroutineViewModel: BaseViewModel() {
             launch(newSingleThreadContext("MyOwnThread")) { // will get its own new thread
                 println("newSingleThreadContext: I'm working in thread ${Thread.currentThread().name}")
             }
-
         }
     }
 
@@ -38,12 +37,25 @@ class CoroutineViewModel: BaseViewModel() {
     ///////////////////////////////////////////////
     fun ex1() {
         CoroutineScope(Dispatchers.Default).launch {
+            coroutineScope {
+                launch {
+                    delay(100L)
+                    println("First!")
+                }
+                launch {
+                    delay(500L)
+                    println("Second!")
+                }
+                launch {
+                    delay(300L)
+                    println("Third!")
+                }
+            }
+
             launch {
-                delay(100L)
-                println("World!")
+                println("Hello Jerry")
             }
         }
-        println("Hello")
     }
 
     ///////////////////////////////////////////////

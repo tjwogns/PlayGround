@@ -2,6 +2,7 @@ package com.example.playground.di
 
 import com.example.playground.content.activityFlag.ActivityFlagViewModel
 import com.example.playground.content.algorithm.AlgorithmViewModel
+import com.example.playground.content.camera.CameraViewModel
 import com.example.playground.content.coroutine.CoroutineViewModel
 import com.example.playground.content.dataStore.DataStoreViewModel
 import com.example.playground.content.deeplink.DeepLinkViewModel
@@ -41,4 +42,5 @@ val viewModelModule = module {
     viewModel { FileDirectoryViewModel() }
     viewModel { AlgorithmViewModel() }
     viewModel { EditTextViewModel() }
+    viewModel { CameraViewModel() }
 }
