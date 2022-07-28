@@ -213,7 +213,7 @@ class CameraActivity : BaseActivity<ActivityCameraBinding, CameraViewModel>(
 //                }
 
             val recorder = Recorder.Builder()
-                .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
+                .setQualitySelector(QualitySelector.from(Quality.HIGHEST, FallbackStrategy.higherQualityOrLowerThan(Quality.SD)))
                 .build()
             videoCapture = VideoCapture.withOutput(recorder)
 
@@ -232,9 +232,10 @@ class CameraActivity : BaseActivity<ActivityCameraBinding, CameraViewModel>(
 //                )
 
                 // cameraSelector와 Preview 객체를 바인딩.
+                // imageCapture 바인딩
                 // videoCapture 바인딩
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, videoCapture
+                    this, cameraSelector, preview, imageCapture, videoCapture
                 )
             } catch (exception: Exception) {
                 Log.e(TAG, "Use case binding failed", exception)
