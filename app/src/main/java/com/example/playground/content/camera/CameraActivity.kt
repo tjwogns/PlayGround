@@ -128,6 +128,14 @@ class CameraActivity : BaseActivity<ActivityCameraBinding, CameraViewModel>(
             imageCapture = ImageCapture.Builder()
                 .build()
 
+            // ImageAnalysis 객체 생성
+            val imageAnalyzer = ImageAnalysis.Builder()
+                .build()
+                .also {
+                    it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { luma ->
+                        Log.d(TAG, "Average luminosity: $luma")
+                    })
+                }
 
             // CameraSelector 객체 생성
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
@@ -137,8 +145,10 @@ class CameraActivity : BaseActivity<ActivityCameraBinding, CameraViewModel>(
                 cameraProvider.unbindAll()
 
                 // cameraSelector와 Preview 객체를 바인딩.
+                // imageCapture 바인딩
+                // imageAnalyzer 바인딩.
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture
+                    this, cameraSelector, preview, imageCapture, imageAnalyzer
                 )
             } catch (exception: Exception) {
                 Log.e(TAG, "Use case binding failed", exception)
@@ -182,4 +192,28 @@ class CameraActivity : BaseActivity<ActivityCameraBinding, CameraViewModel>(
             }
         }.toTypedArray()
     }
+}
+
+typealias LumaListener = (luma: Double) -> Unit
+
+private class LuminosityAnalyzer(private val listener: LumaListener): ImageAnalysis.Analyzer {
+    private fun ByteBuffer.toByteArray(): ByteArray {
+        rewind() // buffer position 0으로 이동.
+        val data = ByteArray(remaining())
+        get(data) // buffer로 부터 ByteArray를 만든다.
+        return data
+    }
+
+    override fun analyze(image: ImageProxy) {
+
+        val buffer = image.planes[0].buffer
+        val data = buffer.toByteArray()
+        val pixels = data.map { it.toInt() and 0xFF }
+        val luma = pixels.average()
+
+        listener(luma)
+
+        image.close()
+    }
+
 }
