@@ -7,6 +7,7 @@ import com.example.playground.content.coroutine.CoroutineViewModel
 import com.example.playground.content.dataStore.DataStoreViewModel
 import com.example.playground.content.deeplink.DeepLinkViewModel
 import com.example.playground.content.editText.EditTextViewModel
+import com.example.playground.content.enum.EnumViewModel
 import com.example.playground.content.fileDirectory.FileDirectoryViewModel
 import com.example.playground.content.flow.FlowViewModel
 import com.example.playground.content.intent.IntentViewModel
@@ -43,4 +44,5 @@ val viewModelModule = module {
     viewModel { AlgorithmViewModel() }
     viewModel { EditTextViewModel() }
     viewModel { CameraViewModel() }
+    viewModel { EnumViewModel() }
 }

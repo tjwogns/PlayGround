@@ -19,6 +19,7 @@ import com.example.playground.content.camera.CameraActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.editText.EditTextActivity
+import com.example.playground.content.enum.EnumActivity
 import com.example.playground.content.fileDirectory.FileDirectoryActivity
 import com.example.playground.content.flow.FlowActivity
 import com.example.playground.content.intent.IntentActivity
@@ -132,6 +133,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvCamera.setOnClickListener { view ->
             startIntentActivity("Camera Test", CameraActivity::class.java)
+        }
+
+        binding.tvEnum.setOnClickListener { view ->
+            startIntentActivity("Enum Test", EnumActivity::class.java)
         }
     }
 
