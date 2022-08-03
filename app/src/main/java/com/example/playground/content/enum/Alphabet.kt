@@ -15,5 +15,7 @@ enum class Alphabet(val key: String) {
         fun getFromKey(key: String): Alphabet {
             return values().first { it.key == key }
         }
+
+        fun gets() = values()
     }
 }
