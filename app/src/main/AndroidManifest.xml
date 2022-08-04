@@ -70,6 +70,7 @@
         <activity android:name=".content.editText.EditTextActivity" />
         <activity android:name=".content.camera.CameraActivity" />
         <activity android:name=".content.enum.EnumActivity" />
+        <activity android:name=".content.result.ResultActivity" />
 
     </application>
 
