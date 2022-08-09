@@ -4,6 +4,8 @@ import android.os.Bundle
 import com.example.playground.R
 import com.example.playground.databinding.ActivityCoroutineBinding
 import com.example.playground.base.BaseActivity
+import com.example.playground.repeatOnStarted
+import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -17,6 +19,8 @@ class CoroutineActivity : BaseActivity<ActivityCoroutineBinding, CoroutineViewMo
         super.onCreate(savedInstanceState)
 
         setClickListener()
+
+        subscribeEvent()
     }
 
     private fun setClickListener() {
@@ -46,6 +50,24 @@ class CoroutineActivity : BaseActivity<ActivityCoroutineBinding, CoroutineViewMo
 
         binding.tvEx6.setOnClickListener {
             viewModel.ex6()
+        }
+
+        binding.tvKaraokeIndexKumyoung.setOnClickListener {
+            viewModel.getKaraokeIndexWithFlow("kumyoung")
+        }
+    }
+
+    private fun subscribeEvent() {
+        repeatOnStarted {
+            viewModel.eventFlow.collect { event -> handleEvent(event) }
+        }
+    }
+
+    private fun handleEvent(event: CoroutineViewModel.Event) = when (event) {
+        is CoroutineViewModel.Event.Index -> {
+            event.index.forEach {
+                println("!!! $it !!!")
+            }
         }
     }
 }

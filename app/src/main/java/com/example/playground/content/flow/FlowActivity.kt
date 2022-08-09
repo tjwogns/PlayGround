@@ -1,12 +1,17 @@
 package com.example.playground.content.flow
 
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.content.deeplink.DeepLinkViewModel
 import com.example.playground.databinding.ActivityFlowBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,8 +32,32 @@ class FlowActivity : BaseActivity<ActivityFlowBinding, FlowViewModel>(
 
     private fun setClickListener() {
         binding.tvGetBaseFlow.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                viewModel.getBaseFlow()
+//            CoroutineScope(Dispatchers.Main).launch {
+//                viewModel.getBaseFlow().collect { value ->
+//                    println("!!! value [$value] !!!!")
+//                }
+//            CoroutineScope(Dispatchers.Main).launch {
+//                launch {
+//                    println("!!! started collect 1 !!!")
+//                    viewModel.stateInFlow.collect {
+//                        println("!!! collect 1 : $it !!!")
+//                    }
+//                }
+//
+//                delay(3000)
+//                launch {
+//                    println("!!! started collect 2 !!!")
+//                    viewModel.stateInFlow.collect {
+//                        println("!!! collect 2 : $it !!!")
+//                    }
+//                }
+//            }
+
+            CoroutineScope(Dispatchers.Main).launch {
+                viewModel.getBaseFlow().conflate().collect {
+                    delay(500)
+                    println("!!! collect value : $it !!!")
+                }
             }
         }
         binding.tvEx1.setOnClickListener {
@@ -49,11 +78,28 @@ class FlowActivity : BaseActivity<ActivityFlowBinding, FlowViewModel>(
         binding.tvEx6.setOnClickListener {
             viewModel.ex6()
         }
+
+        binding.tvKaraokeFlow.setOnClickListener {
+//            lifecycleScope.launch {
+//                viewModel.getKaraokeFlow("kumyoung").collect {
+//                    println("!!! $it !!!")
+//                }
+//            }
+            viewModel.getKaraokeFlow2("kumyoung")
+        }
     }
 
     private fun subscribe() {
-        viewModel.baseData.observe(this) {
-
+        lifecycleScope.launch {
+            viewModel.karaokeStateFlow.collect { result ->
+                println("!!! Success !!!")
+                println("!!! Size ${result.size} !!!")
+                result.forEach {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        println("!!! $it !!!")
+                    }
+                }
+            }
         }
     }
 }

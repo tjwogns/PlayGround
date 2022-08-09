@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".content.rx.RxActivity">
+
+        <TextView
+            android:id="@+id/tv_ex1"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Ex 1"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Observable Test"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_ex1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_create_on_subscribe"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Create"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_just"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Just"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_create_on_subscribe"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_on_complete"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="onComplete"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_just"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_on_error"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="onError"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_on_complete"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_cold1"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="First Cold"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_create_on_subscribe"
+            app:strokeColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_observable_cold2"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Second Cold"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_cold1"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_create_on_subscribe"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_hot1"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="First Hot"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_cold1"
+            app:strokeColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_observable_hot2"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Second Hot"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_hot1"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_cold1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_async_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Async \nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_behavior_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Behavior\nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_async_subject"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_publisher_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Publisher\nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_behavior_subject"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_replay_subject"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Replay\nSubject"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_publisher_subject"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_hot1"
+            app:strokeColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_observable_debug_complete"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Debugging\nComplete"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_debug_error"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Debugging\nError"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_debug_complete"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_observable_error"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Error"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_observable_debug_error"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_async_subject"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_retrofit_with_rx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="rxRetrofit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_observable_debug_complete"
+            app:strokeColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_karaoke_index_kumyoung"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Karaoke Kumyoung"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_retrofit_with_rx"
+            app:strokeColor="@color/black" />
+        <TextView
+            android:id="@+id/tv_karaoke_index_tj"
+            android:background="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Karaoke tj"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            app:layout_constraintStart_toEndOf="@id/tv_karaoke_index_kumyoung"
+            app:layout_constraintTop_toBottomOf="@id/tv_retrofit_with_rx"
+            app:strokeColor="@color/black" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

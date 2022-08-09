@@ -5,7 +5,10 @@ import android.os.Bundle
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityPrintBinding
+import org.joda.time.DateTime
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
@@ -28,6 +31,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         }
 
         binding.tvPrint2.setOnClickListener {
+            printTest04()
         }
 
         binding.tvXmlParse.setOnClickListener {
@@ -83,6 +87,14 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
 
         answer = clothes.groupBy { it[1] }.values.fold(1) { total, v -> total * (v.size + 1) } - 1
 
+    }
+
+    private fun printTest04() {
+        println("!!! DEBUG DateTime.now().millis : ${DateTime.now().millis} !!!")
+        println("!!! DEBUG DateTime.now().millisOfDay().dateTime.millis : ${DateTime.now().millisOfDay().dateTime.millis} !!!")
+        println("!!! DEBUG DateTime.now().millisOfDay().withMillisOfDay(0).millis : ${DateTime.now().withMillisOfDay(0).millis} !!!")
+        println("!!! DEBUG DateTime.now().dayOfWeek().get() : ${DateTime.now().dayOfWeek().get()} !!!")
+        println("!!! DEBUG DateTime.now().year : ${DateTime.now().year} !!!")
     }
 
 
