@@ -14,6 +14,8 @@ import com.example.playground.content.intent.IntentViewModel
 import com.example.playground.content.issue.IssueViewModel
 import com.example.playground.content.locale.LocaleViewModel
 import com.example.playground.content.mediaStore.MediaStoreViewModel
+import com.example.playground.content.navigation.BlankViewModel
+import com.example.playground.content.navigation.NavigationViewModel
 import com.example.playground.content.notification.NotificationViewModel
 import com.example.playground.content.paging3.PagingViewModel
 import com.example.playground.content.print.PrintViewModel
@@ -47,4 +49,6 @@ val viewModelModule = module {
     viewModel { CameraViewModel() }
     viewModel { EnumViewModel() }
     viewModel { ResultViewModel() }
+    viewModel { NavigationViewModel() }
+    viewModel { BlankViewModel() }
 }

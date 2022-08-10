@@ -24,6 +24,8 @@ import com.example.playground.content.fileDirectory.FileDirectoryActivity
 import com.example.playground.content.flow.FlowActivity
 import com.example.playground.content.intent.IntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
+import com.example.playground.content.navigation.NavigationActivity
+import com.example.playground.content.navigation.NavigationViewModel
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
 import com.example.playground.content.rx.RxActivity
@@ -137,6 +139,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvEnum.setOnClickListener { view ->
             startIntentActivity("Enum Test", EnumActivity::class.java)
+        }
+
+        binding.tvNavigation.setOnClickListener { view ->
+            startIntentActivity("Navigation Test", NavigationActivity::class.java)
         }
     }
 
