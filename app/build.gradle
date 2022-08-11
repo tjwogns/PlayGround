@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
     id "com.google.protobuf" version "0.8.12"
 }
 
@@ -50,6 +51,10 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=io.ktor.locations.KtorExperimentalLocationsAPI"]
     }
 }
 
@@ -133,18 +138,18 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
 
     //==================== Navigation ============================
-//    // Kotlin
-//    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-//    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-//
-//    // Feature module Support
-//    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
-//
-//    // Testing Navigation
-//    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
-//
-//    // Jetpack Compose Integration
-//    implementation "androidx.navigation:navigation-compose:$nav_version"
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    // Jetpack Compose Integration
+    implementation "androidx.navigation:navigation-compose:$nav_version"
 
 
     testImplementation 'junit:junit:4.+'

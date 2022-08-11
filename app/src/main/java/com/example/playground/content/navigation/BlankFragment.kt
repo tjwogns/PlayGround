@@ -12,7 +12,7 @@ class BlankFragment : BaseFragment<FragmentBlankBinding, BlankViewModel>(
 
     override fun initView() {
         binding.btnAction1.setOnClickListener {
-//            val action = Speci
+//            val action = SpecifyAmountFragmentDirecitons
         }
     }
 

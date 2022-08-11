@@ -1,30 +1,23 @@
 package com.example.playground.content.navigation
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.playground.R
-
+import com.example.playground.base.BaseFragment
+import com.example.playground.databinding.FragmentBlank2Binding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  * Use the [BlankFragment2.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BlankFragment2 : Fragment() {
+class BlankFragment2 : BaseFragment<FragmentBlank2Binding, BlankViewModel>(
+    R.layout.fragment_blank2
+) {
+    override val viewModel: BlankViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun initView() {
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank2, container, false)
-    }
+
 }

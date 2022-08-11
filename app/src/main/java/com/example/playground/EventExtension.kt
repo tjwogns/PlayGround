@@ -30,7 +30,8 @@ private class EventFlowImpl<T>(
 
     private val flow: MutableSharedFlow<EventFlowSlot<T>> = MutableSharedFlow(replay = replay)
 
-    @InternalCoroutinesApi
+//    @InternalCoroutinesApi
+    @OptIn(InternalCoroutinesApi::class)
     override suspend fun collect(collector: FlowCollector<T>) = flow
         .collect { slot ->
             if (!slot.markConsumed()) {
