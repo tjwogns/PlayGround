@@ -12,7 +12,7 @@ import com.tjwogns.presentation.base.BaseViewModel
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel>(
     @LayoutRes private val layoutResId: Int
-): Fragment(layoutResId) {
+): Fragment() {
 
     private var _binding: T? = null
     private val binding

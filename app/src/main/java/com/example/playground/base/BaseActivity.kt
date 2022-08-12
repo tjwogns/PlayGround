@@ -9,7 +9,7 @@ import com.tjwogns.presentation.base.BaseViewModel
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
     @LayoutRes private val layoutResId: Int
-): AppCompatActivity(layoutResId) {
+): AppCompatActivity() {
 
     protected lateinit var binding : T
         private set
@@ -18,6 +18,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, layoutResId)
         binding.lifecycleOwner = this
         binding.executePendingBindings()

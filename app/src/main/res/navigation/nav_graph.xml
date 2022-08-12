@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navGraph"
     android:background="@color/material_dynamic_tertiary10"
     app:startDestination="@id/fra_main_blank">
 
@@ -22,4 +21,9 @@
         android:label="fragment_blank2"
         tools:layout="@layout/fragment_blank2"
         />
+    <fragment
+        android:id="@+id/blankFragment3"
+        android:name="com.example.playground.BlankFragment3"
+        android:label="fragment_blank3"
+        tools:layout="@layout/fragment_blank3" />
 </navigation>

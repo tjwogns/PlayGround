@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,6 +24,7 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding, NavigationVie
 
 
     override val viewModel: NavigationViewModel by viewModel()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,18 +50,21 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding, NavigationVie
             ).show()
             Log.d("NavigationActivity", "Navigated to $dest")
         }
-        setListener()
 
     }
-
-    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onPostCreate(savedInstanceState, persistentState)
-
-//        val navController = binding.fcvNavigation.findNavController()
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
+}
 
 
-        println("!!! DEBUG !!! onPostCreate")
+
+//class NavigationActivity : AppCompatActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_navigation)
+////        val navController = binding.fcvNavigation.findNavController() // onCreate에서 가져올수 없음.
+//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_navigation) as NavHostFragment
+//        val navController = navHostFragment.navController
+//
+//
 //        navController.addOnDestinationChangedListener { _, destination, _ ->
 //            val dest: String = try {
 //                resources.getResourceName(destination.id)
@@ -72,21 +78,6 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding, NavigationVie
 //            ).show()
 //            Log.d("NavigationActivity", "Navigated to $dest")
 //        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility", "CheckResult")
-    private fun setListener() {
-    }
-
-
-    /**
-     * 구독
-     */
-    @SuppressLint("CheckResult")
-    private fun subscribeObservable() {
-
-    }
-
-    companion object {
-    }
-}
+//
+//    }
+//}
