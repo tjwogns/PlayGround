@@ -15,7 +15,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel>(
 ): Fragment() {
 
     private var _binding: T? = null
-    private val binding
+    protected val binding
         get() = _binding!!
 
     protected abstract val viewModel: V
@@ -27,13 +27,10 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel>(
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
-
-        println("!!! DEBUG !!! Base Fragment onCreateView $layoutResId root [${binding.root}, ${_binding?.root}")
         return _binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        println("!!! DEBUG !!! Base Fragment onViewCreated")
 
         super.onViewCreated(view, savedInstanceState)
         initView()

@@ -19,11 +19,12 @@
         android:id="@+id/fra_sub_blank"
         android:name="com.example.playground.content.navigation.BlankFragment2"
         android:label="fragment_blank2"
-        tools:layout="@layout/fragment_blank2"
-        />
-    <fragment
-        android:id="@+id/blankFragment3"
-        android:name="com.example.playground.BlankFragment3"
-        android:label="fragment_blank3"
-        tools:layout="@layout/fragment_blank3" />
+        tools:layout="@layout/fragment_blank2" >
+        <argument
+            android:name="testStringArg"
+            android:defaultValue="default"
+            app:argType="string"
+            />
+
+    </fragment>
 </navigation>
