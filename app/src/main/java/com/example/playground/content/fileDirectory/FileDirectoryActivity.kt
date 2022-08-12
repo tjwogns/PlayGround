@@ -120,6 +120,11 @@ class FileDirectoryActivity : BaseActivity<ActivityFileDirectoryBinding, FileDir
         }
     }
 
+    @Deprecated("Deprecated in Java", ReplaceWith(
+        "super.onActivityResult(requestCode, resultCode, data)",
+        "com.example.playground.base.BaseActivity"
+    )
+    )
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
