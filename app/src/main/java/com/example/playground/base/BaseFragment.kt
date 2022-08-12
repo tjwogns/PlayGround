@@ -14,26 +14,35 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel>(
     @LayoutRes private val layoutResId: Int
 ): Fragment(layoutResId) {
 
-    protected lateinit var binding : T
-        private set
+    private var _binding: T? = null
+    private val binding
+        get() = _binding!!
 
     protected abstract val viewModel: V
-    // Fragment에 ViewModel이 필요 없을 수도 있음. 고려 해봐야함.
+    // Fragment 에 ViewModel 이 필요 없을 수도 있음. 고려 해봐야함.
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
-        return binding.root
+        _binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
+
+        println("!!! DEBUG !!! Base Fragment onCreateView $layoutResId root [${binding.root}, ${_binding?.root}")
+        return _binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.lifecycleOwner = this@BaseFragment
-        initView()
+        println("!!! DEBUG !!! Base Fragment onViewCreated")
+
         super.onViewCreated(view, savedInstanceState)
+        initView()
     }
 
     abstract fun initView()
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

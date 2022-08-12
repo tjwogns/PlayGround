@@ -40,6 +40,7 @@
         <entry key="app/src/main/res/layout/activity_locale.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.314572864321608" />
         <entry key="app/src/main/res/layout/activity_media_store.xml" value="0.21041666666666667" />
+        <entry key="app/src/main/res/layout/activity_navigation.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_notification.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_paging.xml" value="0.1828774062816616" />
         <entry key="app/src/main/res/layout/activity_print.xml" value="0.16302083333333334" />
@@ -47,6 +48,7 @@
         <entry key="app/src/main/res/layout/activity_rx.xml" value="0.3859771728515625" />
         <entry key="app/src/main/res/layout/activity_switch.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/fragment_blank2.xml" value="0.3578125" />
       </map>
     </option>

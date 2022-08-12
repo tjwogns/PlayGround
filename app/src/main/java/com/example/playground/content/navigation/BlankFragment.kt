@@ -11,10 +11,6 @@ class BlankFragment : BaseFragment<FragmentBlankBinding, BlankViewModel>(
     override val viewModel: BlankViewModel by viewModel()
 
     override fun initView() {
-        binding.btnAction1.setOnClickListener {
-//            val action = SpecifyAmountFragmentDirecitons
-        }
+
     }
-
-
 }

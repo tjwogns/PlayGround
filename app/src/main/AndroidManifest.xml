@@ -71,7 +71,13 @@
         <activity android:name=".content.camera.CameraActivity" />
         <activity android:name=".content.enum.EnumActivity" />
         <activity android:name=".content.result.ResultActivity" />
-        <activity android:name=".content.navigation.NavigationActivity" />
+        <activity android:name=".content.navigation.NavigationActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!---->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
 
     </application>
 
