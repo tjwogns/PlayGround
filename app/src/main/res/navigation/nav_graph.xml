@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_fra_main_blank_to_fra_sub_blank"
             app:destination="@id/fra_sub_blank" />
+
+        <action
+            android:id="@+id/action_dialog_to_sub"
+            app:destination="@id/fra_sub_blank"/>
     </fragment>
 
     <fragment
@@ -27,4 +31,12 @@
             />
 
     </fragment>
+
+<!--    <dialog-->
+<!--        android:id="@+id/dialog_fragment"-->
+<!--        android:name="com.example.playground.content.navigation.DialogBlankFragment"-->
+<!--        android:label="fragment_dialog_blank"-->
+<!--        tools:layout="@layout/fragment_dialog_blank">-->
+
+<!--    </dialog>-->
 </navigation>

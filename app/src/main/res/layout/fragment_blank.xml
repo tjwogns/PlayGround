@@ -6,17 +6,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
         tools:context=".content.navigation.BlankFragment">
 
         <Button
             android:id="@+id/btn_action1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Action 1"
+            android:text="Action Fragment"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <Button
+            android:id="@+id/btn_action2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Action Dialog Fragment"
+            app:layout_constraintTop_toBottomOf="@id/btn_action1"
+            app:layout_constraintStart_toStartOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

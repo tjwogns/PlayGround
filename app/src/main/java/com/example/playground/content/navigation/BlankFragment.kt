@@ -11,11 +11,36 @@ class BlankFragment : BaseFragment<FragmentBlankBinding, BlankViewModel>(
 ) {
     override val viewModel: BlankViewModel by viewModel()
 
+    private var dialog: DialogBlankFragment? = null
+
     override fun initView() {
+        /**
+         * Fragment -> Another Fragment
+         */
         binding.btnAction1.setOnClickListener {
             val action = BlankFragmentDirections.actionFraMainBlankToFraSubBlank("Hello~ I'm Here!!!")
             findNavController().navigate(action)
         }
 
+        /**
+         * Dialog -> 다른 Destination
+         */
+        binding.btnAction2.setOnClickListener {
+            dialog = DialogBlankFragment(::moveToSubFromDialog)
+            dialog?.show(requireActivity().supportFragmentManager, "Fragment")
+        }
+
     }
+
+    /**
+     * 다이어로그로 Action을 보내서 처리하는 방법.
+     */
+    private fun moveToSubFromDialog() {
+        dialog?.dismiss()
+        dialog = null
+
+        val action = BlankFragmentDirections.actionDialogToSub("from Blank Dialog !!!")
+        findNavController().navigate(action)
+    }
+
 }

@@ -36,4 +36,11 @@
     <style name="Theme.PlayGround.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PlayGround.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.PlayGround.DialogFragment" parent="Theme.MaterialComponents.Dialog">
+<!--        <item name="android:windowIsFloating">false</item>-->
+<!--        <item name="android:windowFullscreen">false</item>-->
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
 </resources>
