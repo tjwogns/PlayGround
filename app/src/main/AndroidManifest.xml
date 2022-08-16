@@ -72,6 +72,7 @@
         <activity android:name=".content.enum.EnumActivity" />
         <activity android:name=".content.result.ResultActivity" />
         <activity android:name=".content.navigation.NavigationActivity">
+            <nav-graph android:value="@navigation/nav_graph"/>
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 <!---->

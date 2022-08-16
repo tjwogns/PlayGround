@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_main_to_B"
             app:destination="@id/second_graph" />
+        <action
+            android:id="@+id/action_main_to_deep_link"
+            app:destination="@id/fra_deep_link" />
     </fragment>
 
     <fragment
@@ -37,12 +40,28 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/fra_deep_link"
+        android:name="com.example.playground.content.navigation.DeepLinkFragment"
+        android:label="fragment_deep_link"
+        tools:layout="@layout/fragment_deep_link">
+        <argument
+            android:name="testStringArg"
+            android:defaultValue="default"
+            app:argType="string" />
+
+        <deepLink
+            android:id="@+id/deepLink"
+            app:action="ACTION_VIEW"
+            app:mimeType="application/http"
+            app:uri="http://PlayGroundTest/{testStringArg}" />
+
+    </fragment>
+
     <!-- Global Action-->
     <action
         android:id="@+id/action_global_main"
         app:destination="@id/fra_main_blank"
         app:launchSingleTop="true" />
-
-
 
 </navigation>
