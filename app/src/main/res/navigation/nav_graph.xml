@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/material_dynamic_tertiary10"
+    android:id="@+id/nav_host"
     app:startDestination="@id/fra_main_blank">
 
     <include app:graph="@navigation/second_graph" />
@@ -35,6 +36,13 @@
             />
 
     </fragment>
+
+    <!-- Global Action-->
+    <action
+        android:id="@+id/action_global_main"
+        app:destination="@id/fra_main_blank"
+        app:launchSingleTop="true" />
+
 
 
 </navigation>
