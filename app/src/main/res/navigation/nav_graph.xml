@@ -5,6 +5,8 @@
     android:background="@color/material_dynamic_tertiary10"
     app:startDestination="@id/fra_main_blank">
 
+    <include app:graph="@navigation/second_graph" />
+
     <fragment
         android:id="@+id/fra_main_blank"
         android:name="com.example.playground.content.navigation.BlankFragment"
@@ -13,10 +15,12 @@
         <action
             android:id="@+id/action_fra_main_blank_to_fra_sub_blank"
             app:destination="@id/fra_sub_blank" />
-
         <action
             android:id="@+id/action_dialog_to_sub"
             app:destination="@id/fra_sub_blank"/>
+        <action
+            android:id="@+id/action_main_to_B"
+            app:destination="@id/second_graph" />
     </fragment>
 
     <fragment
@@ -32,11 +36,5 @@
 
     </fragment>
 
-<!--    <dialog-->
-<!--        android:id="@+id/dialog_fragment"-->
-<!--        android:name="com.example.playground.content.navigation.DialogBlankFragment"-->
-<!--        android:label="fragment_dialog_blank"-->
-<!--        tools:layout="@layout/fragment_dialog_blank">-->
 
-<!--    </dialog>-->
 </navigation>

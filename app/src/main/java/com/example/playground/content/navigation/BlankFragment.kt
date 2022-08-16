@@ -30,6 +30,14 @@ class BlankFragment : BaseFragment<FragmentBlankBinding, BlankViewModel>(
             dialog?.show(requireActivity().supportFragmentManager, "Fragment")
         }
 
+        /**
+         * Fragment -> 다른 Navigation
+         */
+        binding.btnAction3.setOnClickListener {
+            val action = BlankFragmentDirections.actionMainToB()
+            findNavController().navigate(action)
+        }
+
     }
 
     /**
