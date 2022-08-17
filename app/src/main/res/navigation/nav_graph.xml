@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_main_to_deep_link"
             app:destination="@id/fra_deep_link" />
+        <action
+            android:id="@+id/action_main_to_transaction"
+            app:destination="@id/fra_transaction" />
     </fragment>
 
     <fragment
@@ -62,6 +65,13 @@
             app:mimeType="application/http"
             app:uri="http://PlayGroundTest/{testStringArg}" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/fra_transaction"
+        android:name="com.example.playground.content.navigation.TransactionFragment"
+        android:label="fragment_transaction"
+        tools:layout="@layout/fragment_transaction" >
     </fragment>
 
     <!-- Global Action-->

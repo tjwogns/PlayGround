@@ -6,6 +6,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.core.view.MenuProvider
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.playground.R
 import com.example.playground.base.BaseFragment
@@ -42,6 +43,29 @@ class BlankFragment : BaseFragment<FragmentBlankBinding, BlankViewModel>(
         binding.btnAction3.setOnClickListener {
             val action = BlankFragmentDirections.actionMainToB()
             findNavController().navigate(action)
+        }
+
+        /**
+         *
+         */
+        binding.btnAction4.setOnClickListener {
+
+        }
+
+        /**
+         * 프래그먼트 대상 공유
+         */
+        binding.btnAction5.setOnClickListener {
+            val extra = FragmentNavigatorExtras(binding.ivTransaction to "image_transaction")
+
+//            val action = BlankFragmentDirections.actionMainToTransaction()
+            findNavController().navigate(
+                R.id.action_main_to_transaction,
+                null,
+                null,
+                extra
+            )
+
         }
 
     }
