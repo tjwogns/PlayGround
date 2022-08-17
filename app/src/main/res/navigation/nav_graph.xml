@@ -13,12 +13,18 @@
         android:name="com.example.playground.content.navigation.BlankFragment"
         android:label="Main Fragment"
         tools:layout="@layout/fragment_blank">
+        <!-- animation Test -->
         <action
             android:id="@+id/action_fra_main_blank_to_fra_sub_blank"
-            app:destination="@id/fra_sub_blank" />
+            app:destination="@id/fra_sub_blank"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            />
         <action
             android:id="@+id/action_dialog_to_sub"
-            app:destination="@id/fra_sub_blank"/>
+            app:destination="@id/fra_sub_blank" />
         <action
             android:id="@+id/action_main_to_B"
             app:destination="@id/second_graph" />
