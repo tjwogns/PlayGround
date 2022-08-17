@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityNavigationBinding
@@ -33,14 +34,15 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding, NavigationVie
         super.onCreate(savedInstanceState)
 
 
-        setSupportActionBar(binding.toolbar)
+//        setSupportActionBar(binding.toolbar)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_navigation) as NavHostFragment
         val navController = navHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
-        this.addMenuProvider(object: MenuProvider {
+        binding.toolbar.addMenuProvider(object: MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_navigation, menu)
             }
