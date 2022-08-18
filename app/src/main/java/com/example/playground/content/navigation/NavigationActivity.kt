@@ -40,8 +40,9 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding, NavigationVie
         val navController = navHostFragment.navController
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
+
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.toolbar.addMenuProvider(object: MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_navigation, menu)
@@ -60,6 +61,49 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding, NavigationVie
             }
 
         })
+
+        binding.bnvNavigation.setupWithNavController(navController)
+        binding.bnvNavigation.setOnItemSelectedListener {
+
+            when (it.itemId) {
+                R.id.menu_transfer -> {
+                    Toast.makeText(
+                        this@NavigationActivity, "Clicked Transfer Menu",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+                R.id.menu_history -> {
+                    Toast.makeText(
+                        this@NavigationActivity, "Clicked History Menu",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+                R.id.menu_benefit -> {
+                    Toast.makeText(
+                        this@NavigationActivity, "Clicked Benefit Menu",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+                R.id.menu_cs -> {
+                    Toast.makeText(
+                        this@NavigationActivity, "Clicked CS Menu",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+                R.id.menu_all -> {
+                    Toast.makeText(
+                        this@NavigationActivity, "Clicked All Menu",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+                else -> false
+            }
+        }
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
