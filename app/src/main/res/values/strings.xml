@@ -99,4 +99,8 @@
     <string name="stop_capture">Stop Capture</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Compose -->
+    <string name="show_less">Show less</string>
+    <string name="show_more">Show more</string>
 </resources>
