@@ -1,9 +1,7 @@
 package com.example.playground.content.compose
 
 import android.content.res.Configuration
-import android.media.Image
 import android.os.Bundle
-import android.view.Surface
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateColorAsState
@@ -22,7 +20,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.playground.R
@@ -38,15 +35,15 @@ class ComposeActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
+fun GreetingPrevious(name: String) {
     Text(text = "Hello $name!")
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun DefaultPreviewPrevious() {
     PlayGroundTheme {
-        Greeting("Android")
+        GreetingPrevious("Android")
     }
 }
 

@@ -17,6 +17,7 @@ import com.example.playground.content.activityFlag.ActivityFlagActivity
 import com.example.playground.content.algorithm.AlgorithmActivity
 import com.example.playground.content.camera.CameraActivity
 import com.example.playground.content.compose.Compose1Activity
+import com.example.playground.content.compose.ComposeCodelabActivity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.editText.EditTextActivity
 import com.example.playground.content.enum.EnumActivity
@@ -56,6 +57,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvCompose1.setOnClickListener { view ->
             startIntentActivity("Compose1", Compose1Activity::class.java)
+        }
+
+        binding.tvComposeCodelab.setOnClickListener { view ->
+            startIntentActivity("Compose Codelab", ComposeCodelabActivity::class.java)
         }
 
         binding.tvAnimate.setOnClickListener { view ->

@@ -80,6 +80,8 @@
 <!--            </intent-filter>-->
         </activity>
 
+
+        <activity android:name=".content.compose.ComposeCodelabActivity"/>
     </application>
 
 </manifest>
