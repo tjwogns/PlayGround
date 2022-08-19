@@ -82,6 +82,7 @@
 
 
         <activity android:name=".content.compose.ComposeCodelabActivity"/>
+        <activity android:name=".content.compose.ComposeExampleActivity"/>
     </application>
 
 </manifest>

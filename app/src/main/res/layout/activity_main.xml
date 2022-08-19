@@ -95,6 +95,19 @@
                     style="?attr/materialButtonOutlinedStyle" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tv_compose_example"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Compose Example"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:theme="@style/Widget.MaterialComponents.Button"
+                    app:strokeColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_compose_codelab"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="?attr/materialButtonOutlinedStyle" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/tv_animate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,7 +116,7 @@
                     android:layout_marginStart="16dp"
                     android:theme="@style/Widget.MaterialComponents.Button"
                     app:strokeColor="@color/black"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_compose_codelab"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_compose_example"
                     app:layout_constraintStart_toStartOf="parent"
                     style="?attr/materialButtonOutlinedStyle" />
 
