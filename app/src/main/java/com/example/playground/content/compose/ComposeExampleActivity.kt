@@ -16,6 +16,10 @@ import com.example.playground.content.compose.ui.theme.PlayGroundTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
+/**
+ * BottomSheet Navigation Test
+ * 참고 영상 : https://www.youtube.com/watch?v=gNzPGI9goU0
+ */
 class ComposeExampleActivity: AppCompatActivity() {
     val viewModel: ComposeViewModel by viewModel()
 
