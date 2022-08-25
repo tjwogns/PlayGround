@@ -19,6 +19,7 @@ import com.example.playground.content.camera.CameraActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.compose.ComposeCodelabActivity
 import com.example.playground.content.compose.bottomNavigation.ComposeExampleActivity
+import com.example.playground.content.compose.example.ComposeToyActivity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.editText.EditTextActivity
 import com.example.playground.content.enum.EnumActivity
@@ -82,6 +83,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvComposeExample.setOnClickListener { view ->
             startIntentActivity("Compose Example", ComposeExampleActivity::class.java)
+        }
+
+        binding.tvComposeToy.setOnClickListener { view ->
+            startIntentActivity("Compose Toy Example", ComposeToyActivity::class.java)
         }
 
         binding.tvCoordinator.setOnClickListener { view ->

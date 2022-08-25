@@ -83,6 +83,7 @@
 
         <activity android:name=".content.compose.ComposeCodelabActivity"/>
         <activity android:name=".content.compose.bottomNavigation.ComposeExampleActivity"/>
+        <activity android:name=".content.compose.example.ComposeToyActivity"/>
     </application>
 
 </manifest>
