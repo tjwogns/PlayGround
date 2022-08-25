@@ -47,8 +47,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListener() {
+
+        binding.tvStartActivityFlag.setOnClickListener { view ->
+            startIntentActivity("Start Activity Flag Test", ActivityFlagActivity::class.java)
+        }
+
+        binding.tvActivityResult.setOnClickListener { view ->
+            startIntentActivity("ActivityResult", ActivityResultActivity::class.java)
+        }
+
         binding.tvAlgorithm.setOnClickListener { view ->
             startIntentActivity("Algorithm", AlgorithmActivity::class.java)
+        }
+
+        binding.tvAnimate.setOnClickListener { view ->
+            startIntentActivity("Animate", AnimationActivity::class.java)
+        }
+
+        binding.tvCamera.setOnClickListener { view ->
+            startIntentActivity("Camera Test", CameraActivity::class.java)
         }
 
         binding.tvCompose.setOnClickListener { view ->
@@ -67,14 +84,6 @@ class MainActivity : AppCompatActivity() {
             startIntentActivity("Compose Example", ComposeExampleActivity::class.java)
         }
 
-        binding.tvAnimate.setOnClickListener { view ->
-            startIntentActivity("Animate", AnimationActivity::class.java)
-        }
-
-        binding.tvActivityResult.setOnClickListener { view ->
-            startIntentActivity("ActivityResult", ActivityResultActivity::class.java)
-        }
-
         binding.tvCoordinator.setOnClickListener { view ->
             startIntentActivity("Coordinator", CoordinatorActivity::class.java)
         }
@@ -83,75 +92,67 @@ class MainActivity : AppCompatActivity() {
             startIntentActivity("Coroutine", CoroutineActivity::class.java)
         }
 
-        binding.tvLocale.setOnClickListener { view ->
-            startIntentActivity("Locale", LocaleActivity::class.java)
-        }
-
-        binding.tvFlow.setOnClickListener { view ->
-            startIntentActivity("Flow", FlowActivity::class.java)
+        binding.tvDataStore.setOnClickListener { view ->
+            startIntentActivity("DataStore Test", DataStoreActivity::class.java)
         }
 
         binding.tvDeepLink.setOnClickListener { view ->
             startIntentActivity("DeepLink", DeepLinkActivity::class.java)
         }
 
-        binding.tvIssue.setOnClickListener { view ->
-            startIntentActivity("Issue", IssueActivity::class.java)
-        }
-
-        binding.tvNotification.setOnClickListener { view ->
-            startIntentActivity("Notification", NotificationActivity::class.java)
-        }
-
-        binding.tvSwitch.setOnClickListener { view ->
-            startIntentActivity("View Switch", SwitchActivity::class.java)
-        }
-
-        binding.tvPrint.setOnClickListener { view ->
-            startIntentActivity("Print Test", PrintActivity::class.java)
-        }
-
-        binding.tvMediaStore.setOnClickListener { view ->
-            startIntentActivity("Media Store Test", MediaStoreActivity::class.java)
-        }
-
-        binding.tvStartActivityFlag.setOnClickListener { view ->
-            startIntentActivity("Start Activity Flag Test", ActivityFlagActivity::class.java)
-        }
-
-        binding.tvDataStore.setOnClickListener { view ->
-            startIntentActivity("DataStore Test", DataStoreActivity::class.java)
-        }
-
-        binding.tvSsoTest.setOnClickListener { view ->
-        }
-
-        binding.tvIntentTest.setOnClickListener { view ->
-            startIntentActivity("Intent Test", IntentActivity::class.java)
-        }
-
-        binding.tvFileDirectoryTest.setOnClickListener { view ->
-            startIntentActivity("File Directory Test", FileDirectoryActivity::class.java)
-        }
-
-        binding.tvRx.setOnClickListener { view ->
-            startIntentActivity("RxJava Test", RxActivity::class.java)
-        }
-
         binding.tvEditTextTest.setOnClickListener { view ->
             startIntentActivity("EditText Test", EditTextActivity::class.java)
-        }
-
-        binding.tvCamera.setOnClickListener { view ->
-            startIntentActivity("Camera Test", CameraActivity::class.java)
         }
 
         binding.tvEnum.setOnClickListener { view ->
             startIntentActivity("Enum Test", EnumActivity::class.java)
         }
 
+        binding.tvFileDirectoryTest.setOnClickListener { view ->
+            startIntentActivity("File Directory Test", FileDirectoryActivity::class.java)
+        }
+
+        binding.tvFlow.setOnClickListener { view ->
+            startIntentActivity("Flow", FlowActivity::class.java)
+        }
+
+        binding.tvIntentTest.setOnClickListener { view ->
+            startIntentActivity("Intent Test", IntentActivity::class.java)
+        }
+
+        binding.tvIssue.setOnClickListener { view ->
+            startIntentActivity("Issue", IssueActivity::class.java)
+        }
+
+        binding.tvLocale.setOnClickListener { view ->
+            startIntentActivity("Locale", LocaleActivity::class.java)
+        }
+
+        binding.tvMediaStore.setOnClickListener { view ->
+            startIntentActivity("Media Store Test", MediaStoreActivity::class.java)
+        }
+
         binding.tvNavigation.setOnClickListener { view ->
             startIntentActivity("Navigation Test", NavigationActivity::class.java)
+        }
+
+        binding.tvNotification.setOnClickListener { view ->
+            startIntentActivity("Notification", NotificationActivity::class.java)
+        }
+
+        binding.tvPrint.setOnClickListener { view ->
+            startIntentActivity("Print Test", PrintActivity::class.java)
+        }
+
+        binding.tvRx.setOnClickListener { view ->
+            startIntentActivity("RxJava Test", RxActivity::class.java)
+        }
+
+        binding.tvSsoTest.setOnClickListener { view ->
+        }
+
+        binding.tvSwitch.setOnClickListener { view ->
+            startIntentActivity("View Switch", SwitchActivity::class.java)
         }
     }
 
