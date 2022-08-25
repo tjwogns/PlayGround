@@ -23,7 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.playground.R
-import com.example.playground.content.compose.ui.theme.PlayGroundTheme
+import com.example.playground.content.compose.bottomNavigation.ui.theme.PlayGroundTheme
 
 class ComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

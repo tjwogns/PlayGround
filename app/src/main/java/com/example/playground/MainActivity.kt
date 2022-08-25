@@ -18,7 +18,7 @@ import com.example.playground.content.algorithm.AlgorithmActivity
 import com.example.playground.content.camera.CameraActivity
 import com.example.playground.content.compose.Compose1Activity
 import com.example.playground.content.compose.ComposeCodelabActivity
-import com.example.playground.content.compose.ComposeExampleActivity
+import com.example.playground.content.compose.bottomNavigation.ComposeExampleActivity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.editText.EditTextActivity
 import com.example.playground.content.enum.EnumActivity
@@ -27,7 +27,6 @@ import com.example.playground.content.flow.FlowActivity
 import com.example.playground.content.intent.IntentActivity
 import com.example.playground.content.mediaStore.MediaStoreActivity
 import com.example.playground.content.navigation.NavigationActivity
-import com.example.playground.content.navigation.NavigationViewModel
 import com.example.playground.content.notification.NotificationActivity
 import com.example.playground.content.print.PrintActivity
 import com.example.playground.content.rx.RxActivity
