@@ -1,9 +1,12 @@
 package com.example.playground.content.compose.example.screen
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -17,10 +20,10 @@ import com.example.playground.content.compose.example.graph.ContentsNavGraph
 fun ContentsScreen(navController: NavHostController = rememberNavController()) {
     Scaffold(
         bottomBar = { BottomBar(navController = navController) }
-    ) {
-        println("unUse $it")
-
-        ContentsNavGraph(navController = navController)
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            ContentsNavGraph(navController = navController)
+        }
     }
 }
 
