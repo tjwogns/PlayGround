@@ -20,6 +20,6 @@ interface KaraokeApi {
     @GET("/karaoke.json")
     suspend fun getIndexWithFlow2(
         @Query("brand") brand: String
-    ): Flow<List<KaraokeDto>>
+    ): List<KaraokeDto>
 
 }

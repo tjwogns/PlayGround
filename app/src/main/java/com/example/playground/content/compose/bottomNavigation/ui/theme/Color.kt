@@ -1,4 +1,4 @@
-package com.example.playground.content.compose.ui.theme
+package com.example.playground.content.compose.bottomNavigation.ui.theme
 
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors

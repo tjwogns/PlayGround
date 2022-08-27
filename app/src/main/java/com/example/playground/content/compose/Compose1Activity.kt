@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.playground.content.compose.ui.theme.MyTheme
+import com.example.playground.content.compose.bottomNavigation.ui.theme.MyTheme
 
 class Compose1Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
