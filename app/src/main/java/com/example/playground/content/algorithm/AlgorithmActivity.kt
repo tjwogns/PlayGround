@@ -74,6 +74,17 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
 
             algorithm04(case6)
         }
+
+        binding.tvAlgorithm05.setOnClickListener {
+            val case1 = arrayOf<String>("Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan")
+            val case2 = arrayOf<String>()
+            val case3 = arrayOf<String>()
+            val case4 = arrayOf<String>()
+            val case5 = arrayOf<String>()
+            val case6 = arrayOf<String>()
+
+            algorithm05(case1)
+        }
     }
 
 
@@ -237,6 +248,45 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
     }
 
     // ============================================================================================
+    /**
+     * https://school.programmers.co.kr/learn/courses/30/lessons/42888?language=kotlin
+     * 시작 시간 :
+     * 소요 시간 :
+     */
+    private fun algorithm05(record: Array<String>): Array<String> {
+        val answer = mutableListOf<String>()
+        record
+            .map { it.split(" ") }
+            .run {
+
+                val userData = mutableMapOf<String, String>()
+                this.filter { it[0] == "Enter" || it[0] == "Change" }.iterator().forEach {
+                    userData[it[1]] = it[2]
+                }
+
+                this.filter { it[0] == "Enter" || it[0] == "Leave" }.iterator().forEach {
+                    val a =
+                    answer.add(
+                        buildResultString(
+                            keyword = it[0],
+                            nickName = userData[it[1]]!!
+                        )
+                    )
+                }
+            }
+
+
+        return answer.toTypedArray()
+    }
+
+    private fun buildResultString(keyword: String, nickName: String): String {
+        return when (keyword) {
+            "Enter" -> "${nickName}님이 들어왔습니다."
+            "Leave" -> "${nickName}님이 나갔습니다."
+            else -> ""
+
+        }
+    }
     // ============================================================================================
 
     // ============================================================================================
