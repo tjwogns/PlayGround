@@ -1,5 +1,6 @@
 package com.example.playground.content.compose.example
 
+import com.example.playground.dto.HospitalDto
 import com.example.playground.dto.KaraokeDto
 import com.example.playground.retrofit.RetrofitClient
 import com.tjwogns.presentation.base.BaseViewModel
@@ -12,6 +13,9 @@ class ComposeToyViewModel: BaseViewModel() {
     private val karaokeApi by lazy {
         RetrofitClient.karaokeApi
     }
+    private val openApi by lazy {
+        RetrofitClient.openApi
+    }
 
 //    val singInfo: Flow<List<KaraokeDto>> = emptyFlow()
 
@@ -22,6 +26,15 @@ class ComposeToyViewModel: BaseViewModel() {
                 emit(data)
 //            }
 //        }
+    }
+
+    fun getHospital(): Flow<HospitalDto> = flow {
+        val data = openApi.getHospital()
+        val resultCode = data.head?.result?.code
+        val resultMessage = data.head?.result?.message
+
+        println("!!! DEBUG !!! code: $resultCode, message: $resultMessage")
+        emit(data)
     }
 
 }
