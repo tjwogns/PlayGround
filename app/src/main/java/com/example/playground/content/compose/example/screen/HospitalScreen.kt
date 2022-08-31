@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package com.example.playground.content.compose.example.screen
 
 import android.content.Context
@@ -6,80 +8,67 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.playground.content.compose.example.ComposeToyViewModel
 import com.example.playground.dto.*
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
+@ExperimentalMaterialApi
 @Composable
 fun HospitalScreen(context: Context, data: State<HospitalResult>) {
+    val modalBottomSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
+        skipHalfExpanded = true
+    )
 
-//    Karaokes(context = context, singInfo = data.value)
-    Hospitals(context = context, hospitals = data.value)
-}
-
-@Composable
-fun Karaokes(context: Context, singInfo: List<KaraokeDto>) {
-    LazyColumn(modifier = Modifier.padding(4.dp)) {
-        items(items = singInfo) { sing ->
-            SingCard(item = sing)
-        }
+    val itemState: MutableState<HospitalRowDto> = remember {
+        mutableStateOf(HospitalRowDto())
     }
+
+    Hospitals(sheetState = modalBottomSheetState, itemState= itemState, hospitals = data.value)
+    HospitalBottomSheet(sheetState = modalBottomSheetState, item = itemState.value)
 }
 
+
 @Composable
-fun Hospitals(context: Context, hospitals: HospitalResult) {
+fun Hospitals(
+    sheetState: ModalBottomSheetState,
+    itemState: MutableState<HospitalRowDto>,
+    hospitals: HospitalResult
+) {
     LazyColumn(modifier = Modifier.padding(4.dp)) {
         items(items = hospitals.row ?: listOf()) { hospital ->
-            HospitalCard(context = context, item = hospital, itemClick = { HospitalBottomSheet(item = hospital) })
+            HospitalCard(sheetState = sheetState, itemState = itemState, item = hospital)
         }
-    }
-}
-
-@Composable
-fun SingCard(item: KaraokeDto) {
-    Card(
-        backgroundColor = MaterialTheme.colors.primary,
-        modifier = Modifier
-            .padding(vertical = 4.dp, horizontal = 8.dp)
-            .fillMaxWidth()
-    ) {
-         Column(
-             modifier = Modifier
-                 .padding(12.dp)
-         ) {
-            Text(text = item.brand)
-            Text(text = "번  호 : ${item.no}")
-            Text(text = "제  목 : ${item.title}")
-            Text(text = "가  수 : ${item.singer}")
-            Text(text = "작곡가 : ${item.composer}")
-            Text(text = "작사가 : ${item.lyricist}")
-            Text(text = "발매일 : ${item.release}")
-         }
     }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HospitalCard(
-    context: Context,
-    item: HospitalRowDto,
-    itemClick: (@Composable () -> Unit)? = null
+    sheetState: ModalBottomSheetState,
+    itemState: MutableState<HospitalRowDto>,
+    item: HospitalRowDto
 ) {
+
+    val coroutineScope = rememberCoroutineScope()
     Card(
         backgroundColor = MaterialTheme.colors.primary,
         modifier = Modifier
             .padding(vertical = 4.dp, horizontal = 8.dp)
             .fillMaxWidth(),
         onClick = {
-            println("!!! DEBUG Clicked !!!")
-//            itemClick?.invoke()
-//            HospitalBottomSheet(item = item)
+            coroutineScope.launch {
+                itemState.value = item
+                sheetState.show()
+            }
+
         }
     ) {
          Column(
@@ -97,9 +86,12 @@ fun HospitalCard(
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun HospitalBottomSheet(item: HospitalRowDto) {
+fun HospitalBottomSheet(
+    sheetState: ModalBottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden),
+    item: HospitalRowDto
+) {
     ModalBottomSheetLayout(
-        sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Expanded),
+        sheetState = sheetState,
         sheetContent = {
             Column() {
 //                Text(text = "인허가일자 : ${item.licenseDate}")
@@ -117,12 +109,12 @@ fun HospitalBottomSheet(item: HospitalRowDto) {
 //                Text(text = "X 좌표값 : ${item.xCoordinate}")
 //                Text(text = "Y 좌표값 : ${item.yCoordinate}")
 //                Text(text = "총 종업원 수 : ${item.totalEmployeeCount}")
-                HospitalDetailCard("인허가일자", item.licenseDate ?: "")
-                HospitalDetailCard("영업상태구분코드", item.businessStateCode ?: "")
+//                HospitalDetailCard("인허가일자", item.licenseDate ?: "")
+//                HospitalDetailCard("영업상태구분코드", item.businessStateCode ?: "")
                 HospitalDetailCard("영업상태명", item.businessStateName ?: "")
                 HospitalDetailCard("소재지 전화번호", item.localFactoryTelNumber ?: "")
-                HospitalDetailCard("소재지 면적정보", item.localAreaInfo ?: "")
-                HospitalDetailCard("소재지 우편번호", item.localZipCode ?: "")
+//                HospitalDetailCard("소재지 면적정보", item.localAreaInfo ?: "")
+//                HospitalDetailCard("소재지 우편번호", item.localZipCode ?: "")
                 HospitalDetailCard("도로명 우편번호", item.roadNameZipCode ?: "")
                 HospitalDetailCard("도로명 주소", item.refineRoadNameAddress ?: "")
                 HospitalDetailCard("지번 주소", item.refineLocalAddress ?: "")
@@ -131,11 +123,10 @@ fun HospitalBottomSheet(item: HospitalRowDto) {
                 HospitalDetailCard("WGS84 경도", item.longitude ?: "")
                 HospitalDetailCard("X 좌표값", item.xCoordinate ?: "")
                 HospitalDetailCard("Y 좌표값", item.yCoordinate ?: "")
-                HospitalDetailCard("총 종업원 수", item.totalEmployeeCount ?: "")
+//                HospitalDetailCard("총 종업원 수", item.totalEmployeeCount ?: "")
             }
         }
     ) {
-
     }
 }
 
@@ -160,7 +151,8 @@ fun HospitalDetailCard(key: String, value: String) {
                     .weight(1f)
                     .padding(4.dp),
                 text = key,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.White
             )
 
             Text(
@@ -169,7 +161,8 @@ fun HospitalDetailCard(key: String, value: String) {
                     .weight(3f)
                     .background(MaterialTheme.colors.primary)
                     .padding(4.dp),
-                text = value
+                text = value,
+                color = Color.White
             )
         }
     }

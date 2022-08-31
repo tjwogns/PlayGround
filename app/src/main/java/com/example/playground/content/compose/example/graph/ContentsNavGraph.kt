@@ -16,7 +16,6 @@ import com.example.playground.dto.HosptlDto
 
 @Composable
 fun ContentsNavGraph(navController: NavHostController, viewModel: ComposeToyViewModel = ComposeToyViewModel()) {
-    println("!!! DEBUG !!! Called???")
     val context = LocalContext.current
 
 //    val data = viewModel.getSingInfo().collectAsState(initial = listOf())
