@@ -11,6 +11,8 @@ import com.example.playground.content.compose.example.ComposeToyViewModel
 import com.example.playground.content.compose.example.ToyBottomNavigation
 import com.example.playground.content.compose.example.screen.HospitalScreen
 import com.example.playground.dto.HospitalDto
+import com.example.playground.dto.HospitalResult
+import com.example.playground.dto.HosptlDto
 
 @Composable
 fun ContentsNavGraph(navController: NavHostController, viewModel: ComposeToyViewModel = ComposeToyViewModel()) {
@@ -18,7 +20,7 @@ fun ContentsNavGraph(navController: NavHostController, viewModel: ComposeToyView
     val context = LocalContext.current
 
 //    val data = viewModel.getSingInfo().collectAsState(initial = listOf())
-    val data = viewModel.getHospital().collectAsState(initial = HospitalDto())
+    val data = viewModel.getHospital().collectAsState(initial = HospitalResult())
 
     NavHost(
         navController = navController,

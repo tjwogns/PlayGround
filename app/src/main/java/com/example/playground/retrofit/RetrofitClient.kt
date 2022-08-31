@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
@@ -25,7 +26,11 @@ object RetrofitClient {
             setLevel(HttpLoggingInterceptor.Level.BODY)
         }
 
-        val client = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build()
+        val client = OkHttpClient
+            .Builder()
+            .addInterceptor(httpLoggingInterceptor)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .build()
 
         val retrofit = Retrofit.Builder()
             .baseUrl(GG_OPENAPI_BASE_URL)

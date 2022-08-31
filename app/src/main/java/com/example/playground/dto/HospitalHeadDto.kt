@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 data class HospitalHeadDto(
     @SerializedName("list_total_count")
-    val totalCount: Int = 0,
+    val totalCount: Int? = 0,
 
     @SerializedName("RESULT")
-    val result: HospitalHeadResultDto,
+    val result: HospitalHeadResultDto? = null,
 
     @SerializedName("api_version")
     val apiVersion: String? = "0.0"
