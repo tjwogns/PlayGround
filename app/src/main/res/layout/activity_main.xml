@@ -350,7 +350,7 @@
                     android:layout_marginStart="16dp"
                     android:theme="@style/Widget.MaterialComponents.Button"
                     app:strokeColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_rx"
+                    app:layout_constraintTop_toBottomOf="@id/tv_rx"
                     app:layout_constraintStart_toStartOf="parent"
                     style="?attr/materialButtonOutlinedStyle" />
 
