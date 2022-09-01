@@ -17,20 +17,6 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/tv_start_activity_flag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Start Activity Flag"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="16dp"
-                    android:theme="@style/Widget.MaterialComponents.Button"
-                    app:strokeColor="@color/black"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    style="?attr/materialButtonOutlinedStyle" />
-
-
-                <com.google.android.material.button.MaterialButton
                     android:id="@+id/tv_activity_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -39,7 +25,7 @@
                     android:layout_marginStart="16dp"
                     android:theme="@style/Widget.MaterialComponents.Button"
                     app:strokeColor="@color/black"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_start_activity_flag"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     style="?attr/materialButtonOutlinedStyle" />
 
@@ -356,6 +342,19 @@
                     style="?attr/materialButtonOutlinedStyle" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tv_start_activity_flag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start Activity Flag"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:theme="@style/Widget.MaterialComponents.Button"
+                    app:strokeColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_rx"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="?attr/materialButtonOutlinedStyle" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/tv_sso_test"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -364,7 +363,7 @@
                     android:layout_marginStart="16dp"
                     android:theme="@style/Widget.MaterialComponents.Button"
                     app:strokeColor="@color/black"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_rx"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_start_activity_flag"
                     app:layout_constraintStart_toStartOf="parent"
                     style="?attr/materialButtonOutlinedStyle" />
 
