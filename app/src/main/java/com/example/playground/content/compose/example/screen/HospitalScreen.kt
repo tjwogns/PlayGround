@@ -3,14 +3,22 @@
 package com.example.playground.content.compose.example.screen
 
 import android.content.Context
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -18,13 +26,14 @@ import com.example.playground.content.compose.example.ComposeToyViewModel
 import com.example.playground.dto.*
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlin.math.round
 
 @ExperimentalMaterialApi
 @Composable
 fun HospitalScreen(context: Context, data: State<HospitalResult>) {
     val modalBottomSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
-        skipHalfExpanded = true
+        skipHalfExpanded = true,
     )
 
     val itemState: MutableState<HospitalRowDto> = remember {
@@ -90,31 +99,27 @@ fun HospitalBottomSheet(
     sheetState: ModalBottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden),
     item: HospitalRowDto
 ) {
+    val scrollState = rememberScrollState()
+
+    val configuration = LocalConfiguration.current
+    val screenHeight = configuration.screenHeightDp * 0.7
+
     ModalBottomSheetLayout(
         sheetState = sheetState,
+        sheetShape = RoundedCornerShape(8.dp, 8.dp, 0.dp, 0.dp),
         sheetContent = {
-            Column() {
-//                Text(text = "인허가일자 : ${item.licenseDate}")
-//                Text(text = "영업상태구분코드 : ${item.businessStateCode}")
-//                Text(text = "영업상태명 : ${item.businessStateName}")
-//                Text(text = "소재지 전화번호 : ${item.localFactoryTelNumber}")
-//                Text(text = "소재지 면적정보 : ${item.localAreaInfo}")
-//                Text(text = "소재지 우편번호 : ${item.localZipCode}")
-//                Text(text = "도로명 우편번호 : ${item.roadNameZipCode}")
-//                Text(text = "도로명 주소 : ${item.refineRoadNameAddress}")
-//                Text(text = "지번 주소 : ${item.refineLocalAddress}")
-//                Text(text = "우편 번호 : ${item.refineZipCode}")
-//                Text(text = "WGS84 위도 : ${item.latitude}")
-//                Text(text = "WGS84 경도 : ${item.longitude}")
-//                Text(text = "X 좌표값 : ${item.xCoordinate}")
-//                Text(text = "Y 좌표값 : ${item.yCoordinate}")
-//                Text(text = "총 종업원 수 : ${item.totalEmployeeCount}")
+
+            Column(
+                Modifier
+                    .height(screenHeight.dp)
+                    .verticalScroll(scrollState)
+            ) {
 //                HospitalDetailCard("인허가일자", item.licenseDate ?: "")
 //                HospitalDetailCard("영업상태구분코드", item.businessStateCode ?: "")
                 HospitalDetailCard("영업상태명", item.businessStateName ?: "")
                 HospitalDetailCard("소재지 전화번호", item.localFactoryTelNumber ?: "")
-//                HospitalDetailCard("소재지 면적정보", item.localAreaInfo ?: "")
-//                HospitalDetailCard("소재지 우편번호", item.localZipCode ?: "")
+                HospitalDetailCard("소재지 면적정보", item.localAreaInfo ?: "")
+                HospitalDetailCard("소재지 우편번호", item.localZipCode ?: "")
                 HospitalDetailCard("도로명 우편번호", item.roadNameZipCode ?: "")
                 HospitalDetailCard("도로명 주소", item.refineRoadNameAddress ?: "")
                 HospitalDetailCard("지번 주소", item.refineLocalAddress ?: "")
@@ -128,6 +133,7 @@ fun HospitalBottomSheet(
         }
     ) {
     }
+
 }
 
 @Preview
@@ -147,9 +153,10 @@ fun HospitalDetailCard(key: String, value: String) {
             Text(
                 modifier = Modifier
                     .padding(4.dp)
-                    .background(MaterialTheme.colors.primary)
-                    .weight(1f)
-                    .padding(4.dp),
+                    .background(MaterialTheme.colors.primary, RoundedCornerShape(4.dp))
+                    .weight(3f)
+                    .padding(4.dp)
+                ,
                 text = key,
                 textAlign = TextAlign.Center,
                 color = Color.White
@@ -158,8 +165,8 @@ fun HospitalDetailCard(key: String, value: String) {
             Text(
                 modifier = Modifier
                     .padding(4.dp)
-                    .weight(3f)
-                    .background(MaterialTheme.colors.primary)
+                    .weight(5f)
+                    .background(MaterialTheme.colors.primary, RoundedCornerShape(4.dp))
                     .padding(4.dp),
                 text = value,
                 color = Color.White

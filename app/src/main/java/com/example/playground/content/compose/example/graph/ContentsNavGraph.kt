@@ -1,5 +1,6 @@
 package com.example.playground.content.compose.example.graph
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
@@ -14,6 +15,7 @@ import com.example.playground.dto.HospitalDto
 import com.example.playground.dto.HospitalResult
 import com.example.playground.dto.HosptlDto
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ContentsNavGraph(navController: NavHostController, viewModel: ComposeToyViewModel = ComposeToyViewModel()) {
     val context = LocalContext.current
