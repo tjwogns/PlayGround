@@ -310,21 +310,28 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
         // 합이 홀수면 -1 리턴
         if ((queue1.sum() + queue2.sum()) % 2 != 0) return -1
 
+        // 목표 값 계산
         val target = (queue1.sum().toLong() + queue2.sum().toLong()) / 2
+
+        // maxCount
         val maxCount = queue1.size * 3
 
-
-        val queue1ToArray = LinkedList(queue1.toMutableList())
+        // Queue로 변환
+       val queue1ToArray = LinkedList(queue1.toMutableList())
         val queue2ToArray = LinkedList(queue2.toMutableList())
 
+        // 합값 저장 ( 한 이유 계속 sum()함수 돌리기에는 queue돌면서 계산하는 시간이 너무 오래걸림)
         var sum1 = queue1ToArray.sum().toLong()
         var sum2 = queue2ToArray.sum().toLong()
 
         var answer = 0
 
         for (t in 0 .. maxCount) {
+            // target값과 같으면 끝
             if (sum1 == target) {
                 break
+
+            // 합이 큰 큐에서 빼서 작은 큐로 넣어 줌.
             } else if (sum1 > target) {
                 val popValue = queue1ToArray.remove()
                 queue2ToArray.add(popValue)
@@ -344,6 +351,7 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
 
         }
 
+        // max Count만큼 다 돌렸는데 합이 같지 않으면 -1
         if (queue1ToArray.sum() != queue2ToArray.sum()) return -1
         return answer
     }
