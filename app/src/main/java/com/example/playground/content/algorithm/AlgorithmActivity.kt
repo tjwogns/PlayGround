@@ -8,6 +8,8 @@ import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityAlgorithmBinding
 import kotlinx.coroutines.selects.select
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
+import kotlin.math.min
 
 class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewModel>(
     R.layout.activity_algorithm
@@ -21,7 +23,6 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
         setListener()
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     private fun setListener() {
         binding.tvAlgorithm01.setOnClickListener {
             val idList = arrayOf("muzi", "frodo", "apeach", "neo")
@@ -32,7 +33,7 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
 //            val report = arrayOf("ryan con", "ryan con", "ryan con", "ryan con")
 //            val k = 3
 
-            algorithm01_02(idList, report, k)
+//            algorithm01_02(idList, report, k)
         }
 
         binding.tvAlgorithm02.setOnClickListener {
@@ -84,6 +85,16 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
             val case6 = arrayOf<String>()
 
             algorithm05(case1)
+        }
+
+        binding.tvAlgorithm06.setOnClickListener {
+            val case1 = intArrayOf(3,2,7,2) to intArrayOf(4,6,5,1)
+            val case2 = intArrayOf(1,2,1,2) to intArrayOf(1,10,1,2)
+            val case3 = intArrayOf(1,1) to intArrayOf(1,5)
+
+//            algorithm06()
+
+            algorithm06(case2.first, case2.second)
         }
     }
 
@@ -248,24 +259,24 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
     }
 
     // ============================================================================================
-    /**
+    /*
      * https://school.programmers.co.kr/learn/courses/30/lessons/42888?language=kotlin
      * 시작 시간 :
      * 소요 시간 :
      */
     private fun algorithm05(record: Array<String>): Array<String> {
         val answer = mutableListOf<String>()
+
         record
             .map { it.split(" ") }
             .run {
 
                 val userData = mutableMapOf<String, String>()
-                this.filter { it[0] == "Enter" || it[0] == "Change" }.iterator().forEach {
+                this.filter { it[0] == "Enter" || it[0] == "Change" }.asSequence().forEach {
                     userData[it[1]] = it[2]
                 }
 
-                this.filter { it[0] == "Enter" || it[0] == "Leave" }.iterator().forEach {
-                    val a =
+                this.filter { it[0] == "Enter" || it[0] == "Leave" }.asSequence().forEach {
                     answer.add(
                         buildResultString(
                             keyword = it[0],
@@ -288,7 +299,54 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
         }
     }
     // ============================================================================================
+// ============================================================================================
+    /*
+     * https://school.programmers.co.kr/learn/courses/30/lessons/42888?language=kotlin
+     * 시작 시간 :
+     * 소요 시간 :
+     */
+    private fun algorithm06(queue1: IntArray, queue2: IntArray): Int {
 
+        // 합이 홀수면 -1 리턴
+        if ((queue1.sum() + queue2.sum()) % 2 != 0) return -1
+
+        val target = (queue1.sum().toLong() + queue2.sum().toLong()) / 2
+        val maxCount = queue1.size * 3
+
+
+        val queue1ToArray = LinkedList(queue1.toMutableList())
+        val queue2ToArray = LinkedList(queue2.toMutableList())
+
+        var sum1 = queue1ToArray.sum().toLong()
+        var sum2 = queue2ToArray.sum().toLong()
+
+        var answer = 0
+
+        for (t in 0 .. maxCount) {
+            if (sum1 == target) {
+                break
+            } else if (sum1 > target) {
+                val popValue = queue1ToArray.remove()
+                queue2ToArray.add(popValue)
+                sum1 -= popValue
+                sum2 += popValue
+
+                answer += 1
+            } else {
+                val popValue = queue2ToArray.remove()
+                queue1ToArray.add(popValue)
+
+                sum1 += popValue
+                sum2 -= popValue
+
+                answer += 1
+            }
+
+        }
+
+        if (queue1ToArray.sum() != queue2ToArray.sum()) return -1
+        return answer
+    }
     // ============================================================================================
 
     // ============================================================================================
