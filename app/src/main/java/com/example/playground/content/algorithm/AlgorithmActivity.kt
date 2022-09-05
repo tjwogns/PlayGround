@@ -6,10 +6,9 @@ import androidx.annotation.RequiresApi
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
 import com.example.playground.databinding.ActivityAlgorithmBinding
-import kotlinx.coroutines.selects.select
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
-import kotlin.math.min
+import kotlin.collections.ArrayDeque
 
 class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewModel>(
     R.layout.activity_algorithm
@@ -334,6 +333,49 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
                 answer += 1
             } else {
                 val popValue = queue2ToArray.remove()
+                queue1ToArray.add(popValue)
+
+                sum1 += popValue
+                sum2 -= popValue
+
+                answer += 1
+            }
+
+        }
+
+        if (queue1ToArray.sum() != queue2ToArray.sum()) return -1
+        return answer
+    }
+
+    private fun algorithm06_01(queue1: IntArray, queue2: IntArray): Int {
+
+        // 합이 홀수면 -1 리턴
+        if ((queue1.sum() + queue2.sum()) % 2 != 0) return -1
+
+        val target = (queue1.sum().toLong() + queue2.sum().toLong()) / 2
+        val maxCount = queue1.size * 3
+
+
+        val queue1ToArray = ArrayDeque(queue1.toMutableList())
+        val queue2ToArray = ArrayDeque(queue2.toMutableList())
+
+        var sum1 = queue1ToArray.sum().toLong()
+        var sum2 = queue2ToArray.sum().toLong()
+
+        var answer = 0
+
+        for (t in 0 .. maxCount) {
+            if (sum1 == target) {
+                break
+            } else if (sum1 > target) {
+                val popValue = queue1ToArray.removeFirst()
+                queue2ToArray.add(popValue)
+                sum1 -= popValue
+                sum2 += popValue
+
+                answer += 1
+            } else {
+                val popValue = queue2ToArray.removeFirst()
                 queue1ToArray.add(popValue)
 
                 sum1 += popValue
