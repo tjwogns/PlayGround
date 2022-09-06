@@ -15,10 +15,10 @@ public class AlgorithmJavaTest {
         String skill = "CBD";
         String[] skill_trees = new String[] {"BACDE", "CBADF", "AECB", "BDA"};
 
-        solution2(skill, skill_trees);
+        solution07_2(skill, skill_trees);
     }
 
-    public int solution(String skill, String[] skill_trees) {
+    public int solution07(String skill, String[] skill_trees) {
         int answer = 0;
 
         ArrayList<String> skillArray = new ArrayList<>(Arrays.asList(skill.split("")));
@@ -51,7 +51,7 @@ public class AlgorithmJavaTest {
         return answer;
     }
 
-    public int solution2(String skill, String[] skill_trees) {
+    public int solution07_2(String skill, String[] skill_trees) {
         int answer = 0;
 
         ArrayList<String> skillArray = new ArrayList<>(Arrays.asList(skill.split("")));
