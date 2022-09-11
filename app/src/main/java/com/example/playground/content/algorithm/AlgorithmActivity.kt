@@ -317,7 +317,7 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
         val maxCount = queue1.size * 3
 
         // Queue로 변환
-       val queue1ToArray = LinkedList(queue1.toMutableList())
+        val queue1ToArray = LinkedList(queue1.toMutableList())
         val queue2ToArray = LinkedList(queue2.toMutableList())
 
         // 합값 저장 ( 한 이유 계속 sum()함수 돌리기에는 queue돌면서 계산하는 시간이 너무 오래걸림)
