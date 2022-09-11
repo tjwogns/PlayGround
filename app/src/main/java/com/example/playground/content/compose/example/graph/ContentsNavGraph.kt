@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.example.playground.content.compose.bottomNavigation.ui.ScreenContent
 import com.example.playground.content.compose.example.ComposeToyViewModel
 import com.example.playground.content.compose.example.ToyBottomNavigation
+import com.example.playground.content.compose.example.screen.HomeScreen
 import com.example.playground.content.compose.example.screen.HospitalScreen
 import com.example.playground.dto.HospitalDto
 import com.example.playground.dto.HospitalResult
@@ -29,10 +30,7 @@ fun ContentsNavGraph(navController: NavHostController, viewModel: ComposeToyView
         startDestination = ToyBottomNavigation.Home.route
     ) {
         composable(route = ToyBottomNavigation.Home.route) {
-            ScreenContent(name = "CONTENTS HOME !!!") {
-
-            }
-
+            HomeScreen(navController)
         }
         composable(route = ToyBottomNavigation.Hospital.route) {
             HospitalScreen(context, data)
