@@ -153,6 +153,15 @@ dependencies {
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
+    //==================== Security ============================
+    implementation("androidx.security:security-crypto:1.0.0")
+    // For Identity Credential APIs
+    implementation("androidx.security:security-identity-credential:1.0.0-alpha03")
+    // For App Authentication APIs
+    implementation("androidx.security:security-app-authenticator:1.0.0-alpha02")
+    // For App Authentication API testing
+    androidTestImplementation("androidx.security:security-app-authenticator:1.0.0-alpha01")
+
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
