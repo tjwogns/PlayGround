@@ -1,6 +1,7 @@
 package com.example.playground.content.print
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import com.example.playground.R
 import com.example.playground.base.BaseActivity
@@ -31,7 +32,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         }
 
         binding.tvPrint2.setOnClickListener {
-            printTest04()
+            printTest05()
         }
 
         binding.tvXmlParse.setOnClickListener {
@@ -95,6 +96,23 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         println("!!! DEBUG DateTime.now().millisOfDay().withMillisOfDay(0).millis : ${DateTime.now().withMillisOfDay(0).millis} !!!")
         println("!!! DEBUG DateTime.now().dayOfWeek().get() : ${DateTime.now().dayOfWeek().get()} !!!")
         println("!!! DEBUG DateTime.now().year : ${DateTime.now().year} !!!")
+    }
+
+    /**
+     * Uri Param Test
+     */
+    private fun printTest05() {
+        val url = "https://github.com/tjwogns?a=1&b=2&c=3"
+
+        val uri = Uri.parse(url)
+        val paramKey = uri.queryParameterNames
+        paramKey.forEachIndexed { index, s ->
+            println("!!! DEBUG !!! param[$index] : $s")
+        }
+
+        paramKey.forEachIndexed { index, s ->
+            println("!!! DEBUG !!! param[$s].value : ${uri.getQueryParameter(s)}")
+        }
     }
 
 
