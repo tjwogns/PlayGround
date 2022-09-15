@@ -32,8 +32,19 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         }
 
         binding.tvPrint2.setOnClickListener {
-            printTest05()
+            printTest04()
         }
+
+        binding.tvPrint3.setOnClickListener {
+            val url1 = "https://github.com/tjwogns?a=1&b=2&c=3"
+            val url2 = "https://github.com/tjwogns"
+            val url3 = "https://github.com/tjwogns?iframe=Y&a=1&b=2&c=3"
+
+            printTest05(url1)
+            printTest05(url2)
+            printTest05(url3)
+        }
+
 
         binding.tvXmlParse.setOnClickListener {
             println("!!! START PARSE !!!")
@@ -101,11 +112,12 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
     /**
      * Uri Param Test
      */
-    private fun printTest05() {
-        val url = "https://github.com/tjwogns?a=1&b=2&c=3"
+    private fun printTest05(url: String) {
+        println("!!!!!!!!!!!!!!!!!! DEBUG !!! target url [$url] !!!!!!!!!!!!!!!!!!")
 
         val uri = Uri.parse(url)
         val paramKey = uri.queryParameterNames
+
         paramKey.forEachIndexed { index, s ->
             println("!!! DEBUG !!! param[$index] : $s")
         }
@@ -113,6 +125,28 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         paramKey.forEachIndexed { index, s ->
             println("!!! DEBUG !!! param[$s].value : ${uri.getQueryParameter(s)}")
         }
+
+
+        val urlStringBuilder = StringBuilder(url).apply {
+            if (paramKey.isEmpty()) {
+                println("!!! DEBUG !!! printTest05 url param empty, add '?'")
+                this.append('?')
+            } else {
+                this.append("&")
+            }
+            if (true) {
+                this.append("id=${"paramA"}")
+                this.append("&home_id=${"paramB"}")
+            }
+            this.append("&source_country=${"paramC"}")
+            this.append("&destination_country=${"paramD"}")
+            if (!paramKey.contains("iframe")) {
+                println("!!! DEBUG !!! printTest05 not exist 'iframe', add 'iframe'")
+                this.append("&iframe=Y")
+            }
+        }
+
+        println("!!! DEBUG !!! Output String [$urlStringBuilder]")
     }
 
 
