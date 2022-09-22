@@ -16,12 +16,12 @@ class CryptoManager {
         load(null)
     }
 
-    private val encryptCipher = Cipher.getInstance("TRANSFORMATION").apply {
+    private val encryptCipher = Cipher.getInstance(TRANSFORMATION).apply {
         init(Cipher.ENCRYPT_MODE, getKey())
     }
 
     private fun getDecryptCipherForIv(iv: ByteArray): Cipher {
-        return Cipher.getInstance("TRANSFORMATION").apply {
+        return Cipher.getInstance(TRANSFORMATION).apply {
             init(Cipher.DECRYPT_MODE, getKey(), IvParameterSpec(iv))
         }
     }
@@ -32,14 +32,14 @@ class CryptoManager {
     }
 
     private fun createKey(): SecretKey {
-        return KeyGenerator.getInstance("ALGORITHM").apply {
+        return KeyGenerator.getInstance(ALGORITHM).apply {
             init(
                 KeyGenParameterSpec.Builder(
                     "secret",
                     KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
                 )
-                    .setBlockModes("BLOCK_MODE")
-                    .setEncryptionPaddings("PADDING")
+                    .setBlockModes(BLOCK_MODE)
+                    .setEncryptionPaddings(PADDING)
                     .setUserAuthenticationRequired(false)
                     .setRandomizedEncryptionRequired(true)
                     .build()

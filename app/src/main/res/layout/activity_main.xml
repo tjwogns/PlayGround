@@ -173,6 +173,19 @@
                     style="?attr/materialButtonOutlinedStyle" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tv_data_store_encrypt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Store Encrypt Test"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:theme="@style/Widget.MaterialComponents.Button"
+                    app:strokeColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_data_store"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="?attr/materialButtonOutlinedStyle" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/tv_deep_link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -181,7 +194,7 @@
                     android:layout_marginStart="16dp"
                     android:theme="@style/Widget.MaterialComponents.Button"
                     app:strokeColor="@color/black"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_data_store"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_data_store_encrypt"
                     app:layout_constraintStart_toStartOf="parent"
                     style="?attr/materialButtonOutlinedStyle" />
 
