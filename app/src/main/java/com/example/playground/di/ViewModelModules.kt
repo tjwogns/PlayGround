@@ -6,6 +6,7 @@ import com.example.playground.content.camera.CameraViewModel
 import com.example.playground.content.compose.ComposeViewModel
 import com.example.playground.content.coroutine.CoroutineViewModel
 import com.example.playground.content.dataStore.DataStoreViewModel
+import com.example.playground.content.dateTime.DateTimeViewModel
 import com.example.playground.content.deeplink.DeepLinkViewModel
 import com.example.playground.content.editText.EditTextViewModel
 import com.example.playground.content.enum.EnumViewModel
@@ -53,4 +54,5 @@ val viewModelModule = module {
     viewModel { NavigationViewModel() }
     viewModel { BlankViewModel() }
     viewModel { ComposeViewModel() }
+    viewModel { DateTimeViewModel() }
 }

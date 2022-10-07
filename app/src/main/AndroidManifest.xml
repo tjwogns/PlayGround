@@ -85,6 +85,7 @@
         <activity android:name=".content.compose.ComposeCodelabActivity"/>
         <activity android:name=".content.compose.bottomNavigation.ComposeExampleActivity"/>
         <activity android:name=".content.compose.example.ComposeToyActivity"/>
+        <activity android:name=".content.dateTime.DateTimeActivity"/>
     </application>
 
 </manifest>

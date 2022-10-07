@@ -22,6 +22,7 @@ import com.example.playground.content.compose.bottomNavigation.ComposeExampleAct
 import com.example.playground.content.compose.example.ComposeToyActivity
 import com.example.playground.content.dataStore.DataStoreActivity
 import com.example.playground.content.dataStore.DataStoreEncryptActivity
+import com.example.playground.content.dateTime.DateTimeActivity
 import com.example.playground.content.editText.EditTextActivity
 import com.example.playground.content.enum.EnumActivity
 import com.example.playground.content.fileDirectory.FileDirectoryActivity
@@ -104,6 +105,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvDataStoreEncrypt.setOnClickListener { view ->
             startIntentActivity("DataStore Encrypt Test", DataStoreEncryptActivity::class.java)
+        }
+
+        binding.tvDateTime.setOnClickListener { view ->
+            startIntentActivity("DateTime Test", DateTimeActivity::class.java)
         }
 
         binding.tvDeepLink.setOnClickListener { view ->
