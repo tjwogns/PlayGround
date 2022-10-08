@@ -95,6 +95,14 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
 
             algorithm06(case2.first, case2.second)
         }
+
+        binding.tvAlgorithm07.setOnClickListener {
+            val case1 = 80 to (arrayOf(intArrayOf(80, 20), intArrayOf(50, 40), intArrayOf(30,10)))
+            val case2 = 80 to (arrayOf(intArrayOf(80, 20), intArrayOf(80, 60), intArrayOf(80, 10), intArrayOf(50, 40), intArrayOf(50, 10), intArrayOf(50, 50), intArrayOf(30,10)))
+
+            algorithm08(case2.first, case2.second)
+
+        }
     }
 
 
@@ -398,7 +406,38 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
         return answer
     }
     // ============================================================================================
+    /**
+     * https://school.programmers.co.kr/learn/courses/30/lessons/87946
+     */
+    private val visited8 = BooleanArray(8)
+    private var count8 = 0
+    private var answer8 = 0
 
+    private fun algorithm08(k: Int, dungeons: Array<IntArray>): Int {
+        for ( i in dungeons.indices) {
+            clearDungeons(k, i, dungeons)
+        }
+
+        return answer8
+    }
+
+    private fun clearDungeons(k: Int, dungeonPosition: Int, dungeons: Array<IntArray>) {
+        visited8[dungeonPosition] = true
+        count8++
+
+        if (answer8 < count8) answer8 = count8
+
+        for (i in dungeons.indices) {
+            val leavingsK = k - dungeons[dungeonPosition][1]
+
+            if (!visited8[i] && (dungeons[i][0] <= leavingsK)) {
+                clearDungeons(leavingsK, i, dungeons)
+            }
+        }
+
+        visited8[dungeonPosition] = false
+        count8 --
+    }
     // ============================================================================================
 
     // ============================================================================================
