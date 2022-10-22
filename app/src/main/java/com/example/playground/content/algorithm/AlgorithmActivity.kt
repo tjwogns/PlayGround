@@ -96,11 +96,20 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
             algorithm06(case2.first, case2.second)
         }
 
-        binding.tvAlgorithm07.setOnClickListener {
+        binding.tvAlgorithm08.setOnClickListener {
             val case1 = 80 to (arrayOf(intArrayOf(80, 20), intArrayOf(50, 40), intArrayOf(30,10)))
             val case2 = 80 to (arrayOf(intArrayOf(80, 20), intArrayOf(80, 60), intArrayOf(80, 10), intArrayOf(50, 40), intArrayOf(50, 10), intArrayOf(50, 50), intArrayOf(30,10)))
 
             algorithm08(case2.first, case2.second)
+
+        }
+
+        binding.tvAlgorithm09.setOnClickListener {
+            val case1 = "AAAAE"
+            val case2 = "AAAE"
+            val case3 = "I"
+            val case4 = "EIO"
+            algorithm09(case1)
 
         }
     }
@@ -410,11 +419,11 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
      * https://school.programmers.co.kr/learn/courses/30/lessons/87946
      */
     private val visited8 = BooleanArray(8)
-    private var count8 = 0
     private var answer8 = 0
+    private var count8 = 0
 
     private fun algorithm08(k: Int, dungeons: Array<IntArray>): Int {
-        for ( i in dungeons.indices) {
+        for (i in dungeons.indices) {
             clearDungeons(k, i, dungeons)
         }
 
@@ -440,6 +449,40 @@ class AlgorithmActivity: BaseActivity<ActivityAlgorithmBinding, AlgorithmViewMod
     }
     // ============================================================================================
 
+    /**
+     * https://school.programmers.co.kr/learn/courses/30/lessons/84512
+     */
+    private var answer9 = 0
+    private var data9 = StringBuilder()
+    private val alphabet = listOf("A", "E", "I", "O", "U")
+    private var isFind = false
+
+    fun algorithm09(word: String): Int {
+
+        findWord(0, word)
+        println("!!! DEBUG !!! $answer9")
+        return answer9
+    }
+
+    fun findWord(length: Int, word: String) {
+        if (length > 5) {
+            answer9--
+            return
+        }
+
+        if (word == data9.toString()) {
+            isFind = true
+            return
+        }
+
+        for (a in alphabet) {
+            if (isFind) return
+            answer9++
+            data9.append(a)
+            findWord(length + 1, word)
+            data9.deleteAt(data9.lastIndex)
+        }
+    }
     // ============================================================================================
 
     // ============================================================================================
