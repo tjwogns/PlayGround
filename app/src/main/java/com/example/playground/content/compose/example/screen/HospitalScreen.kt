@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.playground.content.compose.example.ComposeToyViewModel
 import com.example.playground.dto.*
 import kotlinx.coroutines.coroutineScope
@@ -40,8 +41,14 @@ fun HospitalScreen(context: Context, data: State<HospitalResult>) {
         mutableStateOf(HospitalRowDto())
     }
 
+    val dialogState = remember { mutableStateOf(false) }
+
     Hospitals(sheetState = modalBottomSheetState, itemState= itemState, hospitals = data.value)
-    HospitalBottomSheet(sheetState = modalBottomSheetState, item = itemState.value)
+    HospitalBottomSheet(sheetState = modalBottomSheetState, item = itemState.value, isShowDialog = dialogState)
+
+    if (dialogState.value) {
+        DialogContent()
+    }
 }
 
 
@@ -97,7 +104,8 @@ fun HospitalCard(
 @Composable
 fun HospitalBottomSheet(
     sheetState: ModalBottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden),
-    item: HospitalRowDto
+    item: HospitalRowDto,
+    isShowDialog: MutableState<Boolean>
 ) {
     val scrollState = rememberScrollState()
 
@@ -116,7 +124,7 @@ fun HospitalBottomSheet(
             ) {
 //                HospitalDetailCard("인허가일자", item.licenseDate ?: "")
 //                HospitalDetailCard("영업상태구분코드", item.businessStateCode ?: "")
-                HospitalDetailCard("영업상태명", item.businessStateName ?: "")
+                HospitalDetailCard("영업상태명", item.businessStateName ?: "", isShowDialog)
                 HospitalDetailCard("소재지 전화번호", item.localFactoryTelNumber ?: "")
                 HospitalDetailCard("소재지 면적정보", item.localAreaInfo ?: "")
                 HospitalDetailCard("소재지 우편번호", item.localZipCode ?: "")
@@ -143,10 +151,12 @@ fun Playground() {
 }
 
 @Composable
-fun HospitalDetailCard(key: String, value: String) {
+fun HospitalDetailCard(key: String, value: String, isShowDialog: MutableState<Boolean>? = null) {
     Card(backgroundColor = MaterialTheme.colors.background,
         modifier = Modifier
-            .fillMaxWidth()) {
+            .fillMaxWidth(),
+        onClick = { isShowDialog?.value = true}
+    ) {
         Row(modifier = Modifier
                 .fillMaxWidth()
         ) {
@@ -172,5 +182,28 @@ fun HospitalDetailCard(key: String, value: String) {
                 color = Color.White
             )
         }
+    }
+}
+
+@Composable
+fun DialogContent() {
+    Column {
+        Spacer(
+            modifier = Modifier
+                .height(12.dp)
+                .fillMaxWidth()
+                .background(Color.Blue)
+        )
+
+        Text(
+            text = "kotlin world",
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize()
+                .padding(vertical = 8.dp),
+            fontSize = 16.sp,
+            lineHeight = 17.sp
+        )
     }
 }
