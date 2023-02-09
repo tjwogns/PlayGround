@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -50,8 +47,22 @@ fun TextTest() {
     }
 }
 
+data class NumTest(var num: Int)
+//{
+//    fun plusOne() {
+//        num + 1
+//    }
+//}
 @Composable
 fun HelloContent() {
+
+//    var numModelA by remember { mutableStateOf(NumTest(0)) }
+//    var numModelB by remember { mutableStateOf(NumTest(0), neverEqualPolicy()) }
+    var numModelB by remember { mutableStateOf(NumTest(0)) }
+    var numModelC by remember { mutableStateOf(NumTest(0), neverEqualPolicy()) }
+//    println("!!! DEBUG !!! numModel Hash : ${numModelA.hashCode()}")
+    println("!!! DEBUG !!! numModel Hash : ${numModelB.hashCode()}")
+//    println("!!! DEBUG !!! numModel Hash : ${numModelC.hashCode()}")
     Column(modifier = Modifier.padding(16.dp)) {
         var name by remember { mutableStateOf("") }
         if (name.isNotEmpty()) {
@@ -66,5 +77,32 @@ fun HelloContent() {
             onValueChange = { name = it },
             label = { Text("Name") }
         )
+
+        Button(
+            onClick = {
+                numModelB = NumTest(++numModelB.num)
+                numModelC = NumTest(1)
+
+
+                println("!!! DEBUG !!! numModelB Hash2 : ${numModelB.hashCode()}")
+            }
+        ) {
+            Text("Plus ${numModelB.num}")
+        }
+
+        Button(
+            onClick = {
+                println("!!! DEBUG !!! Button 2 numModelB.num [${numModelB.num}]")
+            }
+        ) {
+            Text("Print Value")
+        }
+
+        Column() {
+//            Text("Plus numModelA ${numModelA.num}")
+            Text("Plus numModelB ${numModelB.num}")
+            Text("Plus numModelC ${numModelC.num}")
+//            Text("Plus numModelC ${numModelC.num}")
+        }
     }
 }
