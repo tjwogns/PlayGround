@@ -28,7 +28,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
     @SuppressLint("ClickableViewAccessibility")
     private fun setListener() {
         binding.tvPrint1.setOnClickListener {
-            printTest02()
+            printTest06()
         }
 
         binding.tvPrint2.setOnClickListener {
@@ -149,6 +149,16 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         println("!!! DEBUG !!! Output String [$urlStringBuilder]")
     }
 
+    private fun printTest06() {
+        val a = getString(R.string.test_argument)
+        val b = getString(R.string.test_argument2)
+
+        val aResult = String.format(a, "가", "나")
+        val bResult = String.format(b, "다")
+
+        println("!!! DEBUG !!! aResult [$aResult]")
+        println("!!! DEBUG !!! bResult [$bResult]")
+    }
 
     companion object {
     }

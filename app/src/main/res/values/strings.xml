@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">PlayGround</string>
     <string name="title_activity_coordinator">ScrollingActivity</string>
+    <string name="test_argument">%1$s, %2$s</string>
+    <string name="test_argument2">%1$s, %1$s</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
