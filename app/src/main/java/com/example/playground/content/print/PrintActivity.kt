@@ -28,7 +28,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
     @SuppressLint("ClickableViewAccessibility")
     private fun setListener() {
         binding.tvPrint1.setOnClickListener {
-            printTest06()
+            printTest08()
         }
 
         binding.tvPrint2.setOnClickListener {
@@ -158,6 +158,46 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
 
         println("!!! DEBUG !!! aResult [$aResult]")
         println("!!! DEBUG !!! bResult [$bResult]")
+    }
+
+
+    private fun printTest07() {
+        val test = "https://www.jerry.com"
+        val test2 = "https://www.jerry.com?iframe=Y"
+        val uri1 = Uri.parse(test)
+        val uri2 = Uri.parse(test2)
+
+        val result = uri1.getQueryParameter("iframe")
+        val result2 = uri2.getQueryParameter("iframe")
+
+        println("!!! DEBUG !!! result[$result]")
+        println("!!! DEBUG !!! result2[$result2]")
+
+        val result3 = Uri.parse(test)
+            .buildUpon()
+            .apply {
+                if (this.build().getQueryParameter("iframe") == null) this.appendQueryParameter("iframe", "Y")
+            }.build()
+
+        println("!!! DEBUG !!! result3[$result3]")
+
+    }
+
+
+    enum class State(val tag: Int) {
+        EXPANDED(1),
+        COLLAPSED(-1),
+        IDLE(0)
+    }
+
+    private fun printTest08() {
+        val test1 = State.EXPANDED.name
+        val test2 = State.COLLAPSED.name
+        val test3 = State.IDLE.name
+
+        println("!!! DEBUG !!! test1 [$test1]")
+        println("!!! DEBUG !!! test2 [$test2]")
+        println("!!! DEBUG !!! test3 [$test3]")
     }
 
     companion object {

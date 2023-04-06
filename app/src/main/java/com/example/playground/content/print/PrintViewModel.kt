@@ -1,5 +1,7 @@
 package com.example.playground.content.print
 
+import com.example.playground.content.til.copy.Box
+import com.example.playground.content.til.copy.Player
 import com.tjwogns.presentation.base.BaseViewModel
 import org.jsoup.Jsoup
 import java.net.URL
@@ -34,5 +36,10 @@ class PrintViewModel: BaseViewModel() {
         ex.get(10, TimeUnit.SECONDS)
 
         return accessToken
+    }
+
+
+    fun copyTest() {
+//        val player1 = Player(7, "Son", "FW", Box(10))
     }
 }
