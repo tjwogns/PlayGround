@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.playground.R
 import com.example.playground.content.compose.bottomNavigation.ui.theme.PlayGroundTheme
+import com.example.playground.content.print.TestType
 
 class ComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,7 @@ class ComposeActivity : ComponentActivity() {
 
 @Composable
 fun GreetingPrevious(name: String) {
+
     Text(text = "Hello $name!")
 }
 
@@ -106,6 +108,10 @@ fun PreviewMessageCard() {
 
 @Composable
 fun Conversation(messages: List<Message>) {
+
+    val a = TestType.SON
+    println("!!! DEBUG !!! is null? [${a == null}]")
+
     LazyColumn {
         items(messages) { message ->
             MessageCard(message)

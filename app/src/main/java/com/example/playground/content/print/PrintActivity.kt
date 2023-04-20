@@ -28,7 +28,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
     @SuppressLint("ClickableViewAccessibility")
     private fun setListener() {
         binding.tvPrint1.setOnClickListener {
-            printTest08()
+            printTest11()
         }
 
         binding.tvPrint2.setOnClickListener {
@@ -198,8 +198,78 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         println("!!! DEBUG !!! test1 [$test1]")
         println("!!! DEBUG !!! test2 [$test2]")
         println("!!! DEBUG !!! test3 [$test3]")
+
+        val result = State.valueOf("EXPANDED")
+
+        println("!!! DEBUG !!! result [$result]")
+    }
+
+    private fun printTest09() {
+        val test1 = "abcdefg"
+        val test2 = "안녕하세요."
+        val test3 = "123456하이Hi!@#"
+
+        test1.toStringList().forEach {
+            println("!!! DEBUG !!! [$it]")
+        }
+        println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+        test2.toStringList().forEach {
+            println("!!! DEBUG !!! [$it]")
+        }
+        println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        test3.toStringList().forEach {
+            println("!!! DEBUG !!! [$it]")
+        }
+        println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+
+    }
+
+    private fun printTest10() {
+        val test1 = TestType.SON
+
+        println("!!! DEBUG !!! [${test1 == null}]")
+        println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    }
+
+    private fun printTest11() {
+        val cacheDir = applicationContext.cacheDir
+
+        println("!!! DEBUG !!! cacheDir [${cacheDir}]")
+    }
+
+    private fun String.toStringList(): List<String> {
+        return this.map {
+            String(CharArray(1) { _ -> it })
+        }
     }
 
     companion object {
     }
+}
+
+
+data class TestType(
+    val name: String,
+    val subName: String
+) {
+
+    companion object {
+        val SON = TestObject.SON
+        val SON2 = TestObject.SON2()
+    }
+
+}
+
+object TestObject {
+    val SON = TestType(
+        "son",
+        "min"
+    )
+
+    fun SON2() = TestType(
+        "son",
+        "min"
+    )
 }
