@@ -235,8 +235,15 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
 
     private fun printTest11() {
         val cacheDir = applicationContext.cacheDir
+        val path = cacheDir.path
+        val absolutePath = cacheDir.absolutePath
+        val canonicalPath = cacheDir.canonicalPath
+
 
         println("!!! DEBUG !!! cacheDir [${cacheDir}]")
+        println("!!! DEBUG !!! path [${path}]")
+        println("!!! DEBUG !!! absolutePath [${absolutePath}]")
+        println("!!! DEBUG !!! canonicalPath [${canonicalPath}]")
     }
 
     private fun String.toStringList(): List<String> {
