@@ -28,7 +28,7 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
     @SuppressLint("ClickableViewAccessibility")
     private fun setListener() {
         binding.tvPrint1.setOnClickListener {
-            printTest11()
+            printTest12()
         }
 
         binding.tvPrint2.setOnClickListener {
@@ -244,6 +244,32 @@ class PrintActivity : BaseActivity<ActivityPrintBinding, PrintViewModel>(
         println("!!! DEBUG !!! path [${path}]")
         println("!!! DEBUG !!! absolutePath [${absolutePath}]")
         println("!!! DEBUG !!! canonicalPath [${canonicalPath}]")
+    }
+
+    /**
+     * String으로 되어있는 List 값을 Int형으로 변환한다.
+     * ex) listOf("1_2_3_4", "5") -> listOf(1, 2, 3, 4, 5)
+     */
+    fun convertTermsIdsToIntList(targets: List<String>) : List<Int> {
+        val convertedIds = mutableListOf<Int>()
+
+        targets.forEach {
+            val convertedItem = it.split("_")
+                .filter { stringId ->  stringId.toIntOrNull() != null }
+                .map { id -> id.toInt() }
+
+            convertedIds.addAll(convertedItem)
+        }
+
+        return convertedIds
+    }
+
+    private fun printTest12() {
+        val test = convertTermsIdsToIntList(listOf("1_2_3_4", "5"))
+        val test2 = convertTermsIdsToIntList(listOf("1_2_3_4_a", "5", ""))
+
+        println("!!! DEBUG !!! result [${test.toString()}]")
+        println("!!! DEBUG !!! result2 [${test2.toString()}]")
     }
 
     private fun String.toStringList(): List<String> {
